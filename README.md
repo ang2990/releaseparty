@@ -1,38 +1,64 @@
-# sv
+# releaseparty
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a project we're building together! Here’s a simple guide on how we're using Git and Gemini to manage it.
 
-## Creating a project
+## What are Git and Gemini in this project?
 
-If you're seeing this, you've probably already done this step. Congrats!
+Think of it like this:
 
-```sh
-# create a new project in the current directory
-npx sv create
+*   **Gemini (that's me!)**: I'm your coding assistant. You tell me what you want to do in plain English (like "add dark mode"), and I'll handle the technical side of things.
+*   **Git**: This is like a time machine for our project. It lets us save snapshots of our work at any point. It's a way to track all the changes we make, so we never lose anything and can always go back to an older version if we need to.
+*   **GitHub**: This is an online backup for our Git time machine. It's a safe place to store all our snapshots.
 
-# create a new project in my-app
-npx sv create my-app
+## Our Simple Workflow
+
+Our process is straightforward:
+
+1.  **You give me a task**: You tell me what change you want to make (e.g., "Set this site up to serve index.html").
+2.  **I make the changes**: I edit the code and files to get the task done.
+3.  **You tell me to save the work**: When you're happy with the changes, you tell me to `commit and push`.
+
+When you say `commit and push`, here's what I do:
+
+*   **`commit`**: I take a "snapshot" of all the changes we've just made. I write a clear message describing what was changed (like "feat: Add dark mode"). This creates a new point in our project's history.
+*   **`push`**: I then send that new snapshot (and any others we've made) to our online backup on GitHub. This keeps our online version up-to-date with the version on this computer.
+
+## Common Commands in Plain English
+
+You'll mostly just tell me what to do, but here's what some of the commands mean when you see me use them:
+
+*   **`commit`**: "Take a snapshot of the recent changes."
+*   **`push`**: "Send my saved snapshots to the online backup on GitHub."
+*   **`git status`**: "Show me a summary of what's changed since our last snapshot." (I use this to see what needs to be saved).
+
+## Development and Deployment
+
+### Running Locally
+
+To start the local development server and preview your changes:
+
+```bash
+bun run dev
 ```
 
-## Developing
+This will run the SvelteKit development server, usually accessible at `http://localhost:5173`.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Deployment to Cloudflare Pages
 
-```sh
-npm run dev
+This project is configured to be deployed to Cloudflare Pages.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+**Build Settings:**
 
-## Building
+In your Cloudflare Pages dashboard, please use the following build settings:
 
-To create a production version of your app:
+*   **Framework preset:** SvelteKit
+*   **Build command:** `bun run build`
+*   **Build output directory:** `.svelte-kit/output`
 
-```sh
-npm run build
-```
+Cloudflare Pages will automatically detect the SvelteKit project and build it according to these settings. No separate "deploy" command is needed.
 
-You can preview the production build with `npm run preview`.
+### Important Links
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+*   **GitHub Repository**: [https://github.com/ang2990/releaseparty](https://github.com/ang2990/releaseparty)
+*   **Cloudflare Dashboard**: [https://dash.cloudflare.com/](https://dash.cloudflare.com/)
+*   **Deployed Application**: [**[PLEASE PROVIDE DEPLOYED URL]**] - *Once deployed, please update this link!*
