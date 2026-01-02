@@ -114,7 +114,7 @@
             <a href="#vision" class="nav-link">The Vision</a>
             <a href="#guestlist" class="nav-link">Guests</a>
             <a href="#destinations" class="nav-link">The Exodus</a>
-            <a href="javascript:void(0)" role="button" class="nav-link text-accent" on:click|preventDefault={() => openModal('RSVP')}>RSVP</a>
+            <button type="button" class="nav-link text-accent" on:click={() => openModal('RSVP')}>RSVP</button>
             <button id="theme-switcher" class="nav-link" style="background: none; border: none; cursor: pointer; color: inherit;">Theme</button>
         </nav>
     </header>
@@ -305,8 +305,8 @@
             <div class="grid-item" style="background: var(--text-color); color: var(--bg-color);">
                 <h3>Tools</h3>
                 <ul style="list-style: none; margin-top: 20px;">
-                    <li style="margin-bottom: 15px;"><a href="javascript:void(0)" style="text-decoration: underline;">Download Takedown Toolkit &darr;</a></li>
-                    <li style="margin-bottom: 15px;"><a href="javascript:void(0)" style="text-decoration: underline;">The Ethical Rider PDF &darr;</a></li>
+                    <li style="margin-bottom: 15px;"><button type="button" style="text-decoration: underline; background: none; border: none; color: inherit; padding: 0;">Download Takedown Toolkit &darr;</button></li>
+                    <li style="margin-bottom: 15px;"><button type="button" style="text-decoration: underline; background: none; border: none; color: inherit; padding: 0;">The Ethical Rider PDF &darr;</button></li>
                     <li style="margin-bottom: 15px;"><a href="Payment Option Study.pdf" style="text-decoration: underline;">Pro Musik Study &darr;</a></li>
                 </ul>
             </div>
@@ -324,8 +324,8 @@
                 </div>
                 <div>
                     <h4 style="margin-bottom: 10px;">Connect</h4>
-                    <a href="javascript:void(0)" style="display: block; margin-bottom: 5px;">Instagram</a>
-                    <a href="javascript:void(0)" style="display: block; margin-bottom: 5px;">Twitter / X</a>
+                    <button type="button" style="display: block; margin-bottom: 5px; background: none; border: none; color: inherit; padding: 0;">Instagram</button>
+                    <button type="button" style="display: block; margin-bottom: 5px; background: none; border: none; color: inherit; padding: 0;">Twitter / X</button>
                 </div>
             </div>
         </div>
