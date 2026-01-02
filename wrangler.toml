@@ -1,6 +1,2 @@
 name = "releaseparty"
-main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2026-01-02"
-
-[site]
-bucket = ".svelte-kit/cloudflare/assets"
