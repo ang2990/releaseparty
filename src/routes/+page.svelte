@@ -114,7 +114,7 @@
             <a href="#vision" class="nav-link">The Vision</a>
             <a href="#guestlist" class="nav-link">Guests</a>
             <a href="#destinations" class="nav-link">The Exodus</a>
-            <a href="#" class="nav-link text-accent" on:click|preventDefault={() => openModal('RSVP')}>RSVP</a>
+            <a href="javascript:void(0)" role="button" class="nav-link text-accent" on:click|preventDefault={() => openModal('RSVP')}>RSVP</a>
             <button id="theme-switcher" class="nav-link" style="background: none; border: none; cursor: pointer; color: inherit;">Theme</button>
         </nav>
     </header>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="guest-list-wrapper">
                     {#each guests as guest}
-                        <div class="guest-item" on:click={() => selectGuest(guest)} class:active={guest === selectedGuest}>
+                        <div class="guest-item" role="button" tabindex="0" on:click={() => selectGuest(guest)} on:keydown={(e) => e.key === 'Enter' && selectGuest(guest)} class:active={guest === selectedGuest}>
                             <span style:color={guest.type === 'Artist' ? 'var(--accent-color)' : 'inherit'}>{guest.name}</span>
                             <span style="font-size: 0.8rem; opacity: 0.6;">{guest.type}</span>
                         </div>
@@ -305,8 +305,8 @@
             <div class="grid-item" style="background: var(--text-color); color: var(--bg-color);">
                 <h3>Tools</h3>
                 <ul style="list-style: none; margin-top: 20px;">
-                    <li style="margin-bottom: 15px;"><a href="#" style="text-decoration: underline;">Download Takedown Toolkit &darr;</a></li>
-                    <li style="margin-bottom: 15px;"><a href="#" style="text-decoration: underline;">The Ethical Rider PDF &darr;</a></li>
+                    <li style="margin-bottom: 15px;"><a href="javascript:void(0)" style="text-decoration: underline;">Download Takedown Toolkit &darr;</a></li>
+                    <li style="margin-bottom: 15px;"><a href="javascript:void(0)" style="text-decoration: underline;">The Ethical Rider PDF &darr;</a></li>
                     <li style="margin-bottom: 15px;"><a href="Payment Option Study.pdf" style="text-decoration: underline;">Pro Musik Study &darr;</a></li>
                 </ul>
             </div>
@@ -324,8 +324,8 @@
                 </div>
                 <div>
                     <h4 style="margin-bottom: 10px;">Connect</h4>
-                    <a href="#" style="display: block; margin-bottom: 5px;">Instagram</a>
-                    <a href="#" style="display: block; margin-bottom: 5px;">Twitter / X</a>
+                    <a href="javascript:void(0)" style="display: block; margin-bottom: 5px;">Instagram</a>
+                    <a href="javascript:void(0)" style="display: block; margin-bottom: 5px;">Twitter / X</a>
                 </div>
             </div>
         </div>
@@ -336,7 +336,7 @@
         <div class="modal-box">
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                 <h2 id="modal-title">RSVP</h2>
-                <span style="font-size: 2rem; cursor: pointer; line-height: 0.5;" on:click={() => closeModal()}>&times;</span>
+                <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" on:click={() => closeModal()}>&times;</button>
             </div>
             <p style="margin-bottom: 30px;">Add your leverage to the movement.</p>
             <form on:submit|preventDefault={() => {closeModal(); alert('Pledge Added!');}}>
