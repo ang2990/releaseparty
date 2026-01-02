@@ -31,4 +31,20 @@ You'll mostly just tell me what to do, but here's what some of the commands mean
 *   **`push`**: "Send my saved snapshots to the online backup on GitHub."
 *   **`git status`**: "Show me a summary of what's changed since our last snapshot." (I use this to see what needs to be saved).
 
-That's it! You just focus on what you want to build, and I'll handle the details of saving our progress.
+## Development and Deployment
+
+### Running Locally
+
+To start the local development server and preview your changes:
+
+```bash
+npm start
+```
+
+This will run the Cloudflare Worker locally, usually accessible at `http://localhost:8787`.
+
+### Important Links
+
+*   **GitHub Repository**: [https://github.com/ang2990/releaseparty](https://github.com/ang2990/releaseparty)
+*   **Cloudflare Dashboard**: [https://dash.cloudflare.com/](https://dash.cloudflare.com/)
+*   **Deployed Application**: [**[PLEASE PROVIDE DEPLOYED URL]**] - *Once deployed, please update this link!*
