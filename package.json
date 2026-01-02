@@ -1,0 +1,29 @@
+{
+  "name": "releaseparty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ang2990/releaseparty.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ang2990/releaseparty/issues"
+  },
+  "homepage": "https://github.com/ang2990/releaseparty#readme",
+  "devDependencies": {
+    "wrangler": "^4.54.0"
+  },
+  "dependencies": {
+    "itty-router-extras": "^0.4.6"
+  }
+}
