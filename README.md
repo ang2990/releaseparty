@@ -45,34 +45,20 @@ This will run the SvelteKit development server, usually accessible at `http://lo
 
 ### Deployment to Cloudflare Pages
 
+This project is configured to be deployed to Cloudflare Pages.
 
+**Build Settings:**
 
-This project is configured to be deployed to Cloudflare Pages. To deploy the site, run the following command:
+In your Cloudflare Pages dashboard, please use the following build settings:
 
+*   **Framework preset:** SvelteKit
+*   **Build command:** `bun run build`
+*   **Build output directory:** `.svelte-kit/output`
 
-
-```bash
-
-bun run deploy
-
-```
-
-
-
-This command will first build the SvelteKit project and then deploy it to Cloudflare Pages using Wrangler.
-
-
-
-**Note:** You will need to be logged into your Cloudflare account. If you are not logged in, you will be prompted to log in.
-
-
+Cloudflare Pages will automatically detect the SvelteKit project and build it according to these settings. No separate "deploy" command is needed.
 
 ### Important Links
 
-
-
 *   **GitHub Repository**: [https://github.com/ang2990/releaseparty](https://github.com/ang2990/releaseparty)
-
 *   **Cloudflare Dashboard**: [https://dash.cloudflare.com/](https://dash.cloudflare.com/)
-
 *   **Deployed Application**: [**[PLEASE PROVIDE DEPLOYED URL]**] - *Once deployed, please update this link!*
