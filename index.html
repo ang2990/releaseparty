@@ -20,6 +20,14 @@
             --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f2f0eb;
+            --accent-color: #ff3c00;
+            --line-color: #f2f0eb;
+        }
+
+
         /* --- RESET & BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -451,6 +459,7 @@
             <a href="#guestlist" class="nav-link">Guests</a>
             <a href="#destinations" class="nav-link">The Exodus</a>
             <a href="#" class="nav-link text-accent" onclick="openModal('RSVP')">RSVP</a>
+            <button id="theme-switcher" class="nav-link" style="background: none; border: none; cursor: pointer; color: inherit;">Theme</button>
         </nav>
     </header>
 
@@ -798,6 +807,24 @@
 
         renderList();
         startCycling();
+
+        // --- 4. THEME SWITCHER ---
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const doc = document.documentElement;
+
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+          doc.setAttribute('data-theme', theme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          doc.setAttribute('data-theme', 'dark');
+        }
+
+        themeSwitcher.addEventListener('click', () => {
+          const currentTheme = doc.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          doc.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
 
     </script>
 
