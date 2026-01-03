@@ -1,3 +1,7 @@
 name = "releaseparty"
 compatibility_date = "2026-01-02"
 compatibility_flags = ["nodejs_compat"]
+main = ".svelte-kit/cloudflare/_worker.js"
+
+[site]
+bucket = ".svelte-kit/cloudflare/_app"
