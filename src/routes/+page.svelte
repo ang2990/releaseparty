@@ -618,7 +618,7 @@
     }
     
     .highlight-text {
-        background-color: var(--text-color);
+        background-color: #808080; /* Grey */
         color: var(--bg-color);
         display: inline;
         padding: 4px 8px;
