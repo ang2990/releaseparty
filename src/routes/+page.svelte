@@ -589,7 +589,7 @@
         transition: background 0.2s;
     }
     .guest-item:hover, .guest-item.active {
-        background: var(--text-color);
+        background: #333; /* Darker Grey */
         color: var(--bg-color);
         padding-left: 15px;
     }
