@@ -78,25 +78,7 @@
 
         startCycling();
 
-        // --- 4. THEME SWITCHER ---
-        const themeSwitcher = document.getElementById('theme-switcher');
-        const doc = document.documentElement;
 
-        const theme = localStorage.getItem('theme');
-        if (theme) {
-          doc.setAttribute('data-theme', theme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          doc.setAttribute('data-theme', 'dark');
-        }
-
-        if (themeSwitcher) {
-            themeSwitcher.addEventListener('click', () => {
-              const currentTheme = doc.getAttribute('data-theme');
-              const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-              doc.setAttribute('data-theme', newTheme);
-              localStorage.setItem('theme', newTheme);
-            });
-        }
     });
 </script>
 
@@ -115,7 +97,7 @@
             <a href="#guestlist" class="nav-link">Guests</a>
             <a href="#destinations" class="nav-link">The Exodus</a>
             <button type="button" class="nav-link text-accent" on:click={() => openModal('RSVP')}>RSVP</button>
-            <button id="theme-switcher" class="nav-link" style="background: none; border: none; cursor: pointer; color: inherit;">Theme</button>
+
         </nav>
     </header>
 
@@ -175,6 +157,42 @@
             <div class="grid-item" style="gap: 20px;">
                 <button class="btn" on:click={() => openModal('Artist')}>I am an Artist (Pledge Streams)</button>
                 <button class="btn btn-outline" on:click={() => openModal('Listener')}>I am a Listener (Pledge Support)</button>
+            </div>
+        </div>
+
+        <!-- THE VISION (Horizontal Scroll) -->
+        <div class="grid-row" id="vision">
+            <div class="grid-item" style="border-bottom: none; border-right: none;">
+                <h2 class="text-large">The Vision</h2>
+                <div class="scroll-hint">Swipe to see more &rarr;</div>
+            </div>
+        </div>
+        
+        <div class="h-scroll-container">
+            <div class="h-card">
+                <span class="text-accent text-large">01.</span>
+                <h3>User-Centric Payments</h3>
+                <p style="margin-top: 20px;">Adopt a User-Centric Payment System (UCPS) to kill the bot economy and pay artists fairly based on fan dedication.</p>
+            </div>
+            <div class="h-card">
+                <span class="text-accent text-large">02.</span>
+                <h3>Ethical Divestment</h3>
+                <p style="margin-top: 20px;">Complete divestment of corporate funds from military defense technology (Helsing) and ICE advertising.</p>
+            </div>
+            <div class="h-card">
+                <span class="text-accent text-large">03.</span>
+                <h3>Artist Safety Net</h3>
+                <p style="margin-top: 20px;">A fixed percentage of revenue allocated to a collective fund for artist healthcare and mental health.</p>
+            </div>
+            <div class="h-card">
+                <span class="text-accent text-large">04.</span>
+                <h3>AI Consent</h3>
+                <p style="margin-top: 20px;">No training generative AI models on our music without explicit, opt-in consent and compensation.</p>
+            </div>
+            <div class="h-card">
+                <span class="text-accent text-large">05.</span>
+                <h3>Ownership</h3>
+                <p style="margin-top: 20px;">A future where artists own their data and their masters, not leased back to them by tech giants.</p>
             </div>
         </div>
 
@@ -252,41 +270,7 @@
             </div>
         </div>
 
-        <!-- THE VISION (Horizontal Scroll) -->
-        <div class="grid-row" id="vision">
-            <div class="grid-item" style="border-bottom: none; border-right: none;">
-                <h2 class="text-large">The Vision</h2>
-                <div class="scroll-hint">Swipe to see more &rarr;</div>
-            </div>
-        </div>
-        
-        <div class="h-scroll-container">
-            <div class="h-card">
-                <span class="text-accent text-large">01.</span>
-                <h3>User-Centric Payments</h3>
-                <p style="margin-top: 20px;">Adopt a User-Centric Payment System (UCPS) to kill the bot economy and pay artists fairly based on fan dedication.</p>
-            </div>
-            <div class="h-card">
-                <span class="text-accent text-large">02.</span>
-                <h3>Ethical Divestment</h3>
-                <p style="margin-top: 20px;">Complete divestment of corporate funds from military defense technology (Helsing) and ICE advertising.</p>
-            </div>
-            <div class="h-card">
-                <span class="text-accent text-large">03.</span>
-                <h3>Artist Safety Net</h3>
-                <p style="margin-top: 20px;">A fixed percentage of revenue allocated to a collective fund for artist healthcare and mental health.</p>
-            </div>
-            <div class="h-card">
-                <span class="text-accent text-large">04.</span>
-                <h3>AI Consent</h3>
-                <p style="margin-top: 20px;">No training generative AI models on our music without explicit, opt-in consent and compensation.</p>
-            </div>
-            <div class="h-card">
-                <span class="text-accent text-large">05.</span>
-                <h3>Ownership</h3>
-                <p style="margin-top: 20px;">A future where artists own their data and their masters, not leased back to them by tech giants.</p>
-            </div>
-        </div>
+
 
         <!-- THE EXODUS / DESTINATIONS -->
         <div class="grid-row grid-sidebar" id="destinations">
@@ -361,12 +345,7 @@
         --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
-    :global([data-theme="dark"]) {
-        --bg-color: #1a1a1a;
-        --text-color: #f2f0eb;
-        --accent-color: #ff3c00;
-        --line-color: #f2f0eb;
-    }
+
 
 
     /* --- RESET & BASE --- */
