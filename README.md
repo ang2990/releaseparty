@@ -43,6 +43,8 @@ bun run dev
 
 This will run the SvelteKit development server, usually accessible at `http://localhost:5173`.
 
+**NOTE:** Don't forget to run `bun install` first to install all dependencies.
+
 ### Deployment to Cloudflare Workers
 
 
