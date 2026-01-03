@@ -352,7 +352,7 @@
     :global(html) {
         /* --- THEME SETTINGS --- */
         --bg-color: #f2f0eb;      /* Bone / Off-White */
-        --text-color: #1a1a1a;    /* Onyx Black */
+        --text-color: #808080;    /* Grey for highlight */
         --accent-color: #ff3c00;  /* International Orange */
         --line-color: #1a1a1a;    /* Borders */
         
