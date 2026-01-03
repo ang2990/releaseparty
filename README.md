@@ -27,9 +27,26 @@ When you say `commit and push`, here's what I do:
 
 You'll mostly just tell me what to do, but here's what some of the commands mean when you see me use them:
 
-*   **`commit`**: "Take a snapshot of the recent changes."
-*   **`push`**: "Send my saved snapshots to the online backup on GitHub."
-*   **`git status`**: "Show me a summary of what's changed since our last snapshot." (I use this to see what needs to be saved).
+*   **`commit`**: "Take a snapshot" of the recent changes.
+*   **`push`**: "Send my saved snapshots to the online backup on GitHub.
+
+## Working with Gemini and Zed
+
+Here’s how you can manage your interaction with Gemini within the Zed editor:
+
+*   **Navigating in Zed**:
+    *   **Command Palette**: Use `Cmd + Shift + P` (macOS) or `Ctrl + Shift + P` (Windows/Linux) to open the command palette and search for various actions.
+    *   **File Tree**: Use `Cmd + E` (macOS) or `Ctrl + E` (Windows/Linux) to toggle the file tree.
+    *   **Opening Files**: Use `Cmd + P` (macOS) or `Ctrl + P` (Windows/Linux) to quickly open files.
+
+*   **Opening a Terminal in Zed**:
+    *   You can open a new terminal directly within Zed by using the command palette (`Cmd + Shift + P`) and searching for "Terminal: New" or by using the shortcut `Ctrl + \`.
+
+*   **Launching Gemini**:
+    *   To launch Gemini, navigate to your project directory in a Zed terminal and run the Gemini CLI command (e.g., `gemini start`).
+
+*   **Quitting Gemini**:
+    *   To exit Gemini, type `/exit` in the Gemini chat interface. This will end the current Gemini session.
 
 ## Development and Deployment
 
