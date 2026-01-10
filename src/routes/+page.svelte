@@ -112,33 +112,62 @@
     </div>
 </div>
 
-<!-- GUEST LIST SECTION -->
+<!-- GUEST LIST SECTION (MANIFEST) -->
 <div class="grid-row grid-sidebar" id="guestlist">
-    <div class="grid-item" style="background: #e5e3de;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap:10px;">
+    <!-- LEFT: THE MANIFEST LOG -->
+    <div class="grid-item" style="background: var(--bg-color);">
+        <div class="manifest-header">
             <div>
-                <a href="/guest-list" class="nav-link"><h2 class="text-large">The Guest List</h2></a>
-                <p style="font-size: 0.9rem;">Packed their bags.</p>
+                <h2 class="text-large">Manifest Log</h2>
+                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// EXODUS_BATCH_001</p>
             </div>
-            <input type="text" class="guest-search-input" placeholder="Search...">
+            <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">VIEW_FULL_LOG -></a>
         </div>
-        <p>Featuring independent artists and listeners committed to fair pay and ethical streaming.</p>
-        <ul style="list-style: disc; margin-left: 20px; margin-top: 15px;">
-            <li>Ray Bull (Artist)</li>
-            <li>DIIV (Artist)</li>
-            <li>Mitski (Artist)</li>
-            <li>Listener #9941 (Listener)</li>
-        </ul>
-        <p style="margin-top: 20px;"><a href="/guest-list" class="text-accent" style="font-weight: 700;">View full guest list &rarr;</a></p>
+        
+        <div class="manifest-list">
+            <!-- Row 1 -->
+            <div class="manifest-row">
+                <span class="manifest-id">#041</span>
+                <span class="manifest-name text-accent">Ray Bull</span>
+                <span class="manifest-role">ARTIST</span>
+            </div>
+            <!-- Row 2 -->
+            <div class="manifest-row">
+                <span class="manifest-id">#042</span>
+                <span class="manifest-name">DIIV</span>
+                <span class="manifest-role">ARTIST</span>
+            </div>
+            <!-- Row 3 -->
+            <div class="manifest-row">
+                <span class="manifest-id">#043</span>
+                <span class="manifest-name">Mitski</span>
+                <span class="manifest-role">ARTIST</span>
+            </div>
+            <!-- Row 4 -->
+            <div class="manifest-row">
+                <span class="manifest-id">#891</span>
+                <span class="manifest-name">Listener 891</span>
+                <span class="manifest-role" style="border-style: dashed;">LISTENER</span>
+            </div>
+            <!-- Row 5 -->
+            <div class="manifest-row">
+                <span class="manifest-id">#892</span>
+                <span class="manifest-name">Listener 892</span>
+                <span class="manifest-role" style="border-style: dashed;">LISTENER</span>
+            </div>
+        </div>
     </div>
+    
+    <!-- RIGHT: THE TICKET / ID CARD -->
     <div class="grid-item-nopad">
-        <div class="profile-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
-            <div class="profile-content">
-                <span class="highlight-text" style="background:var(--accent-color);">Artist</span>
-                <div style="margin-top:5px;">
-                    <span class="highlight-text profile-name" style="font-size: 2rem;">Ray Bull</span>
-                </div>
-                <span class="highlight-text" style="font-size: 1rem;">"Indie Pop duo from NYC fighting for fair pay."</span>
+        <div class="ticket-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+            <div class="ticket-overlay"></div>
+            <div class="ticket-stamp">BOARDED</div>
+            <div class="ticket-data">
+                <div class="font-mono" style="font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 5px; margin-bottom: 5px;">PASSENGER_ID: #041</div>
+                <h2 style="font-size: 3rem; line-height: 1;">RAY BULL</h2>
+                <div class="font-mono" style="font-size: 0.9rem;">ROLE: ARTIST // CLASS: A</div>
+                <div class="font-mono" style="font-size: 0.9rem;">ORIGIN: NYC // STATUS: CONFIRMED</div>
             </div>
         </div>
     </div>

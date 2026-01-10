@@ -238,88 +238,131 @@ nav {
 }
 .btn-outline:hover { background: var(--text-color); color: var(--bg-color); }
 
-/* --- GUEST LIST & PROFILE --- */
-.guest-list-wrapper {
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 20px 0;
-    border-top: 2px solid var(--line-color);
+/* --- GUEST LIST (MANIFEST) --- */
+.font-mono {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -0.05em;
 }
-.guest-item {
-    border-bottom: 1px solid #ccc;
-    padding: 15px 10px;
-    font-weight: 700;
-    text-transform: uppercase;
+
+.manifest-header {
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.guest-item:hover, .guest-item.active {
-    background: #333; /* Darker Grey */
-    color: var(--bg-color);
-    padding-left: 15px;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    border-bottom: 4px solid var(--text-color);
+    padding-bottom: 20px;
 }
 
-.guest-search-input {
-    padding: 8px;
-    border: 1px solid var(--text-color);
-    font-family: var(--font-main);
-    font-weight: 700;
-    width: 200px;
-}
-
-.profile-view {
-    width: 100%;
-    height: 100%;
-    min-height: 500px; 
-    background-size: cover;
-    background-position: center;
-    position: relative;
+.manifest-list {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
 }
 
-.highlight-text {
-    background-color: #808080; /* Grey */
+.manifest-row {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr; /* ID, Name, Role */
+    align-items: center;
+    border-bottom: 2px solid var(--line-color);
+    padding: 20px 0;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+.manifest-row:hover {
+    background: var(--text-color);
     color: var(--bg-color);
-    display: inline;
-    padding: 4px 8px;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    line-height: 1.6;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.profile-name {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    line-height: 1;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.profile-links a {
-    display: inline-block;
-    background-color: var(--text-color); /* Highlight text bg */
+/* On hover, change the accent color elements inside the row if needed */
+.manifest-row:hover .text-accent {
     color: var(--bg-color);
-    padding: 8px 15px;
+}
+
+.manifest-id {
+    font-family: 'Courier New', monospace;
     font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    margin-right: 10px;
-    margin-top: 10px;
-    border: 2px solid transparent;
+    opacity: 0.6;
 }
 
-.profile-links a:hover {
-    background: var(--accent-color);
-    color: #fff;
+.manifest-name {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.manifest-role {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    text-align: right;
+    border: 1px solid currentColor;
+    padding: 5px 10px;
+    display: inline-block;
+    justify-self: end;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* TICKET / PROFILE VIEW */
+.ticket-view {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    position: relative;
+    background-color: #e5e5e5; /* Fallback */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Dither/Grain Effect Overlay */
+.ticket-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 60, 0, 0.1); /* Slight orange tint */
+    background-image: radial-gradient(var(--text-color) 1px, transparent 0);
+    background-size: 4px 4px; /* Dot matrix pattern */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ticket-data {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, var(--text-color) 0%, transparent 100%);
+    color: var(--bg-color);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ticket-stamp {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    border: 4px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace; /* Stencil-ish feel */
+    font-weight: 900;
+    font-size: 1.5rem;
+    transform: rotate(-15deg);
+    opacity: 0.9;
+    z-index: 2;
+    text-transform: uppercase;
+    mix-blend-mode: multiply; /* Helps it look stamped */
+}
+
+/* Remove old styles if they exist to avoid clutter */
+.guest-list-wrapper, .guest-item, .profile-view, .highlight-text, .profile-name {
+    /* Keeping them for now if used elsewhere, but new styles override */
 }
 
 /* --- HORIZONTAL SCROLL SECTION (VISION/DEMANDS) --- */
