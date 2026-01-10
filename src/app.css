@@ -396,26 +396,123 @@ nav {
     margin-top: 10px;
 }
 
-/* --- EXODUS / DESTINATIONS SECTION --- */
-.destinations-grid {
+/* --- EXODUS / DESTINATIONS --- */
+.exodus-intro {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    max-width: 45ch;
+    margin-top: 20px;
+}
+
+.destinations-grid-detailed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0; /* Brutalist grid touching borders */
+    border-top: 2px solid var(--line-color);
 }
-.destination-link {
-    border: 2px solid var(--line-color);
-    padding: 20px;
-    text-align: center;
+
+.destination-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    border-right: 2px solid var(--line-color);
+    border-bottom: 2px solid var(--line-color);
     text-decoration: none;
-    font-weight: 800;
-    text-transform: uppercase;
-    transition: 0.2s;
-    display: block;
+    transition: background 0.2s, transform 0.2s;
+    min-height: 350px;
+    position: relative;
+    background: var(--bg-color);
 }
-.destination-link:hover {
+
+.destination-card:hover {
     background: var(--text-color);
     color: var(--bg-color);
+    z-index: 10;
+    outline: 2px solid var(--accent-color); /* Pop out effect */
+}
+
+/* Invert internal elements on hover */
+.destination-card:hover .spec-row, 
+.destination-card:hover .card-action {
+    border-color: rgba(255,255,255,0.3);
+}
+.destination-card:hover .text-accent {
+    color: var(--bg-color); /* Make accent white on black hover */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.card-specs {
+    margin-top: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line-color);
+    padding: 8px 0;
+}
+.spec-row span:last-child {
+    font-weight: 700;
+    text-align: right;
+}
+
+.card-action {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 2px solid var(--line-color);
+}
+
+.mission-brief {
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Remove old conflicting class if it exists */
+.destinations-grid {
+    /* Legacy fallback or remove */
+}
+
+@media(max-width: 900px) {
+    .destinations-grid-detailed {
+        grid-template-columns: 1fr;
+    }
+    .destination-card {
+        border-right: none;
+    }
 }
 
 /* --- VIDEO --- */
