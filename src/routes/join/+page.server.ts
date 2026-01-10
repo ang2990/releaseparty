@@ -47,8 +47,9 @@ export const actions = {
             });
 
             if (!response.ok) {
-                console.error('Google Sheet Error:', response.statusText);
-                return { success: false, error: 'Failed to record entry.' };
+                const errorText = await response.text();
+                console.error('Google Sheet Error:', response.status, response.statusText, errorText);
+                return { success: false, error: 'Failed to record entry. Status: ' + response.status };
             }
 
             return { success: true };
