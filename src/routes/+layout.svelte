@@ -52,7 +52,7 @@
 
 <div class="grid-container">
     <!-- HEADER -->
-    <header>
+    <header class="grid-row">
         <div class="brand">
             {#if $page.url.pathname === '/'}
                 Release<span class="text-accent">Party</span>
@@ -67,12 +67,11 @@
             <a href="/join" class="nav-link">Join Us</a>
             <a href="/resources" class="nav-link">Resources</a>
             <button type="button" class="nav-link text-accent" on:click={() => openModal('RSVP')}>RSVP</button>
-
         </nav>
     </header>
 
     <!-- TICKER (MARQUEE) -->
-    <div class="marquee-container">
+    <div class="marquee-container grid-row">
         <div class="marquee-wrapper">
             <div class="marquee-content">
                 <span class="marquee-item">// 1,450,231,000 STREAMS PLEDGED </span>
@@ -102,18 +101,17 @@
     {@render children()}
 
     <!-- FOOTER -->
-    <footer style="padding: 40px; border-top: 2px solid var(--line-color);">
-        <div class="grid-container" style="border: none;">
-            <div class="grid-row grid-3-col" style="border: none;">
-                <div style="padding-right: 20px;">
-                    <h3>Release Party</h3>
-                    <p style="font-size: 0.8rem; margin-top: 10px;">© 2025. Built for the Exodus.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 10px;">Connect</h4>
-                    <button type="button" style="display: block; margin-bottom: 5px; background: none; border: none; color: inherit; padding: 0;">Instagram</button>
-                    <button type="button" style="display: block; margin-bottom: 5px; background: none; border: none; color: inherit; padding: 0;">Twitter / X</button>
-                </div>
+    <footer class="grid-row grid-sidebar footer-dark">
+        <div class="grid-item">
+            <h2 class="text-large">Release Party</h2>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2025. Built for the Exodus. Music is not content.</p>
+        </div>
+        <div class="grid-item">
+            <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="#" class="nav-link nav-link-footer">Instagram</a>
+                <a href="#" class="nav-link nav-link-footer">Twitter / X</a>
+                <a href="#" class="nav-link nav-link-footer">Mastodon</a>
             </div>
         </div>
     </footer>

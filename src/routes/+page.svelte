@@ -1,43 +1,5 @@
 <script>
-    import { onMount } from 'svelte';
-
-    onMount(() => {
-        // --- 1. TICKER LOGIC ---
-        const counter = document.getElementById('mainCounter');
-        let count = 1450200412;
-        
-        setInterval(() => {
-            count += Math.floor(Math.random() * 550);
-            if (counter) {
-                counter.innerText = count.toLocaleString();
-            }
-        }, 100);
-
-        // --- 2. MODAL LOGIC ---
-        const modal = document.getElementById('modal');
-        const modalTitle = document.getElementById('modal-title');
-
-        window.openModal = (type) => {
-            if (modal) {
-                modal.style.display = 'flex';
-            }
-            if (modalTitle) {
-                modalTitle.innerText = type + " RSVP";
-            }
-        }
-
-        window.closeModal = () => {
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    });
+    // Component-specific logic if needed
 </script>
 
 <svelte:head>
@@ -45,7 +7,6 @@
     <meta name="description" content="We are leaving Spotify. A collective exodus to force a user-centric payment model.">
 </svelte:head>
 
-<div class="grid-container">
 <!-- HERO SECTION (Flexbox for safety) -->
 <div class="hero-flex-row">
     <div class="hero-title-box">
@@ -53,7 +14,6 @@
     </div>
     <div class="hero-counter-box">
         <h3 style="margin-bottom: 20px;">The Countdown</h3>
-        <!-- Updated class text-countdown handles sizing -->
         <div class="text-countdown" id="mainCounter">1.4B</div>
         <p style="font-weight: 700; margin-top: 10px;">Streams Pledged</p>
         <div style="margin-top: 20px; border-top: 2px solid #fff; padding-top: 10px;">
@@ -137,32 +97,29 @@
             </div>
         </div>
     </div>
-</div> <!-- Closing the grid-row for MANIFESTO / UCPS -->
+</div>
 
 <!-- GUEST LIST SECTION -->
 <div class="grid-row grid-sidebar" id="guestlist">
-    <!-- LEFT: THE LIST -->
     <div class="grid-item" style="background: #e5e3de;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap:10px;">
             <div>
                 <a href="/guest-list" class="nav-link"><h2 class="text-large">The Guest List</h2></a>
                 <p style="font-size: 0.9rem;">Packed their bags.</p>
             </div>
-            <!-- Simplified guest search and list preview for homepage -->
             <input type="text" class="guest-search-input" placeholder="Search...">
         </div>
         <p>Featuring independent artists and listeners committed to fair pay and ethical streaming.</p>
-        <ul class="list-disc list-inside mt-4 ml-4">
+        <ul style="list-style: disc; margin-left: 20px; margin-top: 15px;">
             <li>Ray Bull (Artist)</li>
             <li>DIIV (Artist)</li>
             <li>Mitski (Artist)</li>
             <li>Listener #9941 (Listener)</li>
         </ul>
-        <p class="mt-4"><a href="/guest-list" class="text-accent font-bold">View full guest list &rarr;</a></p>
+        <p style="margin-top: 20px;"><a href="/guest-list" class="text-accent" style="font-weight: 700;">View full guest list &rarr;</a></p>
     </div>
-    <!-- RIGHT: Simplified Profile Preview -->
     <div class="grid-item-nopad">
-        <div class="profile-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'); min-height: 300px;">
+        <div class="profile-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
             <div class="profile-content">
                 <span class="highlight-text" style="background:var(--accent-color);">Artist</span>
                 <div style="margin-top:5px;">
@@ -196,19 +153,18 @@
             <li style="margin-bottom: 15px;"><a href="/resources" class="nav-link" style="text-decoration: underline;">Pro Musik Study &darr;</a></li>
         </ul>
     </div>
-</div> <!-- Closing the grid-row for THE EXODUS / DESTINATIONS -->
+</div>
 
 <!-- RESOURCES PREVIEW SECTION -->
 <div class="grid-row" id="resources-preview">
     <div class="grid-item">
         <a href="/resources" class="nav-link"><h2 class="text-large">Resources</h2></a>
         <p style="margin-top: 20px;">Empowering artists and listeners with the tools and knowledge to navigate and transform the music industry.</p>
-        <ul class="list-disc list-inside mt-4 ml-4">
+        <ul style="list-style: disc; margin-left: 20px; margin-top: 15px;">
             <li>The Takedown Toolkit: Your guide to reclaiming your music.</li>
             <li>The Ethical Rider: A legal framework for fair artist contracts.</li>
             <li>Pro Musik Study: Data supporting user-centric payment models.</li>
         </ul>
-        <p class="mt-4"><a href="/resources" class="text-accent font-bold">Explore all resources &rarr;</a></p>
+        <p style="margin-top: 20px;"><a href="/resources" class="text-accent" style="font-weight: 700;">Explore all resources &rarr;</a></p>
     </div>
-</div>
 </div>

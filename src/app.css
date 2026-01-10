@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 html {
     /* --- THEME SETTINGS --- */
     --bg-color: #f2f0eb;      /* Bone / Off-White */
@@ -6,7 +8,7 @@ html {
     --line-color: #1a1a1a;    /* Borders */
     
     /* Typography */
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-main: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -22,7 +24,6 @@ body {
     font-family: var(--font-main);
     line-height: 1.4;
     overflow-x: hidden; 
-    /* border: 20px solid var(--bg-color); */ /* Commented out to prevent double border */
     width: 100vw;
     min-height: 100vh;
 }
@@ -30,7 +31,7 @@ body {
 /* --- TYPOGRAPHY --- */
 h1, h2, h3 {
     font-family: var(--font-heading);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.05em; 
     line-height: 0.9;
     text-transform: uppercase;
@@ -43,7 +44,7 @@ p {
     max-width: 60ch;
 }
 
-a { color: inherit; }
+a { color: inherit; text-decoration: none; }
 
 .text-accent { color: var(--accent-color); }
 
@@ -63,16 +64,12 @@ a { color: inherit; }
 } 
 
 /* --- LAYOUT UTILITIES --- */
-/* .content-wrapper is removed, its border styles are now on .grid-container */
-
-
 .grid-container {
     display: grid;
-    border-top: 2px solid var(--line-color); /* Moved from .content-wrapper */
-    border-left: 2px solid var(--line-color); /* Moved from .content-wrapper */
+    border-top: 2px solid var(--line-color);
+    border-left: 2px solid var(--line-color);
     width: 100%;
 }
-
 
 .grid-row {
     display: grid;
@@ -86,21 +83,38 @@ a { color: inherit; }
     .grid-sidebar { grid-template-columns: 2fr 1fr; }
 }
 
+.grid-item {
+    padding: 40px;
+    border-right: 2px solid var(--line-color);
+    position: relative;
+    min-width: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grid-item-nopad {
+    padding: 0;
+    border-right: 2px solid var(--line-color);
+    min-width: 0;
+    position: relative; 
+}
+
 /* --- HERO FLEXBOX FIX --- */
 .hero-flex-row {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-wrap: wrap; 
     border-bottom: 2px solid var(--line-color);
 }
 
 .hero-title-box {
-    flex: 1.5 1 450px; /* Give title slightly more weight, break at 450px */
+    flex: 1.5 1 450px; 
     padding: 40px;
     border-right: 2px solid var(--line-color);
 }
 
 .hero-counter-box {
-    flex: 1 1 350px; /* Counter takes remaining space, breaks at 350px */
+    flex: 1 1 350px; 
     background: var(--accent-color);
     color: #fff;
     padding: 40px;
@@ -108,7 +122,6 @@ a { color: inherit; }
     flex-direction: column;
     justify-content: center;
     border-right: 2px solid var(--line-color);
-    /* Ensure content doesn't force box wider than viewport */
     min-width: 0; 
 }
 
@@ -117,9 +130,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 2px solid var(--line-color);
-    flex-wrap: wrap;
+    padding: 20px 40px;
+    background: var(--bg-color);
 }
 
 .brand {
@@ -134,6 +146,7 @@ nav {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-link {
@@ -142,8 +155,39 @@ nav {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px 0;
 }
 .nav-link:hover { text-decoration: underline; color: var(--accent-color); }
+
+.nav-link.text-accent {
+    border: 2px solid var(--line-color);
+    padding: 5px 15px;
+}
+.nav-link.text-accent:hover {
+    background: var(--accent-color);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --- FOOTER HELPERS --- */
+.footer-dark {
+    background: var(--text-color) !important;
+    color: var(--bg-color) !important;
+}
+
+.nav-link-footer {
+    color: var(--bg-color) !important;
+    text-decoration: underline !important;
+    font-size: 0.8rem !important;
+    opacity: 0.8;
+}
+.nav-link-footer:hover {
+    opacity: 1;
+    color: var(--accent-color) !important;
+}
 
 /* --- TICKER --- */
 .marquee-container {
@@ -361,10 +405,27 @@ nav {
     border: 1px solid #444;
 }
 
-/* --- ANIMATIONS --- */
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+/* --- UTILITIES --- */
+::selection {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-left: 2px solid var(--line-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--line-color);
+    border: 2px solid var(--bg-color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
 
 /* --- MODAL --- */
@@ -372,49 +433,107 @@ nav {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(26, 26, 26, 0.9);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(4px);
     z-index: 999;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
+
 .modal-box {
     background: var(--bg-color);
-    border: 4px solid var(--accent-color);
+    border: 4px solid var(--line-color);
+    box-shadow: 10px 10px 0 var(--accent-color);
     padding: 60px;
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
+    position: relative;
 }
+
 .modal-box input {
     width: 100%;
     padding: 20px;
     background: #fff;
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--line-color);
     margin-bottom: 20px;
     font-family: var(--font-main);
     font-size: 1rem;
     font-weight: 700;
+    outline: none;
+}
+.modal-box input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 4px 4px 0 var(--accent-color);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 /* --- RESPONSIVE TWEAKS --- */
-@media(max-width: 768px) {
-    body { border: 10px solid var(--bg-color); }
-    .grid-item { padding: 25px; }
-    .h-card { min-width: 85vw; } /* Cards take mostly full screen on mobile */
+@media(max-width: 900px) {
+    /* Stack Grid Columns */
+    .grid-2-col, .grid-sidebar {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Fix Borders for Stacked Items */
+    .grid-item, .grid-item-nopad {
+        border-right: none; 
+        border-bottom: 2px solid var(--line-color);
+    }
+    
+    /* Remove bottom border from last item in a stacked group to avoid double borders with container */
+    .grid-item:last-child, .grid-item-nopad:last-child {
+        border-bottom: none;
+    }
     
     /* Ensure Hero Stacks */
     .hero-title-box, .hero-counter-box {
-        flex: 1 1 100%; /* Force 100% width on small screens */
+        flex: 1 1 100%; 
         border-right: none;
         border-bottom: 2px solid var(--line-color);
-        width: 100%; /* Explicit full width */
+        width: 100%; 
     }
-    .hero-counter-box { border-bottom: none; min-height: 300px; } /* Ensure height for counter */
-    .text-countdown { font-size: 15vw; } /* Very large on mobile */
+    .hero-counter-box { border-bottom: none; min-height: 250px; } 
+    .text-countdown { font-size: 15vw; } 
     
     /* Nav Stacking */
-    header { flex-direction: column; align-items: flex-start; gap: 10px; }
-    nav { margin-left: -5px; width: 100%; overflow-x: auto; padding-bottom: 10px; } 
-    .nav-link { margin-left: 0; margin-right: 15px; white-space: nowrap; }
+    header { 
+        padding: 20px; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 15px; 
+    }
+    
+    nav { 
+        width: 100%; 
+        overflow-x: auto; 
+        padding-bottom: 5px; 
+        -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+    nav::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+    
+    .nav-link { 
+        margin-right: 20px; 
+        white-space: nowrap; 
+        font-size: 1rem;
+        padding: 10px 0; /* Larger touch target */
+    }
+
+    /* Adjust Padding */
+    .grid-item { padding: 30px 20px; }
+    .h-card { min-width: 85vw; padding: 30px 20px; }
+    
+    /* Modal Mobile */
+    .modal-box {
+        padding: 30px;
+        width: 95%;
+    }
 }
