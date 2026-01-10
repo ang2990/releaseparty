@@ -70,9 +70,8 @@
             <a href="/vision" class="nav-link">The vision</a>
             <a href="/guest-list" class="nav-link">Guests</a>
             <a href="/exodus" class="nav-link">The move</a>
-            <a href="/join" class="nav-link">Join us</a>
             <a href="/resources" class="nav-link">Resources</a>
-            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>Join</button>
+            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>RSVP</button>
         </nav>
     </header>
 
@@ -126,7 +125,7 @@
     <div class="modal-overlay" id="modal">
         <div class="modal-box">
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                <h2 id="modal-title">Join</h2>
+                <h2 id="modal-title">RSVP</h2>
                 <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
             </div>
             <p style="margin-bottom: 30px;">Add your support to our list.</p>
@@ -139,7 +138,19 @@
                 </div>
             {:else}
                 <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
-                    <input type="hidden" name="role" value={modalRole}>
+                    <div class="form-group">
+                        <label>ROLE</label>
+                        <div class="radio-group-mini">
+                            <label class="radio-option-mini">
+                                <input type="radio" name="role" value="ARTIST" bind:group={modalRole} required>
+                                <span>ARTIST</span>
+                            </label>
+                            <label class="radio-option-mini">
+                                <input type="radio" name="role" value="LISTENER" bind:group={modalRole} required>
+                                <span>LISTENER</span>
+                            </label>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="modal-name">Name / artist name</label>
@@ -164,13 +175,103 @@
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
-                        {modalSubmitting ? 'Transmitting...' : 'Join'}
+                        {modalSubmitting ? 'Transmitting...' : 'RSVP'}
                     </button>
                 </form>
             {/if}
         </div>
     </div>
 </div>
+
+<style>
+    /* Consolidate modal form styles */
+    .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        font-size: 0.7rem;
+        opacity: 0.7;
+    }
+
+    .modal-form input[type="text"],
+    .modal-form input[type="email"],
+    .modal-form input[type="number"] {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 8px 0;
+        font-family: var(--font-main);
+        font-size: 1.1rem;
+        font-weight: 700;
+        outline: none;
+        border-radius: 0;
+    }
+
+    .modal-form input:focus {
+        border-color: var(--accent-color);
+    }
+
+    /* Small Radios for Modal */
+    .radio-group-mini {
+        display: flex;
+        gap: 15px;
+    }
+
+    .radio-option-mini {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-family: var(--font-heading);
+        font-size: 0.8rem;
+        font-weight: 900;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+    }
+
+    .radio-option-mini:has(input:checked) {
+        opacity: 1;
+        color: var(--accent-color);
+    }
+
+    .modal-form input[type="radio"] {
+        appearance: none;
+        width: 0.8rem;
+        height: 0.8rem;
+        border: 1.5px solid currentColor;
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        margin: 0;
+    }
+
+    .modal-form input[type="radio"]::before {
+        content: "";
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 0.1s transform ease-in-out;
+        box-shadow: inset 1em 1em currentColor;
+        background-color: currentColor;
+    }
+
+    .modal-form input[type="radio"]:checked::before {
+        transform: scale(1);
+    }
+</style>
 
 <style>
     /* Consolidate modal form styles */
