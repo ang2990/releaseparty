@@ -9,14 +9,14 @@
 	let { children } = $props();
     let modalRole = $state('ARTIST');
     let modalSubmitting = $state(false);
+    let modalSuccess = $state(false);
 
     const handleModalSubmit = () => {
         modalSubmitting = true;
         return async ({ result, update }) => {
             modalSubmitting = false;
             if (result.type === 'success') {
-                closeModal();
-                alert('Manifest Signed. Welcome to the Exodus.');
+                modalSuccess = true;
             }
             await update();
         };
@@ -27,12 +27,14 @@
         const modal = document.getElementById('modal');
         const modalTitle = document.getElementById('modal-title');
 
-        window.openModal = (type) => {
+        window.openModal = (role = 'ARTIST') => {
+            modalRole = role;
+            modalSuccess = false;
             if (modal) {
                 modal.style.display = 'flex';
             }
             if (modalTitle) {
-                modalTitle.innerText = type + " RSVP";
+                modalTitle.innerText = role + " RSVP";
             }
         }
 
@@ -129,47 +131,43 @@
             </div>
             <p style="margin-bottom: 30px;">Add your leverage to the movement. Your data will be recorded in the collective manifest.</p>
             
-            <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
-                <div class="form-group">
-                    <label>ROLE</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="role" value="ARTIST" bind:group={modalRole} required>
-                            <span>ARTIST</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="role" value="LISTENER" bind:group={modalRole} required>
-                            <span>LISTENER</span>
-                        </label>
-                    </div>
+            {#if modalSuccess}
+                <div style="text-align: center; padding: 40px 0;">
+                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">CONFIRMED</h2>
+                    <p style="font-weight: 700;">Manifest Signed. Welcome to the Exodus.</p>
+                    <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>DISMISS</button>
                 </div>
+            {:else}
+                <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
+                    <input type="hidden" name="role" value={modalRole}>
 
-                <div class="form-group">
-                    <label for="modal-name">NAME / ARTIST NAME</label>
-                    <input type="text" id="modal-name" name="name" placeholder="ENTER_NAME" required>
-                </div>
-
-                {#if modalRole === 'ARTIST'}
                     <div class="form-group">
-                        <label for="modal-streams">2025 TOTAL STREAMS (ESTIMATE)</label>
-                        <input type="number" id="modal-streams" name="streams" placeholder="0" min="0">
+                        <label for="modal-name">NAME / ARTIST NAME</label>
+                        <input type="text" id="modal-name" name="name" placeholder="ENTER_NAME" required>
                     </div>
-                {/if}
 
-                <div class="form-group">
-                    <label for="modal-email">CONTACT_RELAY (EMAIL)</label>
-                    <input type="email" id="modal-email" name="email" placeholder="ENTER_EMAIL" required>
-                </div>
+                    {#if modalRole === 'ARTIST'}
+                        <div class="form-group">
+                            <label for="modal-streams">2025 TOTAL STREAMS (ESTIMATE)</label>
+                            <input type="number" id="modal-streams" name="streams" placeholder="0" min="0">
+                        </div>
+                    {/if}
 
-                <div class="form-group">
-                    <label for="modal-link">LINK (PORTFOLIO / SOCIAL)</label>
-                    <input type="url" id="modal-link" name="link" placeholder="HTTPS://...">
-                </div>
+                    <div class="form-group">
+                        <label for="modal-email">CONTACT_RELAY (EMAIL)</label>
+                        <input type="email" id="modal-email" name="email" placeholder="ENTER_EMAIL" required>
+                    </div>
 
-                <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
-                    {modalSubmitting ? 'TRANSMITTING...' : 'SIGN MANIFEST'}
-                </button>
-            </form>
+                    <div class="form-group">
+                        <label for="modal-link">LINK (PORTFOLIO / SOCIAL)</label>
+                        <input type="text" id="modal-link" name="link" placeholder="HTTPS://...">
+                    </div>
+
+                    <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
+                        {modalSubmitting ? 'TRANSMITTING...' : 'SIGN MANIFEST'}
+                    </button>
+                </form>
+            {/if}
         </div>
     </div>
 </div>

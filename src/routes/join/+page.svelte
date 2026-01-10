@@ -1,9 +1,12 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
+    import { page } from '$app/stores';
 
     let submitting = $state(false);
     let success = $state(false);
-    let selectedRole = $state('ARTIST');
+    
+    // Detect role from URL (?role=LISTENER) or default to ARTIST
+    let selectedRole = $state($page.url.searchParams.get('role')?.toUpperCase() || 'ARTIST');
 
     // Form enhancement to handle loading state
     const handleSubmit = () => {
@@ -53,22 +56,12 @@
                     <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>REGISTER_ANOTHER</button>
                 </div>
             {:else}
-                <h2 style="margin-bottom: 30px; border-bottom: 1px solid var(--bg-color); padding-bottom: 10px;">Intake Form</h2>
+                <h2 style="margin-bottom: 30px; border-bottom: 1px solid var(--bg-color); padding-bottom: 10px;">
+                    {selectedRole} Intake Form
+                </h2>
                 
                 <form method="POST" use:enhance={handleSubmit} class="join-form">
-                    <div class="form-group">
-                        <label for="role">ROLE</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="role" value="ARTIST" required bind:group={selectedRole}>
-                                <span>ARTIST</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="role" value="LISTENER" required bind:group={selectedRole}>
-                                <span>LISTENER</span>
-                            </label>
-                        </div>
-                    </div>
+                    <input type="hidden" name="role" value={selectedRole}>
 
                     <div class="form-group">
                         <label for="name">NAME / ARTIST NAME</label>
@@ -89,7 +82,7 @@
 
                     <div class="form-group">
                         <label for="link">LINK (PORTFOLIO / SOCIAL)</label>
-                        <input type="url" id="link" name="link" placeholder="HTTPS://...">
+                        <input type="text" id="link" name="link" placeholder="HTTPS://...">
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={submitting}>
