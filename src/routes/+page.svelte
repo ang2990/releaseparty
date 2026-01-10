@@ -1,5 +1,16 @@
 <script>
-    // Component-specific logic if needed
+    import AttendeeRow from '$lib/components/AttendeeRow.svelte';
+    import AttendeeCard from '$lib/components/AttendeeCard.svelte';
+
+    let attendees = [
+        { id: "041", name: "Ray Bull", role: "ARTIST", image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", isAccent: true },
+        { id: "042", name: "DIIV", role: "ARTIST", image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "043", name: "Mitski", role: "ARTIST", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "891", name: "Listener 891", role: "LISTENER", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "892", name: "Listener 892", role: "LISTENER", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" }
+    ];
+
+    let selectedAttendee = $state(attendees[0]);
 </script>
 
 <svelte:head>
@@ -125,51 +136,56 @@
         </div>
         
         <div class="manifest-list">
-            <!-- Row 1 -->
-            <div class="manifest-row">
-                <span class="manifest-id">#041</span>
-                <span class="manifest-name text-accent">Ray Bull</span>
-                <span class="manifest-role">ARTIST</span>
-            </div>
-            <!-- Row 2 -->
-            <div class="manifest-row">
-                <span class="manifest-id">#042</span>
-                <span class="manifest-name">DIIV</span>
-                <span class="manifest-role">ARTIST</span>
-            </div>
-            <!-- Row 3 -->
-            <div class="manifest-row">
-                <span class="manifest-id">#043</span>
-                <span class="manifest-name">Mitski</span>
-                <span class="manifest-role">ARTIST</span>
-            </div>
-            <!-- Row 4 -->
-            <div class="manifest-row">
-                <span class="manifest-id">#891</span>
-                <span class="manifest-name">Listener 891</span>
-                <span class="manifest-role" style="border-style: dashed;">LISTENER</span>
-            </div>
-            <!-- Row 5 -->
-            <div class="manifest-row">
-                <span class="manifest-id">#892</span>
-                <span class="manifest-name">Listener 892</span>
-                <span class="manifest-role" style="border-style: dashed;">LISTENER</span>
-            </div>
+            {#each attendees as attendee}
+                <AttendeeRow 
+                    {...attendee} 
+                    onhover={() => selectedAttendee = attendee}
+                />
+            {/each}
         </div>
     </div>
     
     <!-- RIGHT: THE TICKET / ID CARD -->
     <div class="grid-item-nopad">
-        <div class="ticket-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
-            <div class="ticket-overlay"></div>
-            <div class="ticket-stamp">RSVP'd</div>
-            <div class="ticket-data">
-                <div class="font-mono" style="font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 5px; margin-bottom: 5px;">USER_ID: #041</div>
-                <h2 style="font-size: 3rem; line-height: 1;">RAY BULL</h2>
-                <div class="font-mono" style="font-size: 0.9rem;">ROLE: ARTIST // CLASS: A</div>
-                <div class="font-mono" style="font-size: 0.9rem;">ORIGIN: NYC // STATUS: CONFIRMED</div>
-            </div>
+        <AttendeeCard {...selectedAttendee} />
+    </div>
+</div>
+
+<!-- THE EXODUS / DESTINATIONS -->
+<div class="grid-row grid-sidebar" id="destinations">
+    <div class="grid-item">
+        <a href="/exodus" class="nav-link"><h2 class="text-large">The Exodus</h2></a>
+        <p>When the Release happens, we aren't just disappearing. We are moving here. Support these ethical alternatives now.</p>
+        
+        <div class="destinations-grid">
+            <a href="https://bandcamp.com" target="_blank" class="destination-link">Bandcamp</a>
+            <a href="https://subvert.fm" target="_blank" class="destination-link">Subvert.fm</a>
+            <a href="https://resonate.coop" target="_blank" class="destination-link">Resonate</a>
+            <a href="https://www.qobuz.com" target="_blank" class="destination-link">Qobuz</a>
+            <a href="https://tidal.com" target="_blank" class="destination-link">Tidal</a>
         </div>
+    </div>
+    <div class="grid-item" style="background: var(--text-color); color: var(--bg-color);">
+        <h3>Tools</h3>
+        <ul style="list-style: none; margin-top: 20px;">
+            <li style="margin-bottom: 15px;"><a href="/resources" class="nav-link" style="text-decoration: underline; background: none; border: none; color: inherit; padding: 0;">Download Takedown Toolkit &darr;</a></li>
+            <li style="margin-bottom: 15px;"><a href="/resources" class="nav-link" style="text-decoration: underline; background: none; border: none; color: inherit; padding: 0;">The Ethical Rider PDF &darr;</a></li>
+            <li style="margin-bottom: 15px;"><a href="/resources" class="nav-link" style="text-decoration: underline;">Pro Musik Study &darr;</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- RESOURCES PREVIEW SECTION -->
+<div class="grid-row" id="resources-preview">
+    <div class="grid-item">
+        <a href="/resources" class="nav-link"><h2 class="text-large">Resources</h2></a>
+        <p style="margin-top: 20px;">Empowering artists and listeners with the tools and knowledge to navigate and transform the music industry.</p>
+        <ul style="list-style: disc; margin-left: 20px; margin-top: 15px;">
+            <li>The Takedown Toolkit: Your guide to reclaiming your music.</li>
+            <li>The Ethical Rider: A legal framework for fair artist contracts.</li>
+            <li>Pro Musik Study: Data supporting user-centric payment models.</li>
+        </ul>
+        <p style="margin-top: 20px;"><a href="/resources" class="text-accent" style="font-weight: 700;">Explore all resources &rarr;</a></p>
     </div>
 </div>
 

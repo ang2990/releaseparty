@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "cloudflare-docs": {
+      "url": "https://docs.mcp.cloudflare.com/sse"
+    },
+    "cloudflare-bindings": {
+      "url": "https://bindings.mcp.cloudflare.com/sse"
+    },
+    "cloudflare-builds": {
+      "url": "https://builds.mcp.cloudflare.com/sse"
+    }
+  }
+}

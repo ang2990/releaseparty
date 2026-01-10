@@ -1,75 +1,64 @@
 <script>
-    // No dynamic guest cycling needed on this page anymore, all logic moved to layout.
-    // Keeping script block for potential future Svelte-specific logic.
+    import AttendeeRow from '$lib/components/AttendeeRow.svelte';
+    import AttendeeCard from '$lib/components/AttendeeCard.svelte';
+
+    let attendees = [
+        { id: "041", name: "Ray Bull", role: "ARTIST", image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", isAccent: true },
+        { id: "042", name: "DIIV", role: "ARTIST", image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "043", name: "Mitski", role: "ARTIST", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "044", name: "Deerhoof", role: "ARTIST", image: "https://images.unsplash.com/photo-1598555986427-d72ad79c35d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "045", name: "King Krule", role: "ARTIST", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "046", name: "Big Thief", role: "ARTIST", image: "https://images.unsplash.com/photo-1524230659092-07f99a75c013?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "891", name: "Listener 891", role: "LISTENER", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "892", name: "Listener 892", role: "LISTENER", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+        { id: "893", name: "Listener 893", role: "LISTENER", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" }
+    ];
+
+    let selectedAttendee = $state(attendees[0]);
+    let searchQuery = $state("");
+
+    let filteredAttendees = $derived(
+        attendees.filter(a => a.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
 </script>
 
 <svelte:head>
-    <title>Guest List - Release Party</title>
+    <title>ATTENDEES | Release Party</title>
 </svelte:head>
 
 <div class="grid-container">
-        <!-- GUEST LIST SECTION -->
-        <div class="grid-row grid-sidebar" id="guestlist">
-            <!-- LEFT: THE LIST -->
-            <div class="grid-item" style="background: #e5e3de;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap:10px;">
-                    <div>
-                        <h2>The Guest List</h2>
-                        <p style="font-size: 0.9rem;">Packed their bags.</p>
-                    </div>
-                    <input type="text" class="guest-search-input" placeholder="Search...">
+    <div class="grid-row grid-sidebar" id="guestlist">
+        <!-- LEFT: THE ATTENDEES LIST -->
+        <div class="grid-item" style="background: var(--bg-color);">
+            <div class="manifest-header">
+                <div>
+                    <h2 class="text-large">Attendees</h2>
+                    <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// FULL_DATABASE_SYNC</p>
                 </div>
-                <div class="guest-list-wrapper">
-                    <!-- Static representation of guests -->
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">Ray Bull</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">DIIV</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">Mitski</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">Deerhoof</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">King Krule</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span style="color: var(--accent-color);">Big Thief</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Artist</span>
-                    </div>
-                    <div class="guest-item">
-                        <span>Listener #9941</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Listener</span>
-                    </div>
-                    <div class="guest-item">
-                        <span>Listener #8821</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Listener</span>
-                    </div>
-                    <div class="guest-item">
-                        <span>Listener #1102</span>
-                        <span style="font-size: 0.8rem; opacity: 0.6;">Listener</span>
-                    </div>
-                </div>
+                <input 
+                    type="text" 
+                    class="guest-search-input" 
+                    placeholder="SEARCH_BY_NAME..."
+                    bind:value={searchQuery}
+                >
             </div>
-            <!-- RIGHT: Simplified Profile Preview -->
-            <div class="grid-item-nopad">
-                <div class="profile-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'); min-height: 300px;">
-                    <div class="profile-content">
-                        <span class="highlight-text" style="background:var(--accent-color);">Artist</span>
-                        <div style="margin-top:5px;">
-                            <span class="highlight-text profile-name" style="font-size: 2rem;">Ray Bull</span>
-                        </div>
-                        <span class="highlight-text" style="font-size: 1rem;">"Indie Pop duo from NYC fighting for fair pay."</span>
-                    </div>
-                </div>
+            
+            <div class="manifest-list">
+                {#each filteredAttendees as attendee}
+                    <AttendeeRow 
+                        {...attendee} 
+                        onhover={() => selectedAttendee = attendee}
+                    />
+                {/each}
+                {#if filteredAttendees.length === 0}
+                    <div class="font-mono" style="padding: 20px; opacity: 0.5;">NO_MATCHES_FOUND</div>
+                {/if}
             </div>
         </div>
+        
+        <!-- RIGHT: THE TICKET / ID CARD -->
+        <div class="grid-item-nopad">
+            <AttendeeCard {...selectedAttendee} />
+        </div>
+    </div>
 </div>
