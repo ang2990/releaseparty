@@ -5,11 +5,11 @@
     import 'odometer/themes/odometer-theme-minimal.css';
 
     let attendees = [
-        { id: "041", name: "Ray Bull", role: "ARTIST", image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", isAccent: true },
-        { id: "042", name: "DIIV", role: "ARTIST", image: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
-        { id: "043", name: "Mitski", role: "ARTIST", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
-        { id: "891", name: "Listener 891", role: "LISTENER", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
-        { id: "892", name: "Listener 892", role: "LISTENER", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" }
+        { id: "041", name: "Ray Bull", role: "ARTIST", streams: "4.2M", isAccent: true },
+        { id: "042", name: "DIIV", role: "ARTIST", streams: "12.8M" },
+        { id: "043", name: "Mitski", role: "ARTIST", streams: "850M" },
+        { id: "891", name: "Listener 891", role: "LISTENER", streams: "15k" },
+        { id: "892", name: "Listener 892", role: "LISTENER", streams: "8k" }
     ];
 
     let selectedAttendee = $state(attendees[0]);
@@ -88,6 +88,11 @@
 </div>
 
 <!-- DIRECTIVE GRID -->
+<div class="grid-row">
+    <div class="grid-item" style="border-bottom: none;">
+        <a href="/vision" class="nav-link"><h2 class="text-large">The vision &rarr;</h2></a>
+    </div>
+</div>
 <div class="directive-grid">
     <div class="directive-item">
         <span class="directive-number">01.</span>
@@ -114,12 +119,12 @@
 <!-- CALL TO ACTION -->
 <div class="grid-row grid-2-col">
     <div class="grid-item">
-        <h2 class="text-large">We're building the leverage to get a better deal.</h2>
+        <h2 class="text-large">We're building leverage to get a better deal.</h2>
         <p style="margin-top: 20px;">When the ticker hits the goal, we move our music to fairer infrastructure. Join the list to coordinate our next steps.</p>
     </div>
     
     <div class="grid-item" style="justify-content: center;">
-        <p class="text-large" style="margin-bottom: 30px;">Will you come with us?</p>
+        <h2 class="text-large" style="margin-bottom: 30px; text-transform: uppercase;">Will you come with us?</h2>
         <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <button class="btn" onclick={() => openModal('ARTIST')}>I am an artist (Pledge streams)</button>
             <button class="btn btn-outline" onclick={() => openModal('LISTENER')}>I am a listener (Pledge support)</button>
@@ -130,15 +135,15 @@
 <!-- ORGANIZING STEPS -->
 <div class="grid-row">
     <div class="grid-item">
-        <h2 class="text-large">Next steps</h2>
+        <a href="/resources" class="nav-link"><h2 class="text-large">Next steps &rarr;</h2></a>
         <div class="organizing-steps" style="margin-top: 40px;">
             <div class="step-row">
                 <span class="step-number">01</span>
                 <div class="step-content">
                     <h4>Register your support</h4>
-                    <p>Add your name or catalog to our registry to increase our collective leverage.</p>
+                    <p>Add your name or catalog to our list to increase our collective leverage.</p>
                 </div>
-                <a href="/join" class="btn btn-outline" style="padding: 10px 20px; width: auto;">Join us</a>
+                <button class="btn btn-outline" style="padding: 10px 20px; width: auto;" onclick={() => openModal('ARTIST')}>Join now</button>
             </div>
             <div class="step-row">
                 <span class="step-number">02</span>
@@ -160,12 +165,12 @@
     </div>
 </div>
 
-<!-- COLLECTIVE REGISTRY (ATTENDEE LIST) -->
+<!-- GUEST LIST -->
 <div class="grid-row grid-sidebar" id="guestlist">
     <div class="grid-item" style="background: var(--bg-color);">
         <div class="attendee-header">
             <div>
-                <h2 class="text-large">Registry</h2>
+                <a href="/guest-list" class="nav-link"><h2 class="text-large">Guest list &rarr;</h2></a>
                 <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified joining artists</p>
             </div>
             <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">Full list -></a>
