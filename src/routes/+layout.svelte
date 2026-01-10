@@ -55,7 +55,7 @@
             <a href="/exodus" class="nav-link">The Exodus</a>
             <a href="/join" class="nav-link">Join Us</a>
             <a href="/resources" class="nav-link">Resources</a>
-            <button type="button" class="nav-link text-accent" on:click={() => openModal('RSVP')}>RSVP</button>
+            <button type="button" class="nav-link text-accent" onclick={() => openModal('RSVP')}>RSVP</button>
         </nav>
     </header>
 
@@ -98,9 +98,9 @@
         <div class="grid-item">
             <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="#" class="nav-link nav-link-footer">Instagram</a>
-                <a href="#" class="nav-link nav-link-footer">Twitter / X</a>
-                <a href="#" class="nav-link nav-link-footer">Mastodon</a>
+                <a href="javascript:void(0)" class="nav-link nav-link-footer">Instagram</a>
+                <a href="javascript:void(0)" class="nav-link nav-link-footer">Twitter / X</a>
+                <a href="javascript:void(0)" class="nav-link nav-link-footer">Mastodon</a>
             </div>
         </div>
     </footer>
@@ -110,10 +110,10 @@
         <div class="modal-box">
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                 <h2 id="modal-title">RSVP</h2>
-                <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" on:click={() => closeModal()}>&times;</button>
+                <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
             </div>
             <p style="margin-bottom: 30px;">Add your leverage to the movement.</p>
-            <form on:submit|preventDefault={() => {closeModal(); alert('Pledge Added!');}}>
+            <form onsubmit={(e) => { e.preventDefault(); closeModal(); alert('Pledge Added!'); }}>
                 <input type="text" placeholder="Name / Artist Name" required>
                 <input type="text" placeholder="Estimated Annual Streams / Minutes" required>
                 <button class="btn" style="width: 100%;">Submit Pledge</button>

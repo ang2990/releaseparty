@@ -102,8 +102,8 @@
     <div class="grid-item" style="justify-content: center;">
         <p class="text-large" style="margin-bottom: 30px;">Will you come with us?</p>
         <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-            <button class="btn" on:click={() => openModal('Artist')}>I am an Artist (Pledge Streams)</button>
-            <button class="btn btn-outline" on:click={() => openModal('Listener')}>I am a Listener (Pledge Support)</button>
+            <button class="btn" onclick={() => openModal('Artist')}>I am an Artist (Pledge Streams)</button>
+            <button class="btn btn-outline" onclick={() => openModal('Listener')}>I am a Listener (Pledge Support)</button>
         </div>
     </div>
 </div>
