@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import AttendeeRow from '$lib/components/AttendeeRow.svelte';
     import AttendeeCard from '$lib/components/AttendeeCard.svelte';
-    import FlipCounter from '$lib/components/FlipCounter.svelte';
+    import 'odometer/themes/odometer-theme-minimal.css';
 
     let attendees = [
         { id: "041", name: "Ray Bull", role: "ARTIST", image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", isAccent: true },
@@ -16,15 +16,29 @@
     
     // Ticker Logic
     let streamCount = $state(1450221161);
-    let streamCountString = $derived(streamCount.toLocaleString('en-US')); // Format with commas
+    let odometerElement;
+    let showTooltip = $state(false);
     let progressWidth = $derived((streamCount / 50000000000) * 100);
 
-    onMount(() => {
+    onMount(async () => {
+        // Dynamic import for client-side only library
+        const Odometer = (await import('odometer')).default;
+        
+        const el = document.getElementById('odometer');
+        const odometer = new Odometer({
+            el: el,
+            value: streamCount,
+            format: '(,ddd)',
+            theme: 'minimal',
+            duration: 2000 // Slower animation
+        });
+
         const interval = setInterval(() => {
             // Simulate live streams coming in
-            const increment = Math.floor(Math.random() * 15) + 5; 
+            const increment = Math.floor(Math.random() * 150) + 50; // Larger increment for visibility
             streamCount += increment;
-        }, 800); // Slower interval for flip effect to be readable
+            odometer.update(streamCount);
+        }, 3000); 
 
         return () => clearInterval(interval);
     });
@@ -45,9 +59,27 @@
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
     <div class="hero-counter-box" style="border-right: none; width: 100%;">
-        <div class="progress-value">
-            <FlipCounter value={streamCountString} />
+        <!-- TOOLTIP WRAPPER -->
+        <div 
+            style="position: relative; display: inline-block;"
+            onmouseenter={() => showTooltip = true}
+            onmouseleave={() => showTooltip = false}
+            role="region"
+            aria-label="Live Stream Count"
+        >
+            <div id="odometer" class="progress-value odometer">1450221161</div>
+            
+            <!-- TOOLTIP -->
+            <div class="tooltip" class:visible={showTooltip}>
+                <div class="tooltip-header">DATA_SOURCE: VERIFIED</div>
+                <p>
+                    This number represents the real-time collective count of streams pledged by artists joining the Exodus.
+                    <br><br>
+                    <span class="text-accent" style="font-weight: 900;">TARGET: 50,000,000,000</span>
+                </p>
+            </div>
         </div>
+
         <div class="progress-label">Streams Pledged</div>
         
         <div class="progress-container">

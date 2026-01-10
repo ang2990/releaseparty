@@ -184,6 +184,64 @@ a { color: inherit; text-decoration: none; }
     display: none;
 }
 
+/* --- ODOMETER OVERRIDES --- */
+.odometer {
+    font-family: var(--font-heading) !important;
+    font-weight: 900 !important;
+}
+
+.odometer.odometer-auto-theme .odometer-digit {
+    background: transparent !important;
+    color: var(--text-color) !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
+    left: 0 !important;
+}
+
+/* Ensure flat look */
+.odometer.odometer-auto-theme .odometer-ribbon-inner {
+    transition-timing-function: linear !important; /* Mechanical movement */
+}
+
+/* Tooltip Adjustments for Odometer Wrapper */
+.tooltip {
+    /* Re-stating here to ensure it works with new markup structure */
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 320px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    z-index: 1000;
+    text-align: left;
+    pointer-events: none;
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-header {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    border-bottom: 2px solid var(--bg-color);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
 /* --- NAVIGATION --- */
 header {
     display: flex;
