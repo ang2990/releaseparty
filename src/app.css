@@ -351,13 +351,8 @@ nav {
 }
 .btn-outline:hover { background: var(--text-color); color: var(--bg-color); }
 
-/* --- GUEST LIST (MANIFEST) --- */
-.font-mono {
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: -0.05em;
-}
-
-.manifest-header {
+/* --- ATTENDEE LIST --- */
+.attendee-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -366,12 +361,12 @@ nav {
     padding-bottom: 20px;
 }
 
-.manifest-list {
-    display: flex;
+.attendee-list {
+    display: flex;      
     flex-direction: column;
 }
 
-.manifest-row {
+.attendee-row {
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr; /* ID, Name, Role */
     align-items: center;
@@ -382,7 +377,7 @@ nav {
     position: relative;
 }
 
-.manifest-row:hover {
+.attendee-row:hover {
     background: var(--text-color);
     color: var(--bg-color);
     padding-left: 10px;
@@ -390,24 +385,24 @@ nav {
 }
 
 /* On hover, change the accent color elements inside the row if needed */
-.manifest-row:hover .text-accent {
+.attendee-row:hover .text-accent {
     color: var(--bg-color);
 }
 
-.manifest-id {
+.attendee-id {
     font-family: 'Courier New', monospace;
     font-weight: 700;
     opacity: 0.6;
 }
 
-.manifest-name {
+.attendee-name {
     font-family: var(--font-heading);
     font-weight: 900;
     font-size: 1.5rem;
     text-transform: uppercase;
 }
 
-.manifest-role {
+.attendee-role {
     font-family: 'Courier New', monospace;
     font-weight: 700;
     text-align: right;

@@ -6,10 +6,10 @@
     <!-- HERO SECTION -->
     <div class="grid-row">
         <div class="grid-item" style="padding-bottom: 60px;">
-            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// OPERATION: EXODUS</div>
-            <h1 class="text-huge">The <span class="text-accent">Exodus</span><br>Protocol.</h1>
+            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// THE MOVE</div>
+            <h1 class="text-huge">The <span class="text-accent">Exodus</span><br>Plan.</h1>
             <p class="exodus-intro">
-                This is more than a protest; it is a tactical relocation. We are moving our libraries to infrastructure that respects artist sovereignty.
+                We're moving our music to platforms that respect artists. This is a direct shift toward fairer systems.
             </p>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        INITIATE TRANSFER <span>&nearr;</span>
+                        GO TO BANDCAMP <span>&nearr;</span>
                     </div>
                 </a>
 
@@ -170,24 +170,24 @@
         <div class="grid-item-nopad">
             <div class="mission-brief">
                 <div class="font-mono" style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
-                    MISSION_INTEL
+                    WHY_WE_MOVE
                 </div>
-                <h3 style="margin-bottom: 30px;">Why We Are Moving</h3>
+                <h3 style="margin-bottom: 30px;">Ethical Platforms</h3>
                 
                 <p style="margin-bottom: 20px; font-size: 1rem;">
-                    The platforms listed here share at least one of our core values:
+                    We support platforms that prioritize these values:
                 </p>
                 <ul class="font-mono" style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
-                    <li>[X] ARTIST SOVEREIGNTY</li>
-                    <li>[X] FAIR REVENUE SHARE</li>
+                    <li>[X] ARTIST CONTROL</li>
+                    <li>[X] FAIR PAY</li>
                     <li>[X] TRANSPARENT DATA</li>
-                    <li>[X] COMMUNITY OWNERSHIP</li>
+                    <li>[X] COMMUNITY OWNED</li>
                     <li>[X] NO MILITARY FUNDING</li>
                 </ul>
 
                 <div style="margin-top: 50px; padding: 20px; border: 1px solid rgba(255,255,255,0.3);">
                     <div class="font-mono" style="font-size: 0.8rem; margin-bottom: 10px; color: var(--accent-color);">ADVISORY:</div>
-                    <p style="font-size: 0.9rem;">We do not endorse any single corporation. This list is a toolkit for independence, not a marketing campaign.</p>
+                    <p style="font-size: 0.9rem;">We don't endorse a specific company. These are tools for independence, not a marketing campaign.</p>
                 </div>
             </div>
         </div>

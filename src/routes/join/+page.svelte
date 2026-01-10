@@ -27,12 +27,12 @@
 
 <div class="grid-container">
     <div class="grid-row grid-2-col">
-        <!-- LEFT: MANIFESTO -->
+        <!-- LEFT: JOIN -->
         <div class="grid-item">
             <h1 class="text-huge">Commit to the <span class="text-accent">Protocol.</span></h1>
             <p style="margin-top: 30px;">
-                We are building a coalition of artists and listeners ready to exit the platform economy.
-                By signing this manifest, you pledge to support the migration to ethical infrastructure.
+                We are building a group of artists and listeners ready to leave current streaming platforms.
+                By joining, you support the move to fair infrastructure.
             </p>
             
             <div style="margin-top: 50px;">
@@ -86,7 +86,7 @@
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={submitting}>
-                        {submitting ? 'TRANSMITTING...' : 'SIGN MANIFEST'}
+                        {submitting ? 'TRANSMITTING...' : 'JOIN'}
                     </button>
                 </form>
             {/if}

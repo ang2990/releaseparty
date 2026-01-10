@@ -30,7 +30,7 @@
     <div class="grid-row grid-sidebar" id="guestlist">
         <!-- LEFT: THE ATTENDEES LIST -->
         <div class="grid-item" style="background: var(--bg-color);">
-            <div class="manifest-header">
+            <div class="attendee-header">
                 <div>
                     <h2 class="text-large">Attendees</h2>
                     <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// FULL_DATABASE_SYNC</p>
@@ -43,7 +43,7 @@
                 >
             </div>
             
-            <div class="manifest-list">
+            <div class="attendee-list">
                 {#each filteredAttendees as attendee}
                     <AttendeeRow 
                         {...attendee} 

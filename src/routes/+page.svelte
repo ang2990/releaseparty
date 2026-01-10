@@ -144,8 +144,8 @@
     </div>
 </div>
 
-<!-- MANIFESTO / UCPS -->
-<div class="grid-row grid-sidebar" id="manifesto">
+<!-- VISION / UCPS -->
+<div class="grid-row grid-sidebar" id="vision">
     <div class="grid-item">
         <a href="/vision" class="nav-link"><h2 class="text-large" style="margin-bottom: 40px;">The Big Pot <span style="color: #999;">vs</span> <span class="text-accent">Fair Pay</span></h2></a>
         
@@ -173,11 +173,11 @@
     </div>
 </div>
 
-<!-- GUEST LIST SECTION (MANIFEST) -->
+<!-- ATTENDEE LIST -->
 <div class="grid-row grid-sidebar" id="guestlist">
-    <!-- LEFT: THE MANIFEST LOG -->
+    <!-- LEFT: THE ATTENDEE LIST -->
     <div class="grid-item" style="background: var(--bg-color);">
-        <div class="manifest-header">
+        <div class="attendee-header">
             <div>
                 <h2 class="text-large">Attendees</h2>
                 <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// BATCH_001_ACTIVE</p>
@@ -185,7 +185,7 @@
             <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">FULL_LIST -></a>
         </div>
         
-        <div class="manifest-list">
+        <div class="attendee-list">
             {#each attendees as attendee}
                 <AttendeeRow 
                     {...attendee} 

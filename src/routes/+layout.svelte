@@ -34,7 +34,7 @@
                 modal.style.display = 'flex';
             }
             if (modalTitle) {
-                modalTitle.innerText = role + " RSVP";
+                modalTitle.innerText = "JOIN AS " + role;
             }
         }
 
@@ -72,7 +72,7 @@
             <a href="/exodus" class="nav-link">The Exodus</a>
             <a href="/join" class="nav-link">Join Us</a>
             <a href="/resources" class="nav-link">Resources</a>
-            <button type="button" class="nav-link text-accent" onclick={() => openModal('RSVP')}>RSVP</button>
+            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>JOIN</button>
         </nav>
     </header>
 
@@ -126,15 +126,15 @@
     <div class="modal-overlay" id="modal">
         <div class="modal-box">
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                <h2 id="modal-title">RSVP</h2>
+                <h2 id="modal-title">JOIN</h2>
                 <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
             </div>
-            <p style="margin-bottom: 30px;">Add your leverage to the movement. Your data will be recorded in the collective manifest.</p>
+            <p style="margin-bottom: 30px;">Add your leverage to the movement. Your information will be added to our list.</p>
             
             {#if modalSuccess}
                 <div style="text-align: center; padding: 40px 0;">
                     <h2 class="text-large text-accent" style="margin-bottom: 20px;">CONFIRMED</h2>
-                    <p style="font-weight: 700;">Manifest Signed. Welcome to the Exodus.</p>
+                    <p style="font-weight: 700;">Joined. Welcome to the Exodus.</p>
                     <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>DISMISS</button>
                 </div>
             {:else}
@@ -164,7 +164,7 @@
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
-                        {modalSubmitting ? 'TRANSMITTING...' : 'SIGN MANIFEST'}
+                        {modalSubmitting ? 'TRANSMITTING...' : 'JOIN'}
                     </button>
                 </form>
             {/if}

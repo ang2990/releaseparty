@@ -3,12 +3,12 @@
 </script>
 
 <div 
-    class="manifest-row" 
+    class="attendee-row" 
     onmouseenter={onhover}
     role="button"
     tabindex="0"
 >
-    <span class="manifest-id">#{id}</span>
-    <span class="manifest-name" class:text-accent={isAccent}>{name}</span>
-    <span class="manifest-role" style={role === 'LISTENER' ? 'border-style: dashed;' : ''}>{role}</span>
+    <span class="attendee-id">#{id}</span>
+    <span class="attendee-name" class:text-accent={isAccent}>{name}</span>
+    <span class="attendee-role" style={role === 'LISTENER' ? 'border-style: dashed;' : ''}>{role}</span>
 </div>

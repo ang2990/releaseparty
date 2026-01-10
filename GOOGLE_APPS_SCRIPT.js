@@ -1,5 +1,5 @@
 /**
- * GOOGLE APPS SCRIPT FOR RELEASE PARTY JOIN FORM
+ * GOOGLE APPS SCRIPT FOR RELEASE PARTY JOIN SCRIPT
  * 
  * 1. Create a Google Sheet.
  * 2. Go to Extensions > Apps Script.
