@@ -7,7 +7,7 @@ import type { Actions } from './$types';
 // 3. Paste code to handle doPost(e) -> sheet.appendRow(...).
 // 4. Deploy > New Deployment > Type: Web App > Who has access: Anyone.
 // 5. Copy URL here.
-const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzhtnMfY0Qhfgj7-gatgMhzw8xuoFopwRN_u_JU-nSIYaqYcf9Vn9EVroAKxFpOwQwq8Q/exec';
+const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxip3F7oC0U2ytAbkEapfnyQIpwOKdm0V5KIEqDTfn2QuUntNGA65jHvT4yrBYHL8Q4mQ/exec';
 
 export const actions = {
     default: async ({ request }) => {
