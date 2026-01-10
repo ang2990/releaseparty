@@ -1,27 +1,21 @@
 /**
- * GOOGLE APPS SCRIPT FOR RELEASE PARTY JOIN SCRIPT
+ * UPDATED GOOGLE APPS SCRIPT FOR RELEASE PARTY
  * 
- * 1. Create a Google Sheet.
- * 2. Go to Extensions > Apps Script.
- * 3. Delete any code there and paste this block.
- * 4. Click 'Deploy' > 'New Deployment'.
- * 5. Select type 'Web App'.
- * 6. Set 'Who has access' to 'Anyone'.
- * 7. Deploy and copy the provided URL.
- * 8. Paste that URL into src/routes/join/+page.server.ts
+ * 1. Replace your existing Apps Script with this code.
+ * 2. Click 'Deploy' > 'New Deployment' (ensure it's a new version).
+ * 3. Ensure 'Who has access' is 'Anyone'.
+ * 4. This script now handles both adding data (POST) and reading data (GET).
  */
 
 function doPost(e) {
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getSheets()[0];
-    
-    // Parse JSON payload
     var data = JSON.parse(e.postData.contents);
     
-    // Append row: Timestamp, Role, Name, Email, Link, Streams
+    // Order: Timestamp, Role, Name, Email, Link, Streams
     sheet.appendRow([
-      data.timestamp,
+      data.timestamp || new Date().toISOString(),
       data.role,
       data.name,
       data.email,
@@ -31,16 +25,33 @@ function doPost(e) {
     
     return ContentService.createTextOutput(JSON.stringify({ "status": "success" }))
       .setMimeType(ContentService.MimeType.JSON);
-      
   } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({ 
-      "status": "error", 
-      "message": err.toString() 
-    }))
-    .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 function doGet(e) {
-  return ContentService.createTextOutput("Release Party API Active.");
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheets()[0];
+    var rows = sheet.getDataRange().getValues();
+    var headers = rows[0];
+    var data = [];
+    
+    for (var i = 1; i < rows.length; i++) {
+      var obj = {};
+      for (var j = 0; j < headers.length; j++) {
+        var key = headers[j].toString().toLowerCase();
+        obj[key] = rows[i][j];
+      }
+      data.push(obj);
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ "error": err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }

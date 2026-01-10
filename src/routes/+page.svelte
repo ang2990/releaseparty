@@ -4,21 +4,23 @@
     import AttendeeCard from '$lib/components/AttendeeCard.svelte';
     import 'odometer/themes/odometer-theme-minimal.css';
 
-    let attendees = [
-        { id: "041", name: "Ray Bull", role: "ARTIST", streams: "4.2M", isAccent: true },
-        { id: "042", name: "DIIV", role: "ARTIST", streams: "12.8M" },
-        { id: "043", name: "Mitski", role: "ARTIST", streams: "850M" },
-        { id: "891", name: "Listener 891", role: "LISTENER", streams: "15k" },
-        { id: "892", name: "Listener 892", role: "LISTENER", streams: "8k" }
-    ];
+    let { data } = $props();
+    let attendees = $derived(data.attendees || []);
 
-    let selectedAttendee = $state(attendees[0]);
+    let selectedAttendee = $state(null);
     
     // Ticker Logic
     let streamCount = $state(1450221161);
     let odometerElement;
     let showTooltip = $state(false);
     let progressWidth = $derived((streamCount / 50000000000) * 100);
+
+    // Set initial selection
+    $effect(() => {
+        if (!selectedAttendee && attendees.length > 0) {
+            selectedAttendee = attendees[0];
+        }
+    });
 
     onMount(async () => {
         const Odometer = (await import('odometer')).default;
