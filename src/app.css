@@ -195,10 +195,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Gradient Text Effect */
 .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
-    background: linear-gradient(to bottom, var(--text-color) 0%, #555 100%); /* Subtle gradient */
+    background: linear-gradient(to bottom, var(--text-color) 0%, #555 100%); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent !important; /* Fallback */
+    color: transparent !important; 
 }
 
 .odometer.odometer-auto-theme .odometer-digit {
@@ -206,13 +206,36 @@ a { color: inherit; text-decoration: none; }
     border: none !important;
     box-shadow: none !important;
     padding: 0 2px !important;
-    overflow: visible !important;
+    overflow: hidden !important; /* Mask the scroll */
+    position: relative; /* Context for pseudo-elements */
+}
+
+/* Vertical Fade Masks */
+.odometer.odometer-auto-theme .odometer-digit::before,
+.odometer.odometer-auto-theme .odometer-digit::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 25%; /* Fade depth */
+    z-index: 10;
+    pointer-events: none;
+}
+
+.odometer.odometer-auto-theme .odometer-digit::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg-color), transparent);
+}
+
+.odometer.odometer-auto-theme .odometer-digit::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-color), transparent);
 }
 
 /* Remove masking ribbons */
 .odometer.odometer-auto-theme .odometer-ribbon-inner {
     transition-timing-function: linear !important;
-    background: transparent !important; /* Ensure no background masks */
+    background: transparent !important; 
 }
 
 /* Tooltip Adjustments for Odometer Wrapper */
