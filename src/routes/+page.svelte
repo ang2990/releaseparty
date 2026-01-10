@@ -1,6 +1,8 @@
 <script>
+    import { onMount } from 'svelte';
     import AttendeeRow from '$lib/components/AttendeeRow.svelte';
     import AttendeeCard from '$lib/components/AttendeeCard.svelte';
+    import FlipCounter from '$lib/components/FlipCounter.svelte';
 
     let attendees = [
         { id: "041", name: "Ray Bull", role: "ARTIST", image: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80", isAccent: true },
@@ -11,6 +13,21 @@
     ];
 
     let selectedAttendee = $state(attendees[0]);
+    
+    // Ticker Logic
+    let streamCount = $state(1450221161);
+    let streamCountString = $derived(streamCount.toLocaleString('en-US')); // Format with commas
+    let progressWidth = $derived((streamCount / 50000000000) * 100);
+
+    onMount(() => {
+        const interval = setInterval(() => {
+            // Simulate live streams coming in
+            const increment = Math.floor(Math.random() * 15) + 5; 
+            streamCount += increment;
+        }, 800); // Slower interval for flip effect to be readable
+
+        return () => clearInterval(interval);
+    });
 </script>
 
 <svelte:head>
@@ -28,11 +45,13 @@
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
     <div class="hero-counter-box" style="border-right: none; width: 100%;">
-        <div class="progress-value" id="mainCounter">1,450,221,161</div>
+        <div class="progress-value">
+            <FlipCounter value={streamCountString} />
+        </div>
         <div class="progress-label">Streams Pledged</div>
         
         <div class="progress-container">
-            <div class="progress-bar" id="progressBar" style="width: 2.9%;"></div>
+            <div class="progress-bar" style="width: {progressWidth}%;"></div>
         </div>
     </div>
 </div>

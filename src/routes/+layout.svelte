@@ -8,28 +8,7 @@
 	let { children } = $props();
 
     onMount(() => {
-        // --- 1. TICKER LOGIC ---
-        const counter = document.getElementById('mainCounter');
-        const progressBar = document.getElementById('progressBar');
-        // Start from a realistic high number
-        let count = 1450221161;
-        const target = 50000000000;
-        
-        setInterval(() => {
-            // Simulate live streams coming in
-            const increment = Math.floor(Math.random() * 120) + 10; 
-            count += increment;
-            
-            if (counter) {
-                counter.innerText = count.toLocaleString();
-            }
-            if (progressBar) {
-                const percent = (count / target) * 100;
-                progressBar.style.width = percent + '%';
-            }
-        }, 100);
-
-        // --- 2. MODAL LOGIC ---
+        // --- MODAL LOGIC ---
         const modal = document.getElementById('modal');
         const modalTitle = document.getElementById('modal-title');
 
