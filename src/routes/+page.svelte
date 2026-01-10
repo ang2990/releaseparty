@@ -124,7 +124,7 @@
     </div>
     
     <div class="grid-item" style="justify-content: center;">
-        <h2 class="text-large" style="margin-bottom: 30px; text-transform: uppercase;">Will you come with us?</h2>
+        <h2 class="text-large" style="margin-bottom: 30px; text-transform: uppercase;">Will you join us?</h2>
         <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
             <button class="btn" onclick={() => openModal('ARTIST')}>I am an artist (Pledge streams)</button>
             <button class="btn btn-outline" onclick={() => openModal('LISTENER')}>I am a listener (Pledge support)</button>
