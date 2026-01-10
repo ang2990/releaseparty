@@ -118,10 +118,10 @@
     <div class="grid-item" style="background: var(--bg-color);">
         <div class="manifest-header">
             <div>
-                <h2 class="text-large">Manifest Log</h2>
-                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// EXODUS_BATCH_001</p>
+                <h2 class="text-large">Attendees</h2>
+                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// BATCH_001_ACTIVE</p>
             </div>
-            <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">VIEW_FULL_LOG -></a>
+            <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">FULL_LIST -></a>
         </div>
         
         <div class="manifest-list">
@@ -162,9 +162,9 @@
     <div class="grid-item-nopad">
         <div class="ticket-view" style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
             <div class="ticket-overlay"></div>
-            <div class="ticket-stamp">BOARDED</div>
+            <div class="ticket-stamp">RSVP'd</div>
             <div class="ticket-data">
-                <div class="font-mono" style="font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 5px; margin-bottom: 5px;">PASSENGER_ID: #041</div>
+                <div class="font-mono" style="font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 5px; margin-bottom: 5px;">USER_ID: #041</div>
                 <h2 style="font-size: 3rem; line-height: 1;">RAY BULL</h2>
                 <div class="font-mono" style="font-size: 0.9rem;">ROLE: ARTIST // CLASS: A</div>
                 <div class="font-mono" style="font-size: 0.9rem;">ORIGIN: NYC // STATUS: CONFIRMED</div>
