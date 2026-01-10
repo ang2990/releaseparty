@@ -28,21 +28,22 @@
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
     <div class="hero-counter-box" style="border-right: none; width: 100%;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
-            <div>
-                <h3 style="margin-bottom: 0;">The Countdown</h3>
-                <p style="font-size: 0.9rem; opacity: 0.9;">Streams Pledged (Live)</p>
+        <div class="progress-meta">
+            <div class="progress-label">
+                <span class="progress-status"></span>
+                SYSTEM_STATUS: PLEDGING_ACTIVE
             </div>
-            <div style="text-align: right;">
-                <div style="font-size: 0.9rem; margin-bottom: 5px;">Target: 50,000,000,000</div>
-                <!-- Progress Bar Visual -->
-                <div style="width: 200px; height: 10px; background: rgba(255,255,255,0.3); margin-left: auto;">
-                    <div style="width: 4%; height: 100%; background: #fff;"></div>
-                </div>
-            </div>
+            <div>TARGET: 50,000,000,000</div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar" style="width: 2.9%;"></div>
+            <div class="progress-value" id="mainCounter">1,450,221,161</div>
         </div>
         
-        <div class="text-countdown" id="mainCounter" style="margin-top: 20px;">1,450,221,161</div>
+        <div class="font-mono" style="margin-top: 10px; font-size: 0.8rem; text-align: right; opacity: 0.6;">
+            // UPLOAD_SPEED: +120/s
+        </div>
     </div>
 </div>
 
