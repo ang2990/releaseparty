@@ -196,7 +196,7 @@
 <!-- THE EXODUS / DESTINATIONS -->
 <div class="grid-row grid-sidebar" id="destinations">
     <div class="grid-item">
-        <a href="/exodus" class="nav-link"><h2 class="text-large">The exodus</h2></a>
+        <a href="/exodus" class="nav-link"><h2 class="text-large">The move</h2></a>
         <p>When the release happens, we'll move our music to these platforms. You can support them now.</p>
         
         <div class="destinations-grid">

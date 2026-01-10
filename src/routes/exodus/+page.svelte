@@ -1,13 +1,13 @@
 <svelte:head>
-    <title>The exodus | Destinations</title>
+    <title>The move | Destinations</title>
 </svelte:head>
 
 <div class="grid-container">
     <!-- HERO SECTION -->
     <div class="grid-row">
         <div class="grid-item" style="padding-bottom: 60px;">
-            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// Tactical relocation</div>
-            <h1 class="text-huge">The <span class="text-accent">exodus</span> protocol.</h1>
+            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// Alternative infrastructure</div>
+            <h1 class="text-huge">The <span class="text-accent">migration</span> protocol.</h1>
             <p class="exodus-intro">
                 We're moving our catalogs to platforms that respect artist control. This is a direct shift to secure our income and independence.
             </p>

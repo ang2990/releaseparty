@@ -69,7 +69,7 @@
         <nav>
             <a href="/vision" class="nav-link">The vision</a>
             <a href="/guest-list" class="nav-link">Guests</a>
-            <a href="/exodus" class="nav-link">The exodus</a>
+            <a href="/exodus" class="nav-link">The move</a>
             <a href="/join" class="nav-link">Join us</a>
             <a href="/resources" class="nav-link">Resources</a>
             <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>Join</button>
