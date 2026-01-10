@@ -427,19 +427,9 @@ nav {
 }
 
 .destination-card:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
     z-index: 10;
-    outline: 2px solid var(--accent-color); /* Pop out effect */
-}
-
-/* Invert internal elements on hover */
-.destination-card:hover .spec-row, 
-.destination-card:hover .card-action {
-    border-color: rgba(255,255,255,0.3);
-}
-.destination-card:hover .text-accent {
-    color: var(--bg-color); /* Make accent white on black hover */
+    outline: 4px solid var(--accent-color); /* Stronger outline */
+    outline-offset: -4px; /* Draw outline inside to keep grid alignment */
 }
 
 .card-header {
