@@ -6,10 +6,10 @@
     <!-- HERO SECTION -->
     <div class="grid-row">
         <div class="grid-item" style="padding-bottom: 60px;">
-            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// The move</div>
-            <h1 class="text-huge">Where we are <span class="text-accent">moving.</span></h1>
+            <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// Tactical relocation</div>
+            <h1 class="text-huge">The <span class="text-accent">exodus</span> protocol.</h1>
             <p class="exodus-intro">
-                We're moving our music to platforms that prioritize fair pay and artist control. You can support these services today.
+                We're moving our catalogs to platforms that respect artist control. This is a direct shift to secure our income and independence.
             </p>
         </div>
     </div>
@@ -30,15 +30,15 @@
                     <div class="card-specs">
                         <div class="spec-row">
                             <span>Artist cut</span>
-                            <span>82% on average</span>
+                            <span>82% average</span>
                         </div>
                         <div class="spec-row">
                             <span>Format</span>
                             <span>Digital and physical</span>
                         </div>
                         <div class="spec-row">
-                            <span>Data</span>
-                            <span>Artists keep fan emails</span>
+                            <span>Control</span>
+                            <span>Direct fan communication</span>
                         </div>
                     </div>
                     <div class="card-action">
@@ -59,11 +59,11 @@
                             <span>Stream-to-own</span>
                         </div>
                         <div class="spec-row">
-                            <span>Governance</span>
-                            <span>Owned by members</span>
+                            <span>Ownership</span>
+                            <span>Member-owned</span>
                         </div>
                         <div class="spec-row">
-                            <span>Payout</span>
+                            <span>Payment</span>
                             <span>User-centric</span>
                         </div>
                     </div>
@@ -85,12 +85,12 @@
                             <span>24-bit audio</span>
                         </div>
                         <div class="spec-row">
-                            <span>Focus</span>
-                            <span>Album sales</span>
+                            <span>Model</span>
+                            <span>Sales over streams</span>
                         </div>
                         <div class="spec-row">
                             <span>Curation</span>
-                            <span>Human editors</span>
+                            <span>Human-led</span>
                         </div>
                     </div>
                     <div class="card-action">
@@ -107,12 +107,12 @@
                     <h3 class="card-title">Tidal</h3>
                     <div class="card-specs">
                         <div class="spec-row">
-                            <span>Payouts</span>
-                            <span>Higher per-stream rate</span>
+                            <span>Payout</span>
+                            <span>Higher rate per play</span>
                         </div>
                         <div class="spec-row">
-                            <span>Programs</span>
-                            <span>Direct artist payments</span>
+                            <span>Transparency</span>
+                            <span>Direct payment options</span>
                         </div>
                     </div>
                     <div class="card-action">
@@ -129,12 +129,12 @@
                     <h3 class="card-title">Subvert</h3>
                     <div class="card-specs">
                         <div class="spec-row">
-                            <span>Focus</span>
-                            <span>Independent music</span>
+                            <span>Target</span>
+                            <span>Independent creators</span>
                         </div>
                         <div class="spec-row">
-                            <span>Features</span>
-                            <span>Radio and chat</span>
+                            <span>Tools</span>
+                            <span>Radio and community chat</span>
                         </div>
                     </div>
                     <div class="card-action">
@@ -150,8 +150,8 @@
                     <h3 class="card-title">Formless</h3>
                     <div class="card-specs">
                         <div class="spec-row">
-                            <span>Control</span>
-                            <span>Set your own price</span>
+                            <span>Pricing</span>
+                            <span>Artist-set rates</span>
                         </div>
                         <div class="spec-row">
                             <span>Payment</span>
@@ -175,19 +175,19 @@
                 <h3 style="margin-bottom: 30px;">Why these platforms?</h3>
                 
                 <p style="margin-bottom: 20px; font-size: 1rem;">
-                    We support services that prioritize these standards:
+                    We support platforms that adhere to these standards:
                 </p>
                 <ul class="font-mono" style="list-style: none; font-size: 0.9rem; line-height: 1.8;">
-                    <li>[X] Artist ownership</li>
-                    <li>[X] Higher revenue share</li>
-                    <li>[X] Transparent data</li>
-                    <li>[X] Community control</li>
+                    <li>[X] Artist ownership of work</li>
+                    <li>[X] Direct revenue share</li>
+                    <li>[X] Data transparency</li>
+                    <li>[X] Secure communication</li>
                     <li>[X] No military funding</li>
                 </ul>
 
                 <div style="margin-top: 50px; padding: 20px; border: 1px solid rgba(255,255,255,0.3);">
-                    <div class="font-mono" style="font-size: 0.8rem; margin-bottom: 10px; color: var(--accent-color);">Note:</div>
-                    <p style="font-size: 0.9rem;">We don't endorse a specific company. These are tools for independence, not a marketing campaign.</p>
+                    <div class="font-mono" style="font-size: 0.8rem; margin-bottom: 10px; color: var(--accent-color);">Warning:</div>
+                    <p style="font-size: 0.9rem;">We don't endorse a specific company. These are tools for independence and direct action, not a marketing campaign.</p>
                 </div>
             </div>
         </div>

@@ -27,17 +27,17 @@
     <div class="grid-row grid-2-col">
         <!-- LEFT: JOIN -->
         <div class="grid-item">
-            <h1 class="text-huge">Join the <span class="text-accent">move.</span></h1>
+            <h1 class="text-huge">Commit to the <span class="text-accent">move.</span></h1>
             <p style="margin-top: 30px;">
-                We're building a group of artists and listeners ready to leave major streaming platforms. By joining, you support the shift toward systems that pay creators fairly.
+                We're organizing a coordinated exit to secure our independence from major streaming corporations. By joining this list, you pledge to move your music and support to infrastructure we control.
             </p>
             
             <div style="margin-top: 50px;">
                 <h3 style="margin-bottom: 20px; font-family: 'Courier New', monospace;">// The pledge</h3>
                 <ul class="font-mono" style="list-style: none; font-size: 0.9rem; line-height: 1.8; opacity: 0.8;">
-                    <li>[ ] I support user-centric payments</li>
-                    <li>[ ] I want ethical platform investment</li>
-                    <li>[ ] I am ready to move my music</li>
+                    <li>[ ] I support direct action for fair pay</li>
+                    <li>[ ] I require secure data and artist ownership</li>
+                    <li>[ ] I am ready to move my catalog</li>
                 </ul>
             </div>
         </div>
@@ -47,12 +47,12 @@
             {#if success}
                 <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
-                    <p>We've received your information.</p>
-                    <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>Register another</button>
+                    <p>You've joined the move. We'll be in touch with secure next steps.</p>
+                    <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>Add another name</button>
                 </div>
             {:else}
                 <h2 style="margin-bottom: 30px; border-bottom: 1px solid var(--bg-color); padding-bottom: 10px;">
-                    {selectedRole.toLowerCase()} signup
+                    {selectedRole.toLowerCase()} registration
                 </h2>
                 
                 <form method="POST" use:enhance={handleSubmit} class="join-form">
@@ -81,7 +81,7 @@
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={submitting}>
-                        {submitting ? 'Transmitting...' : 'Join'}
+                        {submitting ? 'Transmitting...' : 'Commit to join'}
                     </button>
                 </form>
             {/if}
