@@ -28,21 +28,11 @@
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
     <div class="hero-counter-box" style="border-right: none; width: 100%;">
-        <div class="progress-meta">
-            <div class="progress-label">
-                <span class="progress-status"></span>
-                SYSTEM_STATUS: PLEDGING_ACTIVE
-            </div>
-            <div>TARGET: 50,000,000,000</div>
-        </div>
-
+        <div class="progress-value" id="mainCounter">1,450,221,161</div>
+        <div class="progress-label">Streams Pledged</div>
+        
         <div class="progress-container">
             <div class="progress-bar" id="progressBar" style="width: 2.9%;"></div>
-            <div class="progress-value" id="mainCounter">1,450,221,161</div>
-        </div>
-        
-        <div class="font-mono" style="margin-top: 10px; font-size: 0.8rem; text-align: right; opacity: 0.6;">
-            // UPLOAD_SPEED: +120/s
         </div>
     </div>
 </div>
