@@ -3,6 +3,7 @@
 
     let submitting = $state(false);
     let success = $state(false);
+    let selectedRole = $state('ARTIST');
 
     // Form enhancement to handle loading state
     const handleSubmit = () => {
@@ -59,11 +60,11 @@
                         <label for="role">ROLE</label>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="role" value="ARTIST" required checked>
+                                <input type="radio" name="role" value="ARTIST" required bind:group={selectedRole}>
                                 <span>ARTIST</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="role" value="LISTENER" required>
+                                <input type="radio" name="role" value="LISTENER" required bind:group={selectedRole}>
                                 <span>LISTENER</span>
                             </label>
                         </div>
@@ -73,6 +74,13 @@
                         <label for="name">NAME / ARTIST NAME</label>
                         <input type="text" id="name" name="name" placeholder="ENTER_NAME" required>
                     </div>
+
+                    {#if selectedRole === 'ARTIST'}
+                        <div class="form-group">
+                            <label for="streams">2025 TOTAL STREAMS (ESTIMATE)</label>
+                            <input type="number" id="streams" name="streams" placeholder="0" min="0">
+                        </div>
+                    {/if}
 
                     <div class="form-group">
                         <label for="email">CONTACT_RELAY (EMAIL)</label>

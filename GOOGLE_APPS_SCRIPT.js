@@ -19,13 +19,14 @@ function doPost(e) {
     // Parse JSON payload
     var data = JSON.parse(e.postData.contents);
     
-    // Append row: Timestamp, Role, Name, Email, Link
+    // Append row: Timestamp, Role, Name, Email, Link, Streams
     sheet.appendRow([
       data.timestamp,
       data.role,
       data.name,
       data.email,
-      data.link
+      data.link,
+      data.streams
     ]);
     
     return ContentService.createTextOutput(JSON.stringify({ "status": "success" }))

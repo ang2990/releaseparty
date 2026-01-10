@@ -16,6 +16,7 @@ export const actions = {
         const email = data.get('email');
         const link = data.get('link');
         const role = data.get('role');
+        const streams = data.get('streams');
 
         const timestamp = new Date().toISOString();
 
@@ -27,7 +28,8 @@ export const actions = {
             role,
             name,
             email,
-            link
+            link,
+            streams
         };
 
         try {

@@ -2,10 +2,25 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores'; // Import page store
+	import { enhance } from '$app/forms';
 	// Import global CSS here
 	import '../app.css';
 
 	let { children } = $props();
+    let modalRole = $state('ARTIST');
+    let modalSubmitting = $state(false);
+
+    const handleModalSubmit = () => {
+        modalSubmitting = true;
+        return async ({ result, update }) => {
+            modalSubmitting = false;
+            if (result.type === 'success') {
+                closeModal();
+                alert('Manifest Signed. Welcome to the Exodus.');
+            }
+            await update();
+        };
+    };
 
     onMount(() => {
         // --- MODAL LOGIC ---
@@ -112,12 +127,141 @@
                 <h2 id="modal-title">RSVP</h2>
                 <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
             </div>
-            <p style="margin-bottom: 30px;">Add your leverage to the movement.</p>
-            <form onsubmit={(e) => { e.preventDefault(); closeModal(); alert('Pledge Added!'); }}>
-                <input type="text" placeholder="Name / Artist Name" required>
-                <input type="text" placeholder="Estimated Annual Streams / Minutes" required>
-                <button class="btn" style="width: 100%;">Submit Pledge</button>
+            <p style="margin-bottom: 30px;">Add your leverage to the movement. Your data will be recorded in the collective manifest.</p>
+            
+            <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
+                <div class="form-group">
+                    <label>ROLE</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="role" value="ARTIST" bind:group={modalRole} required>
+                            <span>ARTIST</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="role" value="LISTENER" bind:group={modalRole} required>
+                            <span>LISTENER</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-name">NAME / ARTIST NAME</label>
+                    <input type="text" id="modal-name" name="name" placeholder="ENTER_NAME" required>
+                </div>
+
+                {#if modalRole === 'ARTIST'}
+                    <div class="form-group">
+                        <label for="modal-streams">2025 TOTAL STREAMS (ESTIMATE)</label>
+                        <input type="number" id="modal-streams" name="streams" placeholder="0" min="0">
+                    </div>
+                {/if}
+
+                <div class="form-group">
+                    <label for="modal-email">CONTACT_RELAY (EMAIL)</label>
+                    <input type="email" id="modal-email" name="email" placeholder="ENTER_EMAIL" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-link">LINK (PORTFOLIO / SOCIAL)</label>
+                    <input type="url" id="modal-link" name="link" placeholder="HTTPS://...">
+                </div>
+
+                <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
+                    {modalSubmitting ? 'TRANSMITTING...' : 'SIGN MANIFEST'}
+                </button>
             </form>
         </div>
     </div>
 </div>
+
+<style>
+    /* ... keeping global layout styles ... */
+
+    .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        font-size: 0.7rem;
+        opacity: 0.7;
+    }
+
+    .modal-form input[type="text"],
+    .modal-form input[type="email"],
+    .modal-form input[type="url"],
+    .modal-form input[type="number"] {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid var(--text-color);
+        color: var(--text-color);
+        padding: 8px 0;
+        font-family: var(--font-main);
+        font-size: 1.1rem;
+        font-weight: 700;
+        outline: none;
+        border-radius: 0;
+    }
+
+    .modal-form input:focus {
+        border-color: var(--accent-color);
+    }
+
+    /* Custom Radio for Modal */
+    .radio-group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 900;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+    }
+
+    .radio-option:has(input:checked) {
+        opacity: 1;
+        color: var(--accent-color);
+    }
+
+    .modal-form input[type="radio"] {
+        appearance: none;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        margin: 0;
+    }
+
+    .modal-form input[type="radio"]::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 0.1s transform ease-in-out;
+        box-shadow: inset 1em 1em currentColor;
+        background-color: currentColor;
+    }
+
+    .modal-form input[type="radio"]:checked::before {
+        transform: scale(1);
+    }
+</style>
