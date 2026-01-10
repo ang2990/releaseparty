@@ -15,10 +15,6 @@
     onmouseleave={() => showTooltip = false}
 >
     {#each digits as digit, i (i)}
-        <!-- Using index as key might be okay if length is constant, 
-             but if length changes, it might be weird. 
-             Ideally use a stable ID but for a counter growing in length, simple index is usually fine 
-             if we just append/prepend. -->
         {#if digit === ',' || digit === '.'}
             <span class="separator">{digit}</span>
         {:else}
@@ -28,11 +24,11 @@
 
     <!-- TOOLTIP -->
     <div class="tooltip" class:visible={showTooltip}>
-        <div class="tooltip-header">LIVE_DATA_FEED</div>
+        <div class="tooltip-header">DATA_SOURCE: VERIFIED</div>
         <p>
-            Aggregated real-time stream pledges from artist catalogs (2024 verified stats).
+            This number represents the real-time collective count of streams pledged by artists joining the Exodus.
             <br><br>
-            <span class="text-accent">Goal: 50 Billion Streams</span>
+            <span class="text-accent" style="font-weight: 900;">TARGET: 50,000,000,000</span>
         </p>
     </div>
 </div>
@@ -43,12 +39,12 @@
         align-items: center;
         position: relative;
         cursor: help;
-        padding: 20px; /* Hit area */
+        padding: 20px; 
     }
 
     .separator {
-        font-family: var(--font-heading);
-        font-size: 0.8em; /* Relative to parent font size */
+        font-family: 'Courier New', monospace;
+        font-size: 0.8em; 
         font-weight: 900;
         color: var(--text-color);
         margin: 0 0.1em;
@@ -56,23 +52,23 @@
         padding-bottom: 0.1em;
     }
 
-    /* TOOLTIP STYLES */
+    /* TOOLTIP STYLES - FLAT & BRUTALIST */
     .tooltip {
         position: absolute;
-        top: 100%; /* Below the counter */
+        top: 100%; 
         left: 50%;
         transform: translateX(-50%) translateY(10px);
-        width: 300px;
-        background: var(--bg-color);
-        border: 2px solid var(--line-color);
+        width: 320px;
+        background: var(--text-color);
+        color: var(--bg-color);
+        border: none;
         padding: 20px;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.2s ease;
-        z-index: 100;
-        box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
-        pointer-events: none;
+        transition: opacity 0.1s ease, transform 0.1s ease; /* Faster, snappier */
+        z-index: 1000; /* High Z-Index */
         text-align: left;
+        pointer-events: none;
     }
 
     .tooltip.visible {
@@ -84,15 +80,18 @@
     .tooltip-header {
         font-family: 'Courier New', monospace;
         font-weight: 700;
-        border-bottom: 1px solid var(--line-color);
+        border-bottom: 2px solid var(--bg-color);
         margin-bottom: 10px;
         padding-bottom: 5px;
         font-size: 0.8rem;
+        text-transform: uppercase;
     }
 
     .tooltip p {
+        font-family: var(--font-main); /* Use main font for readability */
         font-size: 0.9rem;
         line-height: 1.4;
         margin: 0;
+        font-weight: 500;
     }
 </style>

@@ -58,13 +58,21 @@
 
 <!-- CALL TO ACTION -->
 <div class="grid-row grid-2-col">
+    <!-- LEFT: THE PITCH -->
     <div class="grid-item">
-        <p class="text-large">Will you come with us?</p>
-        <p style="margin-top: 20px;">We are building the leverage to force a fair deal. When the ticker hits the target, we launch the Release Party and move our music elsewhere.</p>
+        <h2 class="text-large" style="line-height: 1.1;">
+            We are building the leverage to force a fair deal. 
+            <span class="text-accent">When the ticker hits the target, we launch the Release Party and move our music elsewhere.</span>
+        </h2>
     </div>
-    <div class="grid-item" style="gap: 20px;">
-        <button class="btn" on:click={() => openModal('Artist')}>I am an Artist (Pledge Streams)</button>
-        <button class="btn btn-outline" on:click={() => openModal('Listener')}>I am a Listener (Pledge Support)</button>
+    
+    <!-- RIGHT: THE CHOICE -->
+    <div class="grid-item" style="justify-content: center;">
+        <p class="text-large" style="margin-bottom: 30px;">Will you come with us?</p>
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+            <button class="btn" on:click={() => openModal('Artist')}>I am an Artist (Pledge Streams)</button>
+            <button class="btn btn-outline" on:click={() => openModal('Listener')}>I am a Listener (Pledge Support)</button>
+        </div>
     </div>
 </div>
 
