@@ -7,18 +7,31 @@
     <meta name="description" content="We are leaving Spotify. A collective exodus to force a user-centric payment model.">
 </svelte:head>
 
-<!-- HERO SECTION (Flexbox for safety) -->
-<div class="hero-flex-row">
-    <div class="hero-title-box">
-        <h1 class="text-huge">We Are<br/>Leaving<br/><span class="text-accent">Spotify.</span></h1>
+<!-- HERO SECTION -->
+<div class="grid-row">
+    <div class="hero-title-box" style="border-right: none;">
+        <h1 class="text-huge">We Are Leaving <span class="text-accent">Spotify.</span></h1>
     </div>
-    <div class="hero-counter-box">
-        <h3 style="margin-bottom: 20px;">The Countdown</h3>
-        <div class="text-countdown" id="mainCounter">1.4B</div>
-        <p style="font-weight: 700; margin-top: 10px;">Streams Pledged</p>
-        <div style="margin-top: 20px; border-top: 2px solid #fff; padding-top: 10px;">
-            Target: 50,000,000,000
+</div>
+
+<!-- LIVE TICKER SECTION -->
+<div class="grid-row">
+    <div class="hero-counter-box" style="border-right: none; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <h3 style="margin-bottom: 0;">The Countdown</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9;">Streams Pledged (Live)</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.9rem; margin-bottom: 5px;">Target: 50,000,000,000</div>
+                <!-- Progress Bar Visual -->
+                <div style="width: 200px; height: 10px; background: rgba(255,255,255,0.3); margin-left: auto;">
+                    <div style="width: 4%; height: 100%; background: #fff;"></div>
+                </div>
+            </div>
         </div>
+        
+        <div class="text-countdown" id="mainCounter" style="margin-top: 20px;">1,450,221,161</div>
     </div>
 </div>
 

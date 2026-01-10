@@ -10,14 +10,17 @@
     onMount(() => {
         // --- 1. TICKER LOGIC ---
         const counter = document.getElementById('mainCounter');
-        let count = 1450200412;
+        // Start from a realistic high number
+        let count = 1450221161;
         
         setInterval(() => {
-            count += Math.floor(Math.random() * 550);
+            // Simulate live streams coming in
+            const increment = Math.floor(Math.random() * 12) + 1; 
+            count += increment;
             if (counter) {
                 counter.innerText = count.toLocaleString();
             }
-        }, 100);
+        }, 200);
 
         // --- 2. MODAL LOGIC ---
         const modal = document.getElementById('modal');
