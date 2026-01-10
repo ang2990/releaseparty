@@ -23,7 +23,7 @@
 </script>
 
 <svelte:head>
-    <title>ATTENDEES | Release Party</title>
+    <title>Attendees | Release party</title>
 </svelte:head>
 
 <div class="grid-container">
@@ -33,12 +33,12 @@
             <div class="attendee-header">
                 <div>
                     <h2 class="text-large">Attendees</h2>
-                    <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// FULL_DATABASE_SYNC</p>
+                    <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified list</p>
                 </div>
                 <input 
                     type="text" 
                     class="guest-search-input" 
-                    placeholder="SEARCH_BY_NAME..."
+                    placeholder="Search by name..."
                     bind:value={searchQuery}
                 >
             </div>
@@ -51,7 +51,7 @@
                     />
                 {/each}
                 {#if filteredAttendees.length === 0}
-                    <div class="font-mono" style="padding: 20px; opacity: 0.5;">NO_MATCHES_FOUND</div>
+                    <div class="font-mono" style="padding: 20px; opacity: 0.5;">No matches found</div>
                 {/if}
             </div>
         </div>

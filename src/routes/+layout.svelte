@@ -34,7 +34,7 @@
                 modal.style.display = 'flex';
             }
             if (modalTitle) {
-                modalTitle.innerText = "JOIN AS " + role;
+                modalTitle.innerText = "Join as " + role.toLowerCase();
             }
         }
 
@@ -61,18 +61,18 @@
     <header class="grid-row">
         <div class="brand">
             {#if $page.url.pathname === '/'}
-                Release<span class="text-accent">Party</span>
+                Release<span class="text-accent">party</span>
             {:else}
-                <a href="/">Release<span class="text-accent">Party</span></a>
+                <a href="/">Release<span class="text-accent">party</span></a>
             {/if}
         </div>
         <nav>
-            <a href="/vision" class="nav-link">The Vision</a>
+            <a href="/vision" class="nav-link">The vision</a>
             <a href="/guest-list" class="nav-link">Guests</a>
-            <a href="/exodus" class="nav-link">The Exodus</a>
-            <a href="/join" class="nav-link">Join Us</a>
+            <a href="/exodus" class="nav-link">The exodus</a>
+            <a href="/join" class="nav-link">Join us</a>
             <a href="/resources" class="nav-link">Resources</a>
-            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>JOIN</button>
+            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>Join</button>
         </nav>
     </header>
 
@@ -81,10 +81,10 @@
         <div class="marquee-wrapper">
             <div class="marquee-content">
                 <span class="marquee-item">// 1,450,231,000 STREAMS PLEDGED </span>
-                <span class="marquee-item">// TARGET: 50 BILLION </span>
-                <span class="marquee-item">// WE LEAVE TOGETHER </span>
-                <span class="marquee-item">// STOP THE ALGORITHM </span>
-                <span class="marquee-item">// MUSIC IS NOT CONTENT </span>
+                <span class="marquee-item">// GOAL: 50 BILLION </span>
+                <span class="marquee-item">// WE MOVE TOGETHER </span>
+                <span class="marquee-item">// STOP PRO-RATA </span>
+                <span class="marquee-item">// ARTISTS OVER ALGORITHMS </span>
                 <span class="marquee-item">// RAY BULL PLEDGED </span>
                 <span class="marquee-item">// DIIV PLEDGED </span>
                 <span class="marquee-item">// MITSKI PLEDGED </span>
@@ -92,10 +92,10 @@
             </div>
             <div class="marquee-content">
                 <span class="marquee-item">// 1,450,231,000 STREAMS PLEDGED </span>
-                <span class="marquee-item">// TARGET: 50 BILLION </span>
-                <span class="marquee-item">// WE LEAVE TOGETHER </span>
-                <span class="marquee-item">// STOP THE ALGORITHM </span>
-                <span class="marquee-item">// MUSIC IS NOT CONTENT </span>
+                <span class="marquee-item">// GOAL: 50 BILLION </span>
+                <span class="marquee-item">// WE MOVE TOGETHER </span>
+                <span class="marquee-item">// STOP PRO-RATA </span>
+                <span class="marquee-item">// ARTISTS OVER ALGORITHMS </span>
                 <span class="marquee-item">// RAY BULL PLEDGED </span>
                 <span class="marquee-item">// DIIV PLEDGED </span>
                 <span class="marquee-item">// MITSKI PLEDGED </span>
@@ -109,8 +109,8 @@
     <!-- FOOTER -->
     <footer class="grid-row grid-sidebar footer-dark">
         <div class="grid-item">
-            <h2 class="text-large">Release Party</h2>
-            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2025. Built for the Exodus. Music is not content.</p>
+            <h2 class="text-large">Release party</h2>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2025. Built for the move. Music is not content.</p>
         </div>
         <div class="grid-item">
             <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
@@ -126,45 +126,45 @@
     <div class="modal-overlay" id="modal">
         <div class="modal-box">
             <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                <h2 id="modal-title">JOIN</h2>
+                <h2 id="modal-title">Join</h2>
                 <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
             </div>
-            <p style="margin-bottom: 30px;">Add your leverage to the movement. Your information will be added to our list.</p>
+            <p style="margin-bottom: 30px;">Add your support to our list.</p>
             
             {#if modalSuccess}
                 <div style="text-align: center; padding: 40px 0;">
-                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">CONFIRMED</h2>
-                    <p style="font-weight: 700;">Joined. Welcome to the Exodus.</p>
-                    <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>DISMISS</button>
+                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
+                    <p style="font-weight: 700;">We've added your name to the list.</p>
+                    <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>Dismiss</button>
                 </div>
             {:else}
                 <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
                     <input type="hidden" name="role" value={modalRole}>
 
                     <div class="form-group">
-                        <label for="modal-name">NAME / ARTIST NAME</label>
-                        <input type="text" id="modal-name" name="name" placeholder="ENTER_NAME" required>
+                        <label for="modal-name">Name / artist name</label>
+                        <input type="text" id="modal-name" name="name" placeholder="Name" required>
                     </div>
 
                     {#if modalRole === 'ARTIST'}
                         <div class="form-group">
-                            <label for="modal-streams">2025 TOTAL STREAMS (ESTIMATE)</label>
+                            <label for="modal-streams">2025 total streams (estimate)</label>
                             <input type="number" id="modal-streams" name="streams" placeholder="0" min="0">
                         </div>
                     {/if}
 
                     <div class="form-group">
-                        <label for="modal-email">CONTACT_RELAY (EMAIL)</label>
-                        <input type="email" id="modal-email" name="email" placeholder="ENTER_EMAIL" required>
+                        <label for="modal-email">Email</label>
+                        <input type="email" id="modal-email" name="email" placeholder="Email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="modal-link">LINK (PORTFOLIO / SOCIAL)</label>
-                        <input type="text" id="modal-link" name="link" placeholder="HTTPS://...">
+                        <label for="modal-link">Link (Portfolio / social)</label>
+                        <input type="text" id="modal-link" name="link" placeholder="https://...">
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
-                        {modalSubmitting ? 'TRANSMITTING...' : 'JOIN'}
+                        {modalSubmitting ? 'Transmitting...' : 'Join'}
                     </button>
                 </form>
             {/if}
@@ -173,8 +173,7 @@
 </div>
 
 <style>
-    /* ... keeping global layout styles ... */
-
+    /* Consolidate modal form styles */
     .modal-form {
         display: flex;
         flex-direction: column;
@@ -196,7 +195,6 @@
 
     .modal-form input[type="text"],
     .modal-form input[type="email"],
-    .modal-form input[type="url"],
     .modal-form input[type="number"] {
         background: transparent;
         border: none;
@@ -212,54 +210,5 @@
 
     .modal-form input:focus {
         border-color: var(--accent-color);
-    }
-
-    /* Custom Radio for Modal */
-    .radio-group {
-        display: flex;
-        gap: 20px;
-    }
-
-    .radio-option {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        font-family: var(--font-heading);
-        font-size: 1rem;
-        font-weight: 900;
-        opacity: 0.5;
-        transition: opacity 0.2s;
-    }
-
-    .radio-option:has(input:checked) {
-        opacity: 1;
-        color: var(--accent-color);
-    }
-
-    .modal-form input[type="radio"] {
-        appearance: none;
-        width: 1rem;
-        height: 1rem;
-        border: 2px solid currentColor;
-        border-radius: 50%;
-        display: grid;
-        place-content: center;
-        margin: 0;
-    }
-
-    .modal-form input[type="radio"]::before {
-        content: "";
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        transform: scale(0);
-        transition: 0.1s transform ease-in-out;
-        box-shadow: inset 1em 1em currentColor;
-        background-color: currentColor;
-    }
-
-    .modal-form input[type="radio"]:checked::before {
-        transform: scale(1);
     }
 </style>

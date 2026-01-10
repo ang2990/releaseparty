@@ -5,10 +5,8 @@
     let submitting = $state(false);
     let success = $state(false);
     
-    // Detect role from URL (?role=LISTENER) or default to ARTIST
     let selectedRole = $state($page.url.searchParams.get('role')?.toUpperCase() || 'ARTIST');
 
-    // Form enhancement to handle loading state
     const handleSubmit = () => {
         submitting = true;
         return async ({ result, update }) => {
@@ -22,26 +20,24 @@
 </script>
 
 <svelte:head>
-    <title>JOIN | Release Party</title>
+    <title>Join | Release party</title>
 </svelte:head>
 
 <div class="grid-container">
     <div class="grid-row grid-2-col">
         <!-- LEFT: JOIN -->
         <div class="grid-item">
-            <h1 class="text-huge">Commit to the <span class="text-accent">Protocol.</span></h1>
+            <h1 class="text-huge">Join the <span class="text-accent">move.</span></h1>
             <p style="margin-top: 30px;">
-                We are building a group of artists and listeners ready to leave current streaming platforms.
-                By joining, you support the move to fair infrastructure.
+                We're building a group of artists and listeners ready to leave major streaming platforms. By joining, you support the shift toward systems that pay creators fairly.
             </p>
             
             <div style="margin-top: 50px;">
-                <h3 style="margin-bottom: 20px; font-family: 'Courier New', monospace;">// THE_PLEDGE</h3>
+                <h3 style="margin-bottom: 20px; font-family: 'Courier New', monospace;">// The pledge</h3>
                 <ul class="font-mono" style="list-style: none; font-size: 0.9rem; line-height: 1.8; opacity: 0.8;">
-                    <li>[ ] I REJECT THE PRO-RATA MODEL</li>
-                    <li>[ ] I DEMAND USER-CENTRIC PAYMENTS</li>
-                    <li>[ ] I WILL MOVE MY LIBRARY/CATALOG</li>
-                    <li>[ ] I AM READY FOR THE RELEASE</li>
+                    <li>[ ] I support user-centric payments</li>
+                    <li>[ ] I want ethical platform investment</li>
+                    <li>[ ] I am ready to move my music</li>
                 </ul>
             </div>
         </div>
@@ -50,43 +46,42 @@
         <div class="grid-item" style="background: var(--text-color); color: var(--bg-color);">
             {#if success}
                 <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">CONFIRMED</h2>
-                    <p>Your signal has been received.</p>
-                    <p style="font-family: 'Courier New', monospace; margin-top: 20px;">ID_TAG: PENDING_GENERATION</p>
-                    <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>REGISTER_ANOTHER</button>
+                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
+                    <p>We've received your information.</p>
+                    <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>Register another</button>
                 </div>
             {:else}
                 <h2 style="margin-bottom: 30px; border-bottom: 1px solid var(--bg-color); padding-bottom: 10px;">
-                    {selectedRole} Intake Form
+                    {selectedRole.toLowerCase()} signup
                 </h2>
                 
                 <form method="POST" use:enhance={handleSubmit} class="join-form">
                     <input type="hidden" name="role" value={selectedRole}>
 
                     <div class="form-group">
-                        <label for="name">NAME / ARTIST NAME</label>
-                        <input type="text" id="name" name="name" placeholder="ENTER_NAME" required>
+                        <label for="name">Name / artist name</label>
+                        <input type="text" id="name" name="name" placeholder="Name" required>
                     </div>
 
                     {#if selectedRole === 'ARTIST'}
                         <div class="form-group">
-                            <label for="streams">2025 TOTAL STREAMS (ESTIMATE)</label>
+                            <label for="streams">2025 total streams (estimate)</label>
                             <input type="number" id="streams" name="streams" placeholder="0" min="0">
                         </div>
                     {/if}
 
                     <div class="form-group">
-                        <label for="email">CONTACT_RELAY (EMAIL)</label>
-                        <input type="email" id="email" name="email" placeholder="ENTER_EMAIL" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="link">LINK (PORTFOLIO / SOCIAL)</label>
-                        <input type="text" id="link" name="link" placeholder="HTTPS://...">
+                        <label for="link">Link (Portfolio / social)</label>
+                        <input type="text" id="link" name="link" placeholder="https://...">
                     </div>
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={submitting}>
-                        {submitting ? 'TRANSMITTING...' : 'JOIN'}
+                        {submitting ? 'Transmitting...' : 'Join'}
                     </button>
                 </form>
             {/if}
@@ -116,7 +111,7 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="url"] {
+    input[type="number"] {
         background: transparent;
         border: none;
         border-bottom: 2px solid var(--bg-color);
@@ -131,53 +126,5 @@
 
     input:focus {
         border-color: var(--accent-color);
-    }
-
-    /* Custom Radio */
-    .radio-group {
-        display: flex;
-        gap: 20px;
-    }
-
-    .radio-option {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        font-family: var(--font-heading);
-        font-size: 1.2rem;
-        font-weight: 900;
-        opacity: 0.5;
-        transition: opacity 0.2s;
-    }
-
-    .radio-option:has(input:checked) {
-        opacity: 1;
-        color: var(--accent-color);
-    }
-
-    input[type="radio"] {
-        appearance: none;
-        width: 1.2rem;
-        height: 1.2rem;
-        border: 2px solid currentColor;
-        border-radius: 50%;
-        display: grid;
-        place-content: center;
-    }
-
-    input[type="radio"]::before {
-        content: "";
-        width: 0.6rem;
-        height: 0.6rem;
-        border-radius: 50%;
-        transform: scale(0);
-        transition: 0.1s transform ease-in-out;
-        box-shadow: inset 1em 1em currentColor;
-        background-color: currentColor;
-    }
-
-    input[type="radio"]:checked::before {
-        transform: scale(1);
     }
 </style>
