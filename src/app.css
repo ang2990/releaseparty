@@ -100,40 +100,19 @@ a { color: inherit; text-decoration: none; }
     position: relative; 
 }
 
-/* --- HERO SECTION --- */
-.hero-title-box {
-    padding: 60px 40px;
-    width: 100%;
-}
-
-.hero-counter-box {
-    background: var(--bg-color); /* Reset background to allow for custom progress UI */
-    color: var(--text-color);
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    min-height: 300px;
-    border-bottom: 2px solid var(--line-color);
-    position: relative;
-    overflow: hidden;
-}
-
 /* --- PROGRESS TICKER (FLAT & MECHANICAL) --- */
 .hero-counter-box {
-    background: var(--bg-color); /* Tan background */
+    background: var(--bg-color); 
     color: var(--text-color);
-    padding: 40px 20px; /* Reduced padding */
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 250px; /* Reduced min-height */
+    min-height: 250px;
     border-bottom: 2px solid var(--line-color);
     position: relative;
-    /* Removed overflow: hidden so tooltip can pop out */
 }
 
 .progress-value {
@@ -155,21 +134,22 @@ a { color: inherit; text-decoration: none; }
     text-transform: uppercase;
     letter-spacing: 0.1em;
     opacity: 1;
-    color: var(--text-color);
-    background: var(--text-color);
     color: var(--bg-color);
+    background: var(--text-color);
     padding: 5px 10px;
 }
 
-/* Subtle Bottom Progress Bar */
+/* Subtle Bottom Progress Bar (Contained) */
 .progress-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    height: 10px;
+    max-width: 800px;
+    height: 24px;
     background: transparent;
-    border-top: 2px solid var(--line-color);
+    border: 2px solid var(--line-color);
+    margin-top: 40px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .progress-bar {
@@ -188,71 +168,26 @@ a { color: inherit; text-decoration: none; }
 .odometer {
     font-family: var(--font-heading) !important;
     font-weight: 900 !important;
-    letter-spacing: 0.05em !important;
-    padding: 0 !important;
-    line-height: 1.1 !important;
+    letter-spacing: 0.05em !important; /* Add spacing to prevent smashing */
+    padding: 10px 0; /* Add vertical buffer */
 }
 
-/* Gradient Text Effect & Fade Mask */
 .odometer.odometer-auto-theme .odometer-digit {
     background: transparent !important;
+    color: var(--text-color) !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 2px !important;
-    overflow: hidden !important;
-    position: relative;
-    
-    /* Modern Fade Mask */
-    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    padding: 0 2px !important; /* Slight horizontal padding per digit */
+    overflow: visible !important; /* Prevent clipping */
 }
 
 .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
-    background: linear-gradient(to bottom, var(--text-color) 0%, #555 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent !important;
     left: 0 !important;
 }
 
-/* Remove masking ribbons */
+/* Ensure flat look */
 .odometer.odometer-auto-theme .odometer-ribbon-inner {
-    transition-timing-function: linear !important;
-    background: transparent !important; 
-}
-
-/* Remove old pseudo-element masks */
-.odometer.odometer-auto-theme .odometer-digit::before,
-.odometer.odometer-auto-theme .odometer-digit::after {
-    display: none !important;
-}
-
-/* --- PROGRESS BAR (CONTAINED) --- */
-.progress-container {
-    width: 100%;
-    max-width: 800px; /* Constrain width */
-    height: 24px; /* Thicker */
-    background: transparent;
-    border: 2px solid var(--line-color); /* Physical border */
-    margin-top: 40px; /* Space from number */
-    position: relative; /* Normal flow, not absolute bottom */
-    border-radius: 12px; /* Slight rounding or keep square for brutalism? Let's go rounded pill */
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: var(--accent-color);
-    width: 0%;
-    transition: width 0.2s linear;
-    /* Optional: striped pattern for the bar too? */
-}
-
-/* Redefine context for hero box since we moved progress bar */
-.hero-counter-box {
-    /* ... existing styles ... */
-    justify-content: center;
-    /* Remove padding-bottom hacks if any */
+    transition-timing-function: linear !important; /* Mechanical movement */
 }
 
 /* Tooltip Adjustments for Odometer Wrapper */
