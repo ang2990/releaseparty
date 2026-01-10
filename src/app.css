@@ -124,13 +124,13 @@ a { color: inherit; text-decoration: none; }
 .hero-counter-box {
     background: var(--bg-color); /* Tan background */
     color: var(--text-color);
-    padding: 80px 40px;
+    padding: 40px 20px; /* Reduced padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 350px;
+    min-height: 250px; /* Reduced min-height */
     border-bottom: 2px solid var(--line-color);
     position: relative;
     /* Removed overflow: hidden so tooltip can pop out */
@@ -188,26 +188,31 @@ a { color: inherit; text-decoration: none; }
 .odometer {
     font-family: var(--font-heading) !important;
     font-weight: 900 !important;
-    letter-spacing: 0.05em !important; /* Add spacing to prevent smashing */
-    padding: 10px 0; /* Add vertical buffer */
+    letter-spacing: 0.05em !important;
+    padding: 0 !important; /* Remove extra padding */
+    line-height: 1.1 !important; /* Tighter line height */
+}
+
+/* Gradient Text Effect */
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
+    background: linear-gradient(to bottom, var(--text-color) 0%, #555 100%); /* Subtle gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent !important; /* Fallback */
 }
 
 .odometer.odometer-auto-theme .odometer-digit {
     background: transparent !important;
-    color: var(--text-color) !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 2px !important; /* Slight horizontal padding per digit */
-    overflow: visible !important; /* Prevent clipping */
+    padding: 0 2px !important;
+    overflow: visible !important;
 }
 
-.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
-    left: 0 !important;
-}
-
-/* Ensure flat look */
+/* Remove masking ribbons */
 .odometer.odometer-auto-theme .odometer-ribbon-inner {
-    transition-timing-function: linear !important; /* Mechanical movement */
+    transition-timing-function: linear !important;
+    background: transparent !important; /* Ensure no background masks */
 }
 
 /* Tooltip Adjustments for Odometer Wrapper */
