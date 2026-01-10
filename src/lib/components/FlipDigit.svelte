@@ -21,15 +21,15 @@
 
 <div class="flip-digit">
     <!-- Static Background -->
-    <div class="card top">{currentValue}</div>
-    <div class="card bottom">{currentValue}</div>
+    <div class="card top"><span class="text">{currentValue}</span></div>
+    <div class="card bottom"><span class="text">{currentValue}</span></div>
     
     <!-- Animating Flaps -->
     {#if isFlipping}
-        <div class="card top flip-front">{previousValue}</div>
-        <div class="card bottom flip-back">{currentValue}</div>
+        <div class="card top flip-front"><span class="text">{previousValue}</span></div>
+        <div class="card bottom flip-back"><span class="text">{currentValue}</span></div>
     {:else}
-        <div class="card top">{currentValue}</div>
+        <div class="card top"><span class="text">{currentValue}</span></div>
     {/if}
     
     <!-- Mechanical Split Line -->
@@ -40,11 +40,10 @@
     .flip-digit {
         position: relative;
         display: inline-block;
-        width: 0.6em; 
+        width: 0.7em; /* Slightly wider to prevent clipping */
         height: 1em;
-        /* Train Station / Mechanical Font */
         font-family: 'Courier New', monospace; 
-        font-weight: 900;
+        font-weight: 700;
         perspective: 1000px;
         background: var(--text-color);
         color: var(--bg-color);
@@ -59,22 +58,41 @@
         overflow: hidden;
         background: var(--text-color);
         color: var(--bg-color);
-        text-align: center;
         backface-visibility: hidden;
+    }
+    
+    /* Inner text positioning wrapper */
+    .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 200%; /* Double the height of the card (half) = 100% of digit */
+        position: absolute;
+        left: 0;
+        /* Ensure text doesn't wrap or overflow weirdly */
+        line-height: 1; 
     }
     
     .top {
         top: 0;
-        line-height: 2em; /* Shows top half */
+        transform-origin: bottom;
+    }
+    
+    .top .text {
+        top: 0; /* Shows top half */
     }
     
     .bottom {
         bottom: 0;
-        line-height: 0; /* Shows bottom half */
         transform-origin: top;
     }
+    
+    .bottom .text {
+        bottom: 0; /* Shows bottom half */
+    }
 
-    /* Flat Animation - No Shadows */
+    /* Flat Animation */
     .flip-front {
         z-index: 2;
         transform-origin: bottom;
@@ -93,10 +111,11 @@
         top: 50%;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 1px;
         background: var(--bg-color);
         z-index: 10;
         transform: translateY(-50%);
+        opacity: 0.5;
     }
 
     @keyframes flipDown {
