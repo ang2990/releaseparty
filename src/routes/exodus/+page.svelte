@@ -7,9 +7,9 @@
     <div class="grid-row">
         <div class="grid-item" style="padding-bottom: 60px;">
             <div class="font-mono" style="margin-bottom: 10px; font-weight: 700;">// Alternative infrastructure</div>
-            <h1 class="text-huge">The <span class="text-accent">migration</span> protocol.</h1>
+            <h1 class="text-huge">Where are we <span class="text-accent">going?</span></h1>
             <p class="exodus-intro">
-                We're moving our catalogs to platforms that respect artist control. This is a direct shift to secure our income and independence.
+                These platforms are not perfect, but they adhere to at least one of our core principles. We're moving our catalogs to infrastructure that respects artist control.
             </p>
         </div>
     </div>
@@ -186,7 +186,7 @@
                 </ul>
 
                 <div style="margin-top: 50px; padding: 20px; border: 1px solid rgba(255,255,255,0.3);">
-                    <div class="font-mono" style="font-size: 0.8rem; margin-bottom: 10px; color: var(--accent-color);">Warning:</div>
+                    <div class="font-mono" style="font-size: 0.8rem; margin-bottom: 10px; color: var(--accent-color);">Notice:</div>
                     <p style="font-size: 0.9rem;">We don't endorse a specific company. These are tools for independence and direct action, not a marketing campaign.</p>
                 </div>
             </div>

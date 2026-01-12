@@ -1,5 +1,5 @@
 <script lang="ts">
-    let { id, name, role, isAccent = false, onhover } = $props();
+    let { id = "000", name = "Unknown", role = "LISTENER", isAccent = false, onhover } = $props();
 </script>
 
 <div 

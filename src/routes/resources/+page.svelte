@@ -13,14 +13,14 @@
         <div class="grid-row">
             <div class="grid-item">
                 <h2 class="text-large">Takedown toolkit</h2>
-                <p style="margin-top: 20px;">This guide helps you remove your music from major streaming services. It includes templates for takedown notices, contact info for labels and distributors, and advice on handling the removal process. We've also included a section where artists can share their experiences and help others through the process.</p>
+                <p style="margin-top: 20px;">This guide is specifically for independent artists who use distributors like DistroKid, TuneCore, etc. It helps you remove your music from major streaming services. It includes templates for takedown notices, contact info for labels and distributors, and advice on handling the removal process.</p>
                 <button class="btn" style="margin-top: 20px;">Download toolkit &darr;</button>
             </div>
         </div>
         <div class="grid-row">
             <div class="grid-item">
                 <h2 class="text-large">The ethical rider</h2>
-                <p style="margin-top: 20px;">This is a legal addendum you can add to your contracts. It includes clauses that protect your work from being used to train AI models without your permission and ensures you keep ownership of your data. It's a way to set clear rules for how your music is handled by business partners.</p>
+                <p style="margin-top: 20px;">This rider exists because many signed artists are currently contractually barred from removing their music from specific platforms. The rider is a tool for future negotiations: if labels refuse to listen to current demands, we collectively agree to include this clause in all future deals to guarantee the right to digital disassociation for ethical reasons.</p>
                 <button class="btn" style="margin-top: 20px;">Download rider PDF &darr;</button>
             </div>
         </div>
@@ -31,4 +31,55 @@
                 <a href="Payment Option Study.pdf" class="btn" style="margin-top: 20px;">Read the study &darr;</a>
             </div>
         </div>
+
+        <!-- NEW READING LIST SECTION -->
+        <div class="grid-row">
+            <div class="grid-item">
+                <h2 class="text-large">Reading list</h2>
+                <div class="reading-list" style="margin-top: 40px;">
+                    <div class="reading-item">
+                        <span class="font-mono">"Mood Machine"</span>
+                        <span class="text-accent">— Liz Pelly</span>
+                    </div>
+                    <div class="reading-item">
+                        <span class="font-mono">"Derivative Media"</span>
+                        <span class="text-accent">— Andrew DeWaard</span>
+                    </div>
+                    <div class="reading-item">
+                        <span class="font-mono">"Payment Option Transparency"</span>
+                        <span class="text-accent">— The Pro Musik Study</span>
+                    </div>
+                    <div class="reading-item">
+                        <span class="font-mono">"Combating the Emergence of a Two-Tier Music Streaming Market"</span>
+                        <span class="text-accent">— IMPALA Report</span>
+                    </div>
+                    <div class="reading-item">
+                        <span class="font-mono">"Datafication and the Push for Ubiquitous Listening"</span>
+                        <span class="text-accent">— Rasmus Rex Pedersen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
+
+<style>
+    .reading-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .reading-item {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+    @media(max-width: 900px) {
+        .reading-item {
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+</style>

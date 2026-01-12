@@ -1,10 +1,18 @@
 <script lang="ts">
-    let { id, name, role, streams = "---", origin = "NYC", status = "VERIFIED", classType = "A" } = $props();
+    let { 
+        id = "000", 
+        name = "Unknown Passenger", 
+        role = "LISTENER", 
+        streams = "---", 
+        origin = "NYC", 
+        status = "VERIFIED", 
+        classType = "A" 
+    } = $props();
 </script>
 
 <div class="ticket-view no-image">
     <div class="ticket-overlay"></div>
-    <div class="ticket-stamp">RSVP'd</div>
+    <div class="ticket-stamp">ATTENDING</div>
     
     <div class="ticket-data">
         <div class="font-mono ticket-id-line">PASSENGER_ID: #{id}</div>
@@ -40,7 +48,8 @@
         font-size: clamp(2rem, 5vw, 4rem);
         line-height: 0.9;
         margin-bottom: 30px;
-        word-break: break-word;
+        overflow-wrap: break-word; /* Allow breaking on long words, but prefer spaces */
+        word-break: normal; /* Reset word-break */
     }
 
     .ticket-stats-grid {

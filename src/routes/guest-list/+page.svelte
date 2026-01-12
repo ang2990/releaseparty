@@ -14,8 +14,12 @@
 
     // Set initial selection when data loads
     $effect(() => {
-        if (!selectedAttendee && attendees.length > 0) {
-            selectedAttendee = attendees[0];
+        if (filteredAttendees.length > 0) {
+            if (!selectedAttendee || !filteredAttendees.find(a => a.id === selectedAttendee.id)) {
+                selectedAttendee = filteredAttendees[0];
+            }
+        } else {
+            selectedAttendee = null;
         }
     });
 </script>

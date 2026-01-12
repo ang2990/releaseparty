@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxip3F7oC0U2ytAbkEapfnyQIpwOKdm0V5KIEqDTfn2QuUntNGA65jHvT4yrBYHL8Q4mQ/exec';
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_pPYJ8TrIHLHLYGowUdeoOOGtB_ZfbOV7zMtaw-pCxIX6YLky4tN8JAuR3i3NYBKiMA/exec';
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
     try {

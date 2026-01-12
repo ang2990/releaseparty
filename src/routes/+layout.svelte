@@ -10,6 +10,15 @@
     let modalRole = $state('ARTIST');
     let modalSubmitting = $state(false);
     let modalSuccess = $state(false);
+    let isMenuOpen = $state(false);
+
+    const toggleMenu = () => {
+        isMenuOpen = !isMenuOpen;
+    };
+
+    const closeMenu = () => {
+        isMenuOpen = false;
+    };
 
     const handleModalSubmit = () => {
         modalSubmitting = true;
@@ -66,12 +75,19 @@
                 <a href="/">Release<span class="text-accent">party</span></a>
             {/if}
         </div>
-        <nav>
-            <a href="/vision" class="nav-link">The vision</a>
-            <a href="/guest-list" class="nav-link">Guests</a>
-            <a href="/exodus" class="nav-link">The move</a>
-            <a href="/resources" class="nav-link">Resources</a>
-            <button type="button" class="nav-link text-accent" onclick={() => openModal('ARTIST')}>RSVP</button>
+
+        <button class="hamburger-btn" class:open={isMenuOpen} onclick={toggleMenu} aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav class:open={isMenuOpen}>
+            <a href="/vision" class="nav-link" onclick={closeMenu}>The vision</a>
+            <a href="/guest-list" class="nav-link" onclick={closeMenu}>Guests</a>
+            <a href="/exodus" class="nav-link" onclick={closeMenu}>Alternatives</a>
+            <a href="/resources" class="nav-link" onclick={closeMenu}>Resources</a>
+            <button type="button" class="nav-link text-accent" onclick={() => { openModal('ARTIST'); closeMenu(); }}>RSVP</button>
         </nav>
     </header>
 
