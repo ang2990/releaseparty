@@ -148,7 +148,7 @@
     <div class="grid-item" style="border-bottom: none;">
         <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
         <p>Spotify doesn’t exist without our music. We are targeting them because they are the face of algorithmic exploitation and systemic harm in music. If we break their hold, we break the model.</p>
-        <a href="/qa" class="btn btn-outline" style="margin-top: 30px; display: inline-block; width: auto; padding: 15px 30px;">Read full Q+A &rarr;</a>
+        <a href="/faq" class="btn btn-outline" style="margin-top: 30px; display: inline-block; width: auto; padding: 15px 30px;">Read full FAQ &rarr;</a>
     </div>
     <div class="grid-item" style="border-bottom: none; background: var(--text-color); color: var(--bg-color); display: flex; align-items: center; justify-content: center;">
         <h2 class="text-huge" style="color: var(--accent-color);">?</h2>

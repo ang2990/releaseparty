@@ -128,7 +128,7 @@
             <a href="/guest-list" class="nav-link" onclick={closeMenu}>Guests</a>
             <a href="/exodus" class="nav-link" onclick={closeMenu}>Alternatives</a>
             <a href="/resources" class="nav-link" onclick={closeMenu}>Resources</a>
-            <a href="/qa" class="nav-link" onclick={closeMenu}>Q+A</a>
+            <a href="/faq" class="nav-link" onclick={closeMenu}>FAQ</a>
             <a href="/contact" class="nav-link" onclick={closeMenu}>Contact</a>
             <button type="button" class="nav-link text-accent" onclick={() => { openModal('ARTIST'); closeMenu(); }}>RSVP</button>
         </nav>

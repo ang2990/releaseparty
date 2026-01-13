@@ -1,12 +1,12 @@
 <svelte:head>
-    <title>Q+A | Release party</title>
+    <title>FAQ | Release party</title>
 </svelte:head>
 
 <div class="grid-container">
     <!-- PAGE HEADER -->
     <div class="grid-row">
         <div class="grid-item">
-            <h1 class="text-huge">Questions & <span class="text-accent">Answers</span></h1>
+            <h1 class="text-huge">F.A.Q.</h1>
         </div>
     </div>
 
