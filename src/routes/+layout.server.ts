@@ -1,8 +1,13 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = async ({ setHeaders }) => {
-    // TEMPORARY FIX: Return static empty array to stop 500 error
+// TEMPORARY: Disable external fetch to resolve 500 error loop
+export const load: LayoutServerLoad = async () => {
     return {
-        tickerData: []
+        tickerData: [
+            { name: "RAY BULL", role: "ARTIST", streams: "12,450,000" },
+            { name: "DIIV", role: "ARTIST", streams: "45,200,000" },
+            { name: "MITSKI", role: "ARTIST", streams: "150,000,000" },
+            { name: "BIG THIEF", role: "ARTIST", streams: "85,000,000" }
+        ]
     };
 };

@@ -891,114 +891,57 @@ nav {
         grid-template-columns: 1fr !important;
     }
 
-        /* Fix Borders for Stacked Items */
-
-        .grid-item, .grid-item-nopad {
-
-            border-right: none; 
-
-            border-bottom: 2px solid var(--line-color);
-
-        }
-
-        
-
-        /* Remove bottom border from last item in a stacked group to avoid double borders with container */
-
-        .grid-item:last-child, .grid-item-nopad:last-child {
-
-            border-bottom: none;
-
-        }
-
-        
-
-        /* Ensure Hero Stacks */
-
-        .hero-title-box, .hero-counter-box {
-
-            flex: 1 1 100%; 
-
-            border-right: none;
-
-            border-bottom: 2px solid var(--line-color);
-
-            width: 100%; 
-
-        }
-
-        .hero-counter-box { border-bottom: none; min-height: 250px; } 
-
-        .text-countdown { font-size: 15vw; } 
-
-        
-
-        /* Nav Stacking - CHANGED to ROW for Mobile Header */
-
-        header.grid-row { 
-
-            padding: 20px; 
-
-            flex-direction: row; /* Force row layout */
-
-            align-items: center; 
-
-            justify-content: space-between;
-
-            gap: 0; /* Remove gap */
-
-            height: 70px; /* Fixed height for stability */
-
-        }
-
-        
-
-        /* Mobile Menu Container */
-
-        nav { 
-
-            width: 100%; 
-
-            overflow-y: auto; /* Allow menu scrolling */
-
-            /* ... existing overlay styles handled in main nav block ... */
-
-        }
-
-        
-
-        .nav-link { 
-
-            margin-right: 0; /* Reset margins */
-
-            white-space: nowrap; 
-
-            font-size: 1rem;
-
-            padding: 10px 0; 
-
-        }
-
+    /* Fix Borders for Stacked Items */
+    .grid-item, .grid-item-nopad {
+        border-right: none; 
+        border-bottom: 2px solid var(--line-color);
+    }
     
-
-        /* Adjust Padding */
-
-        .grid-item { padding: 30px 20px; }
-
-        .h-card { min-width: 85vw; padding: 30px 20px; }
-
-        
-
-        /* Modal Mobile */
-
-        .modal-box {
-
-            padding: 30px;
-
-            width: 95%;
-
-        }
-
+    /* Remove bottom border from last item in a stacked group to avoid double borders with container */
+    .grid-item:last-child, .grid-item-nopad:last-child {
+        border-bottom: none;
+    }
+    
+    /* Ensure Hero Stacks */
+    .hero-title-box, .hero-counter-box {
+        flex: 1 1 100%; 
+        border-right: none;
+        border-bottom: 2px solid var(--line-color);
+        width: 100%; 
+    }
+    .hero-counter-box { border-bottom: none; min-height: 250px; } 
+    .text-countdown { font-size: 15vw; } 
+    
+    /* Nav Stacking - CHANGED to ROW for Mobile Header */
+    header.grid-row { 
+        padding: 20px; 
+        flex-direction: row; /* Force row layout */
+        align-items: center; 
+        justify-content: space-between;
+        gap: 0; /* Remove gap */
+        height: 70px; /* Fixed height for stability */
+    }
+    
+    /* Mobile Menu Container */
+    nav { 
+        width: 100%; 
+        overflow-y: auto; /* Allow menu scrolling */
+    }
+    
+    .nav-link { 
+        margin-right: 0; /* Reset margins */
+        white-space: nowrap; 
+        font-size: 1rem;
+        padding: 10px 0; 
     }
 
+    /* Adjust Padding */
+    .grid-item { padding: 30px 20px; }
+    .h-card { min-width: 85vw; padding: 30px 20px; }
     
+    /* Modal Mobile */
+    .modal-box {
+        padding: 30px;
+        width: 95%;
+    }
+}
