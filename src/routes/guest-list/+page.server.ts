@@ -12,6 +12,11 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 
         const data = await response.json();
 
+        if (!Array.isArray(data)) {
+            console.error('Guest list data is not an array:', data);
+            return { attendees: [] };
+        }
+
         // Implement 2 hour cache (7200 seconds)
         setHeaders({
             'Cache-Control': 'public, max-age=7200'

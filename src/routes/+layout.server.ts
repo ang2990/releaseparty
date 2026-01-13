@@ -19,6 +19,11 @@ export const load: LayoutServerLoad = async ({ setHeaders }) => {
             'Cache-Control': 'public, max-age=3600' // 1 hour
         });
 
+        if (!Array.isArray(data)) {
+            console.error('Ticker data is not an array:', data);
+            return { tickerData: [] };
+        }
+
         // robust extraction logic (same as +page.server.ts)
         const attendees = data.map((row: any) => {
             const getValue = (possibleKeys: string[], defaultValue: string) => {
