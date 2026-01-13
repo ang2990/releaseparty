@@ -75,8 +75,8 @@
 <!-- CALL TO ACTION & EXPLAINER (Moved here) -->
 <div class="grid-row grid-2-col">
     <div class="grid-item">
-        <h2 class="text-large">We’re uniting together to demand a different reality in music.</h2>
-        <p style="margin-top: 20px;">When the ticker hits the goal, we move our music to fairer infrastructure. Pledge your streams and your support to break free from boring world they’ve built.</p>
+        <h2 class="text-large">We’re uniting artists to demand a new reality in music.</h2>
+        <p style="margin-top: 20px;">When we hit our target, we move our music to fairer infrastructure. Pledge your streams and support to break free from boring world they’ve built.</p>
     </div>
     
     <div class="grid-item" style="justify-content: center;">
@@ -140,5 +140,17 @@
         {#if selectedAttendee}
             <AttendeeCard {...selectedAttendee} />
         {/if}
+    </div>
+</div>
+
+<!-- Q+A PREVIEW SECTION -->
+<div class="grid-row grid-2-col">
+    <div class="grid-item" style="border-bottom: none;">
+        <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
+        <p>Spotify doesn’t exist without our music. We are targeting them because they are the face of algorithmic exploitation and systemic harm in music. If we break their hold, we break the model.</p>
+        <a href="/qa" class="btn btn-outline" style="margin-top: 30px; display: inline-block; width: auto; padding: 15px 30px;">Read full Q+A &rarr;</a>
+    </div>
+    <div class="grid-item" style="border-bottom: none; background: var(--text-color); color: var(--bg-color); display: flex; align-items: center; justify-content: center;">
+        <h2 class="text-huge" style="color: var(--accent-color);">?</h2>
     </div>
 </div>
