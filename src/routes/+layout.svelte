@@ -6,7 +6,40 @@
 	// Import global CSS here
 	import '../app.css';
 
-	let { children } = $props();
+	let { children, data } = $props(); // Receive data from layout.server.ts
+    let tickerItems = $derived.by(() => {
+        const attendees = data.tickerData || [];
+        const staticMessages = [
+            "// GOAL: 50 BILLION ",
+            "// WE MOVE TOGETHER ",
+            "// STOP PRO-RATA ",
+            "// ARTISTS OVER ALGORITHMS "
+        ];
+        
+        if (attendees.length === 0) return staticMessages;
+
+        // Filter for high-impact artists (e.g., > 100k streams) or recent listeners
+        // For now, take the top 5 artists by stream count (if available) and 5 recent joins
+        const highImpactArtists = attendees
+            .filter(a => a.role === 'ARTIST' && a.streams !== '---')
+            .sort((a, b) => parseInt(b.streams.replace(/,/g, '')) - parseInt(a.streams.replace(/,/g, '')))
+            .slice(0, 5);
+            
+        // If we don't have enough data, just take what we have
+        const displayList = highImpactArtists.length > 0 ? highImpactArtists : attendees.slice(0, 8);
+
+        const attendeeStrings = displayList.map(a => {
+            if (a.role === 'ARTIST') {
+                return `// ${a.name.toUpperCase()} PLEDGED ${a.streams} `;
+            } else {
+                return `// ${a.name.toUpperCase()} JOINED `;
+            }
+        });
+
+        // Interleave static messages
+        return [...staticMessages, ...attendeeStrings];
+    });
+
     let modalRole = $state('ARTIST');
     let modalSubmitting = $state(false);
     let modalSuccess = $state(false);
@@ -88,6 +121,7 @@
             <a href="/exodus" class="nav-link" onclick={closeMenu}>Alternatives</a>
             <a href="/resources" class="nav-link" onclick={closeMenu}>Resources</a>
             <a href="/qa" class="nav-link" onclick={closeMenu}>Q+A</a>
+            <a href="/contact" class="nav-link" onclick={closeMenu}>Contact</a>
             <button type="button" class="nav-link text-accent" onclick={() => { openModal('ARTIST'); closeMenu(); }}>RSVP</button>
         </nav>
     </header>
@@ -95,27 +129,16 @@
     <!-- TICKER (MARQUEE) -->
     <div class="marquee-container grid-row">
         <div class="marquee-wrapper">
+            <!-- Render twice for seamless loop -->
             <div class="marquee-content">
-                <span class="marquee-item">// 1,450,231,000 STREAMS PLEDGED </span>
-                <span class="marquee-item">// GOAL: 50 BILLION </span>
-                <span class="marquee-item">// WE MOVE TOGETHER </span>
-                <span class="marquee-item">// STOP PRO-RATA </span>
-                <span class="marquee-item">// ARTISTS OVER ALGORITHMS </span>
-                <span class="marquee-item">// RAY BULL PLEDGED </span>
-                <span class="marquee-item">// DIIV PLEDGED </span>
-                <span class="marquee-item">// MITSKI PLEDGED </span>
-                <span class="marquee-item">// BIG THIEF PLEDGED </span>
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
             </div>
             <div class="marquee-content">
-                <span class="marquee-item">// 1,450,231,000 STREAMS PLEDGED </span>
-                <span class="marquee-item">// GOAL: 50 BILLION </span>
-                <span class="marquee-item">// WE MOVE TOGETHER </span>
-                <span class="marquee-item">// STOP PRO-RATA </span>
-                <span class="marquee-item">// ARTISTS OVER ALGORITHMS </span>
-                <span class="marquee-item">// RAY BULL PLEDGED </span>
-                <span class="marquee-item">// DIIV PLEDGED </span>
-                <span class="marquee-item">// MITSKI PLEDGED </span>
-                <span class="marquee-item">// BIG THIEF PLEDGED </span>
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
             </div>
         </div>
     </div>
