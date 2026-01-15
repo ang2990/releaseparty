@@ -23,8 +23,14 @@
                 <!-- QOBUZ -->
                 <a href="https://www.qobuz.com" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Hi-res store</span>
-                        <span>Status: Approved</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Hi-res store</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Recommended</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Qobuz</h3>
                     <div class="card-specs">
@@ -49,8 +55,14 @@
                 <!-- SUBVERT -->
                 <a href="https://subvert.fm" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Community</span>
-                        <span>Status: Recommended</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Community</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Recommended</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Subvert</h3>
                     <div class="card-specs">
@@ -71,8 +83,14 @@
                 <!-- BANDCAMP -->
                 <a href="https://bandcamp.com" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Direct sales</span>
-                        <span>Status: Viable</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Direct sales</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Viable</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Bandcamp</h3>
                     <div class="card-specs">
@@ -97,8 +115,14 @@
                 <!-- RESONATE -->
                 <a href="https://resonate.coop" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Co-op</span>
-                        <span>Status: Recommended</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Co-op</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Recommended</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Resonate</h3>
                     <div class="card-specs">
@@ -123,8 +147,14 @@
                 <!-- TIDAL -->
                 <a href="https://tidal.com" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Streaming</span>
-                        <span>Status: Alternative</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Streaming</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Alternative</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Tidal</h3>
                     <div class="card-specs">
@@ -145,8 +175,14 @@
                  <!-- FORMLESS -->
                  <a href="https://formless.xyz" target="_blank" class="destination-card">
                     <div class="card-header">
-                        <span>Type: Protocol</span>
-                        <span>Status: Experimental</span>
+                        <div class="header-group">
+                            <span class="label">Type</span>
+                            <span class="value">Protocol</span>
+                        </div>
+                        <div class="header-group align-right">
+                            <span class="label">Status</span>
+                            <span class="value">Experimental</span>
+                        </div>
                     </div>
                     <h3 class="card-title">Formless</h3>
                     <div class="card-specs">

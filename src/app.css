@@ -724,8 +724,29 @@ nav {
     margin-bottom: 20px;
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
+}
+
+.header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-group .label {
     font-weight: 700;
-    opacity: 0.7;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+.header-group .value {
+    font-weight: 900;
+    opacity: 1;
+    text-transform: uppercase;
+}
+
+.header-group.align-right {
+    text-align: right;
+    align-items: flex-end;
 }
 
 .card-title {

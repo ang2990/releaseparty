@@ -18,8 +18,25 @@
                 <p>Spotify is the architect of the current streaming paradigm. Other companies like Apple, YouTube, and Amazon don’t rely on their streaming services to support their business. Spotify is the achilles heel of the music industry. If we break their hold, we break the model.</p>
             </div>
         </div>
-        <div class="grid-item-nopad" style="display: flex; align-items: center; justify-content: center; background: var(--text-color); color: var(--bg-color); padding: 40px;">
-            <div style="font-family: 'Courier New', monospace; font-weight: 700;">// TARGET_PRIMARY</div>
+        <div class="grid-item-nopad" style="background: var(--text-color); color: var(--bg-color); padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+            <div class="sidebar-data">
+                <div class="data-row">
+                    <span>TARGET</span>
+                    <span>SPOTIFY</span>
+                </div>
+                <div class="data-row">
+                    <span>SHARE</span>
+                    <span>30.5%</span>
+                </div>
+                <div class="data-row">
+                    <span>STATUS</span>
+                    <span class="text-accent">HOSTILE</span>
+                </div>
+                <div class="data-row">
+                    <span>ACTION</span>
+                    <span>DIVEST</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -32,8 +49,13 @@
                 <p>Our "Alternatives" protocol recommends platforms like subvert.fm (for direct sales), Resonate (a stream-to-own co-op), and others that adhere to our core principles. See the full <a href="/exodus" class="text-accent" style="text-decoration: underline;">Alternatives</a> page for the vetted list.</p>
             </div>
         </div>
-        <div class="grid-item-nopad" style="display: flex; align-items: center; justify-content: center; padding: 40px;">
-             <div style="font-family: 'Courier New', monospace; font-weight: 700; opacity: 0.5;">// DESTINATIONS</div>
+        <div class="grid-item-nopad" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+             <div class="sidebar-list">
+                <div>[01] DIRECT_SALES</div>
+                <div>[02] COOPERATIVES</div>
+                <div>[03] P2P_PROTOCOLS</div>
+                <div>[04] ETHICAL_STREAMS</div>
+             </div>
         </div>
     </div>
 
@@ -46,8 +68,25 @@
                 <p>By moving, you may lose passive algorithmic plays, but you will gain a deeper connection with active supporters who follow you to new platforms. 1,000 true fans on Bandcamp are worth more than 100,000 passive streams on Spotify. This is a shift from quantity to quality, and from dependence to sovereignty.</p>
             </div>
         </div>
-        <div class="grid-item-nopad" style="display: flex; align-items: center; justify-content: center; padding: 40px;">
-             <div style="font-family: 'Courier New', monospace; font-weight: 700; opacity: 0.5;">// METRICS</div>
+        <div class="grid-item-nopad" style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+             <div class="sidebar-data">
+                <div class="data-row">
+                    <span>PASSIVE_REACH</span>
+                    <span>HIGH</span>
+                </div>
+                <div class="data-row">
+                    <span>VALUE</span>
+                    <span>LOW</span>
+                </div>
+                <div class="data-row" style="margin-top: 20px;">
+                    <span>ACTIVE_REACH</span>
+                    <span>LOW</span>
+                </div>
+                <div class="data-row">
+                    <span>VALUE</span>
+                    <span>HIGH</span>
+                </div>
+             </div>
         </div>
     </div>
 
@@ -65,8 +104,13 @@
                 <p>Estimates are acceptable for the pledge. The goal is to show collective leverage.</p>
             </div>
         </div>
-        <div class="grid-item-nopad" style="display: flex; align-items: center; justify-content: center; padding: 40px; border-bottom: none;">
-             <div style="font-family: 'Courier New', monospace; font-weight: 700; opacity: 0.5;">// DATA_SOURCE</div>
+        <div class="grid-item-nopad" style="padding: 40px; border-bottom: none; display: flex; flex-direction: column; justify-content: center;">
+             <div class="sidebar-list">
+                <div>> DISTRIBUTOR_LOGS</div>
+                <div>> ROYALTY_STMTS</div>
+                <div>> SPOTIFY_4_ARTISTS</div>
+                <div>> ESTIMATES_OK</div>
+             </div>
         </div>
     </div>
 </div>
@@ -80,5 +124,25 @@
     .qa-content ul li {
         margin-bottom: 10px;
         opacity: 0.9;
+    }
+
+    /* Sidebar Data Styles */
+    .sidebar-data, .sidebar-list {
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .data-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid currentColor;
+        padding: 8px 0;
+    }
+
+    .sidebar-list div {
+        margin-bottom: 10px;
+        opacity: 0.8;
     }
 </style>
