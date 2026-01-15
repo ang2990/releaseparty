@@ -20,11 +20,59 @@
         <div class="grid-item-nopad">
             <div class="destinations-grid-detailed">
                 
+                <!-- QOBUZ -->
+                <a href="https://www.qobuz.com" target="_blank" class="destination-card">
+                    <div class="card-header">
+                        <span>Type: Hi-res store</span>
+                        <span>Status: Approved</span>
+                    </div>
+                    <h3 class="card-title">Qobuz</h3>
+                    <div class="card-specs">
+                        <div class="spec-row">
+                            <span>Quality</span>
+                            <span>24-bit audio</span>
+                        </div>
+                        <div class="spec-row">
+                            <span>Model</span>
+                            <span>Sales over streams</span>
+                        </div>
+                        <div class="spec-row">
+                            <span>Curation</span>
+                            <span>Human-led</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        Open store <span>&nearr;</span>
+                    </div>
+                </a>
+
+                <!-- SUBVERT -->
+                <a href="https://subvert.fm" target="_blank" class="destination-card">
+                    <div class="card-header">
+                        <span>Type: Community</span>
+                        <span>Status: Recommended</span>
+                    </div>
+                    <h3 class="card-title">Subvert</h3>
+                    <div class="card-specs">
+                        <div class="spec-row">
+                            <span>Target</span>
+                            <span>Independent creators</span>
+                        </div>
+                        <div class="spec-row">
+                            <span>Tools</span>
+                            <span>Radio and community chat</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        Listen now <span>&nearr;</span>
+                    </div>
+                </a>
+
                 <!-- BANDCAMP -->
                 <a href="https://bandcamp.com" target="_blank" class="destination-card">
                     <div class="card-header">
                         <span>Type: Direct sales</span>
-                        <span>Status: Recommended</span>
+                        <span>Status: Viable</span>
                     </div>
                     <h3 class="card-title">Bandcamp</h3>
                     <div class="card-specs">
@@ -72,32 +120,6 @@
                     </div>
                 </a>
 
-                <!-- QOBUZ -->
-                <a href="https://www.qobuz.com" target="_blank" class="destination-card">
-                    <div class="card-header">
-                        <span>Type: Hi-res store</span>
-                        <span>Status: Approved</span>
-                    </div>
-                    <h3 class="card-title">Qobuz</h3>
-                    <div class="card-specs">
-                        <div class="spec-row">
-                            <span>Quality</span>
-                            <span>24-bit audio</span>
-                        </div>
-                        <div class="spec-row">
-                            <span>Model</span>
-                            <span>Sales over streams</span>
-                        </div>
-                        <div class="spec-row">
-                            <span>Curation</span>
-                            <span>Human-led</span>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        Open store <span>&nearr;</span>
-                    </div>
-                </a>
-
                 <!-- TIDAL -->
                 <a href="https://tidal.com" target="_blank" class="destination-card">
                     <div class="card-header">
@@ -120,27 +142,6 @@
                     </div>
                 </a>
 
-                <!-- SUBVERT -->
-                <a href="https://subvert.fm" target="_blank" class="destination-card">
-                    <div class="card-header">
-                        <span>Type: Community</span>
-                        <span>Status: Ally</span>
-                    </div>
-                    <h3 class="card-title">Subvert</h3>
-                    <div class="card-specs">
-                        <div class="spec-row">
-                            <span>Target</span>
-                            <span>Independent creators</span>
-                        </div>
-                        <div class="spec-row">
-                            <span>Tools</span>
-                            <span>Radio and community chat</span>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        Listen now <span>&nearr;</span>
-                    </div>
-                </a>
                  <!-- FORMLESS -->
                  <a href="https://formless.xyz" target="_blank" class="destination-card">
                     <div class="card-header">
