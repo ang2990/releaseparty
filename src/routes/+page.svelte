@@ -76,7 +76,7 @@
 <div class="grid-row grid-2-col">
     <div class="grid-item">
         <h2 class="text-large">We’re uniting artists to demand a new reality in music.</h2>
-        <p style="margin-top: 20px;">When we hit our target, we move our music to fairer infrastructure. Pledge your streams and support to break free from boring world they’ve built.</p>
+        <p style="margin-top: 20px;">When we hit our target, we move our music to fairer infrastructure. Pledge your streams and support to break free from the boring world they’ve built.</p>
     </div>
     
     <div class="grid-item" style="justify-content: center;">
