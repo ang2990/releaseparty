@@ -229,4 +229,76 @@
             </div>
         </div>
     </div>
+
+    <!-- DIRECT ACTIONS SECTION -->
+    <div class="grid-row">
+        <div class="grid-item" style="border-bottom: none;">
+            <h2 class="text-large" style="margin-bottom: 40px;">Other ways to support</h2>
+            
+            <div class="actions-list">
+                <div class="action-row">
+                    <div class="action-header">
+                        <span class="font-mono text-accent">[01]</span>
+                        <h3>Listen to the radio</h3>
+                    </div>
+                    <p>Support community and college radio stations that prioritize human curation over algorithms. These institutions are vital for local music scenes.</p>
+                </div>
+
+                <div class="action-row">
+                    <div class="action-header">
+                        <span class="font-mono text-accent">[02]</span>
+                        <h3>Go to live shows</h3>
+                    </div>
+                    <p>The most direct way to fund an artist's career and experience the music as intended. Ticket sales often provide the bulk of an artist's income.</p>
+                </div>
+
+                <div class="action-row">
+                    <div class="action-header">
+                        <span class="font-mono text-accent">[03]</span>
+                        <h3>Buy Vinyl</h3>
+                    </div>
+                    <p>Own the music permanently. No platform can revoke your access to a physical record, and it ensures the artist is paid for the unit.</p>
+                </div>
+
+                <div class="action-row">
+                    <div class="action-header">
+                        <span class="font-mono text-accent">[04]</span>
+                        <h3>Buy merch direct</h3>
+                    </div>
+                    <p>Purchasing directly from an artist's website or Bandcamp page ensures they keep the maximum share of the profit, bypassing middleman fees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .actions-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    .action-row {
+        border-top: 2px solid var(--line-color);
+        padding-top: 20px;
+    }
+
+    .action-header {
+        display: flex;
+        align-items: baseline;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .action-header h3 {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    .action-row p {
+        font-size: 1rem;
+        opacity: 0.8;
+        max-width: 40ch;
+    }
+</style>

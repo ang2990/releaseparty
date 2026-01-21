@@ -7,29 +7,48 @@ import type { Actions } from './$types';
 // 3. Paste code to handle doPost(e) -> sheet.appendRow(...).
 // 4. Deploy > New Deployment > Type: Web App > Who has access: Anyone.
 // 5. Copy URL here.
-const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_pPYJ8TrIHLHLYGowUdeoOOGtB_ZfbOV7zMtaw-pCxIX6YLky4tN8JAuR3i3NYBKiMA/exec';
+const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAO-MusSsH3uBM56KgRXRXvQIYlIHJ9kM9LEUnIDADyHvo88PP5f8jeOZX4RuF81YxPw/exec';
 
 export const actions = {
     default: async ({ request }) => {
         const data = await request.formData();
-        const name = data.get('name');
+        let name = data.get('name');
         const email = data.get('email');
         const link = data.get('link');
         const role = data.get('role');
         const streams = data.get('streams');
+        const subscription = data.get('subscription');
+        const anonymous = data.get('anonymous');
+
+        if (anonymous && role === 'LISTENER') {
+            name = 'Anonymous Listener';
+        }
+
+        // Calculate monthly amount based on subscription
+        let monthlyAmount = 0;
+        if (role === 'LISTENER' && subscription) {
+            const prices: Record<string, number> = {
+                'Premium Individual': 12.99,
+                'Premium Duo': 18.99,
+                'Premium Family': 21.99,
+                'Premium Student': 6.99,
+                'Free': 0
+            };
+            monthlyAmount = prices[subscription.toString()] || 0;
+        }
 
         const timestamp = new Date().toISOString();
 
         // payload for Google Sheets
-        // Apps Script expects JSON usually if we write the script that way, 
-        // or form-data. Simple JSON is easiest.
         const payload = {
             timestamp,
             role,
             name,
             email,
             link,
-            streams
+            streams,
+            subscription,
+            monthly_amount: monthlyAmount
         };
 
         try {

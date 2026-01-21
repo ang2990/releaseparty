@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_pPYJ8TrIHLHLYGowUdeoOOGtB_ZfbOV7zMtaw-pCxIX6YLky4tN8JAuR3i3NYBKiMA/exec';
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAO-MusSsH3uBM56KgRXRXvQIYlIHJ9kM9LEUnIDADyHvo88PP5f8jeOZX4RuF81YxPw/exec';
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
     try {
@@ -17,10 +17,12 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             return { attendees: [] };
         }
 
-        // Implement 2 hour cache (7200 seconds)
+        // Implement 2 hour cache (7200 seconds) - DISABLED FOR DEBUGGING
         setHeaders({
-            'Cache-Control': 'public, max-age=7200'
+            'Cache-Control': 'public, max-age=0'
         });
+
+        let totalListenerValue = 0;
 
         const attendees = data.map((row: any, index: number) => {
             // Robust extraction logic
@@ -39,20 +41,40 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             };
 
             const name = getValue(['name', 'artist', 'gemini test'], 'Unknown');
-            const role = getValue(['role', 'test_listener', 'type'], 'LISTENER');
-            const streams = getValue(['streams', 'count', 'pledge'], '---');
+            const role = getValue(['role', 'test_listener', 'type'], 'LISTENER').toUpperCase();
+            const streamsStr = getValue(['streams', 'count', 'pledge'], '---');
+            const monthlyAmountStr = getValue(['monthly_amount', 'monthly amount', 'cost'], '');
+
+            let formattedStreams = streamsStr;
+            
+            // Format logic based on role
+            if (role === 'LISTENER') {
+                // Prioritize the explicit monthly_amount if available
+                let val = parseFloat(monthlyAmountStr);
+                
+                // Fallback to parsing streams string if monthly_amount is missing
+                if (isNaN(val)) {
+                    val = parseFloat(streamsStr.replace(/[^0-9.]/g, ''));
+                }
+
+                if (!isNaN(val)) {
+                    totalListenerValue += val;
+                    formattedStreams = `$${val.toFixed(2)}/mo`;
+                }
+            }
 
             return {
                 id: (index + 1).toString().padStart(3, '0'),
                 name: name,
                 role: role,
-                streams: streams,
-                isAccent: role.toUpperCase() === 'ARTIST'
+                streams: formattedStreams,
+                isAccent: role === 'ARTIST'
             };
         });
 
         return {
-            attendees: attendees.reverse() // Newest first
+            attendees: attendees.reverse(), // Newest first
+            totalListenerValue
         };
     } catch (err) {
         console.error('Error loading guest list:', err);

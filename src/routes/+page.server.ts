@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_pPYJ8TrIHLHLYGowUdeoOOGtB_ZfbOV7zMtaw-pCxIX6YLky4tN8JAuR3i3NYBKiMA/exec';
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAO-MusSsH3uBM56KgRXRXvQIYlIHJ9kM9LEUnIDADyHvo88PP5f8jeOZX4RuF81YxPw/exec';
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
     try {
@@ -17,10 +17,13 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             return { attendees: [] };
         }
 
-        // Implement 2 hour cache (7200 seconds)
+        // Implement 2 hour cache (7200 seconds) - DISABLED FOR DEBUGGING
         setHeaders({
-            'Cache-Control': 'public, max-age=7200'
+            'Cache-Control': 'public, max-age=0'
         });
+
+        // Calculate total streams
+        let totalStreams = 0;
 
         const attendees = data.map((row: any, index: number) => {
             // Robust extraction logic
@@ -39,21 +42,28 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             };
 
             const name = getValue(['name', 'artist', 'gemini test'], 'Unknown');
-            const role = getValue(['role', 'test_listener', 'type'], 'LISTENER');
-            const streams = getValue(['streams', 'count', 'pledge'], '---');
+            const role = getValue(['role', 'test_listener', 'type'], 'LISTENER').toUpperCase();
+            const streamsStr = getValue(['streams', 'count', 'pledge'], '---');
+
+            // Add to total if artist
+            if (role === 'ARTIST') {
+                const count = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
+                totalStreams += count;
+            }
 
             return {
                 id: (index + 1).toString().padStart(3, '0'),
                 name: name,
                 role: role,
-                streams: streams,
-                isAccent: role.toUpperCase() === 'ARTIST'
+                streams: streamsStr,
+                isAccent: role === 'ARTIST'
             };
         });
 
         // For the home page, maybe just return the first 5-8 latest entries
         return {
-            attendees: attendees.reverse().slice(0, 8)
+            attendees: attendees.reverse().slice(0, 8),
+            totalStreams
         };
     } catch (err) {
         console.error('Error loading guest list for home:', err);

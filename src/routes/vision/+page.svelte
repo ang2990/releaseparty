@@ -21,16 +21,11 @@
         </div>
         <div class="directive-item">
             <span class="text-accent text-large">03.</span>
-            <h2 class="text-large">Artist safety net</h2>
-            <p style="margin-top: 20px;">Artists are currently denied the basic labor protections found in other fields. We're organizing to secure a fixed percentage of all revenue for a collective fund that provides healthcare and mental health support. This isn't a benefit; it's a necessary condition for a sustainable music industry.</p>
-        </div>
-        <div class="directive-item">
-            <span class="text-accent text-large">04.</span>
             <h2 class="text-large">AI consent</h2>
             <p style="margin-top: 20px;">We're taking a clear stand against the unauthorized use of our work to train AI models. We require explicit, opt-in consent and fair pay for any use of our likeness or creations. We will use our collective leverage to stop companies from appropriating our labor for their algorithms.</p>
         </div>
         <div class="directive-item">
-            <span class="text-accent text-large">05.</span>
+            <span class="text-accent text-large">04.</span>
             <h2 class="text-large">Ownership</h2>
             <p style="margin-top: 20px;">Artists must own their masters and their data. The current system often forces creators to lease their own work back from tech companies. We're building toward full sovereignty where artists control their own distribution and narratives, free from corporate ownership.</p>
         </div>

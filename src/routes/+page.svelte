@@ -9,10 +9,10 @@
 
     let selectedAttendee = $state(null);
     
-    // Ticker Logic - simplified for the new component
-    const streamCount = 1450221161; // The value to display
+    // Ticker Logic - Use live total from server or fallback to 0
+    const streamCount = $derived(data.totalStreams || 0); 
     let showTooltip = $state(false);
-    const progressWidth = (streamCount / 50000000000) * 100;
+    const progressWidth = $derived((streamCount / 50000000000) * 100);
 
     // Set initial selection
     $effect(() => {
@@ -105,11 +105,6 @@
     </div>
     <div class="directive-item">
         <span class="directive-number">03.</span>
-        <h3>Artist safety net</h3>
-        <p>Artists lack basic labor protections. We're organizing to secure a percentage of platform revenue for a collective fund providing healthcare and mental health support.</p>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">04.</span>
         <h3>AI consent</h3>
         <p>We require explicit, opt-in consent and fair pay for any use of artist likeness or creations to train AI models. We will not allow corporate algorithms to appropriate our work.</p>
     </div>

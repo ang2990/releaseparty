@@ -718,6 +718,11 @@ nav {
     outline-offset: -4px; /* Draw outline inside to keep grid alignment */
 }
 
+.destination-card.no-link:hover {
+    outline: none; /* No hover state for non-links */
+    cursor: default;
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;

@@ -15,7 +15,7 @@
     <div class="ticket-stamp">ATTENDING</div>
     
     <div class="ticket-data">
-        <div class="font-mono ticket-id-line">PASSENGER_ID: #{id}</div>
+        <div class="font-mono ticket-id-line">GUEST_ID: #{id}</div>
         <h2 class="ticket-name-display">{name}</h2>
         
         <div class="ticket-stats-grid">
@@ -24,7 +24,7 @@
                 <span class="stat-value">{role}</span>
             </div>
             <div class="stat-box">
-                <span class="stat-label">2025_STREAMS</span>
+                <span class="stat-label">{role === 'LISTENER' ? 'MONTHLY_PLEDGE' : '2025_STREAMS'}</span>
                 <span class="stat-value text-accent">{streams}</span>
             </div>
             <div class="stat-box">

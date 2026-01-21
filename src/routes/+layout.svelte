@@ -162,9 +162,8 @@
         <div class="grid-item">
             <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="javascript:void(0)" class="nav-link nav-link-footer">Instagram</a>
-                <a href="javascript:void(0)" class="nav-link nav-link-footer">Twitter / X</a>
-                <a href="javascript:void(0)" class="nav-link nav-link-footer">Mastodon</a>
+                <a href="https://instagram.com/releaseparty.music" target="_blank" class="nav-link nav-link-footer">Instagram</a>
+                <a href="https://twitter.com/releaseparty" target="_blank" class="nav-link nav-link-footer">Twitter / X</a>
             </div>
         </div>
     </footer>
@@ -205,9 +204,37 @@
                         <input type="text" id="modal-name" name="name" placeholder="Name" required>
                     </div>
 
+                    {#if modalRole === 'LISTENER'}
+                        <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="modal-anon" name="anonymous" style="width: auto; margin: 0;">
+                            <label for="modal-anon" style="opacity: 1; margin: 0; cursor: pointer;">Sign up anonymously</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="modal-plan">Monthly Subscription</label>
+                            <select id="modal-plan" name="subscription" required style="background: transparent; border: none; border-bottom: 2px solid var(--text-color); color: var(--text-color); padding: 8px 0; font-family: var(--font-main); font-size: 1.1rem; font-weight: 700; outline: none; width: 100%; appearance: none; border-radius: 0;">
+                                <option value="Premium Individual">Premium Individual ($12.99/mo)</option>
+                                <option value="Premium Duo">Premium Duo ($18.99/mo)</option>
+                                <option value="Premium Family">Premium Family ($21.99/mo)</option>
+                                <option value="Premium Student">Premium Student ($6.99/mo)</option>
+                                <option value="Free">Free / Ad-supported ($0)</option>
+                            </select>
+                        </div>
+                    {/if}
+
                     {#if modalRole === 'ARTIST'}
                         <div class="form-group">
-                            <label for="modal-streams">2025 total streams (estimate)</label>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <label for="modal-streams">2025 total streams (estimate)</label>
+                                <div class="help-tooltip-trigger">?
+                                    <div class="help-tooltip">
+                                        <strong>How to find this:</strong><br>
+                                        • Check "Spotify for Artists" dashboard<br>
+                                        • Look at your DistroKid/TuneCore bank totals<br>
+                                        • Review your PRO (ASCAP/BMI) statements
+                                    </div>
+                                </div>
+                            </div>
                             <input type="number" id="modal-streams" name="streams" placeholder="0" min="0">
                         </div>
                     {/if}
@@ -318,5 +345,59 @@
 
     .modal-form input[type="radio"]:checked::before {
         transform: scale(1);
+    }
+
+    /* Help Tooltip Styles */
+    .help-tooltip-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background: var(--text-color);
+        color: var(--bg-color);
+        border-radius: 50%;
+        font-family: var(--font-main);
+        font-size: 10px;
+        font-weight: 900;
+        cursor: help;
+        position: relative;
+    }
+
+    .help-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        width: 240px;
+        background: var(--text-color);
+        color: var(--bg-color);
+        padding: 15px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        z-index: 100;
+        pointer-events: none;
+        border: 1px solid var(--accent-color);
+    }
+
+    .help-tooltip-trigger:hover .help-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .help-tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--text-color) transparent transparent transparent;
     }
 </style>
