@@ -112,38 +112,6 @@
                     </div>
                 </a>
 
-                <!-- RESONATE -->
-                <a href="https://resonate.coop" target="_blank" class="destination-card">
-                    <div class="card-header">
-                        <div class="header-group">
-                            <span class="label">Type</span>
-                            <span class="value">Co-op</span>
-                        </div>
-                        <div class="header-group align-right">
-                            <span class="label">Status</span>
-                            <span class="value">Recommended</span>
-                        </div>
-                    </div>
-                    <h3 class="card-title">Resonate</h3>
-                    <div class="card-specs">
-                        <div class="spec-row">
-                            <span>Model</span>
-                            <span>Stream-to-own</span>
-                        </div>
-                        <div class="spec-row">
-                            <span>Ownership</span>
-                            <span>Member-owned</span>
-                        </div>
-                        <div class="spec-row">
-                            <span>Payment</span>
-                            <span>User-centric</span>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        Join co-op <span>&nearr;</span>
-                    </div>
-                </a>
-
                 <!-- TIDAL -->
                 <a href="https://tidal.com" target="_blank" class="destination-card">
                     <div class="card-header">

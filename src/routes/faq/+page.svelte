@@ -29,7 +29,7 @@
             <h2 class="text-large" style="margin-bottom: 20px;">Where are we going?</h2>
             <div class="qa-content">
                 <p>To be honest there is no clear answer. Artists have been left out of the conversation for far too long but we’re taking control imagining how our art can exist in the world uninhibited. We are moving to infrastructure that prioritizes artist ownership, direct payments, and ethical transparency. This isn't just about one competitor; it's about a diverse ecosystem of tools.</p>
-                <p>Our "Alternatives" protocol recommends platforms like subvert.fm (for direct sales), Resonate (a stream-to-own co-op), and others that adhere to our core principles. See the full <a href="/exodus" class="text-accent" style="text-decoration: underline;">Alternatives</a> page for the vetted list.</p>
+                <p>Our "Alternatives" protocol recommends platforms like subvert.fm (for direct sales), Qobuz (for high-res acquisition), and others that adhere to our core principles. See the full <a href="/exodus" class="text-accent" style="text-decoration: underline;">Alternatives</a> page for the vetted list.</p>
             </div>
         </div>
         <div class="grid-item-nopad sidebar-cell">
