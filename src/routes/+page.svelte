@@ -34,9 +34,9 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">We are leaving <span class="text-accent">Spotify.</span></h1>
+        <h1 class="text-huge">READY TO DITCH SPOTIFY? <span class="text-accent">LET’S LEAVE TOGETHER.</span></h1>
         <p class="hero-notice-text">
-            Major streaming platforms have built an industry that prioritizes corporate growth over creators and listeners. We're organizing a mass exit to secure direct control over our music and secure fair pay.
+            We are building a coalition of artists and listeners to coordinate a mass exodus. We aren’t leaving alone; we are leaving together. When we hit our target, we cut ties with the extraction economy and move to a future that values art.
         </p>
     </div>
 </div>
@@ -67,16 +67,14 @@
         
         <div class="progress-container">
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
-            <div class="progress-overlay-text">When we hit 50 billion streams we’re leaving Spotify.</div>
         </div>
     </div>
 </div>
-
 <!-- CALL TO ACTION & EXPLAINER (Moved here) -->
 <div class="grid-row grid-2-col">
     <div class="grid-item">
-        <h2 class="text-large">We’re uniting artists to demand a new reality in music.</h2>
-        <p style="margin-top: 20px;">When we hit our target, we move our music to fairer infrastructure. Pledge your streams and support to break free from the boring world they’ve built.</p>
+        <h2 class="text-large">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
+        <p style="margin-top: 20px;">The current streaming model is designed to extract value, not support art. We are building leverage to break the monopoly and move our culture to platforms that sustain us. We demand fair pay, ethical standards, and direct control over our future.</p>
     </div>
     
     <div class="grid-item" style="justify-content: center;">
@@ -95,18 +93,28 @@
     </div>
     <div class="directive-item">
         <span class="directive-number">01.</span>
-        <h3>User-centric payments</h3>
-        <p>Current models pool subscription fees and distribute them based on platform totals. We're forcing a move toward systems where your money goes directly to the artists you actually listen to.</p>
+        <h3>Fair Pay</h3>
+        <p>We demand User-Centric Payments: a system where your subscription fee goes directly to the artists you actually listen to. We need a model that rewards fan dedication, not passive volume. Spotify’s current average of $0.003 per stream is unconscionable.</p>
     </div>
     <div class="directive-item">
         <span class="directive-number">02.</span>
-        <h3>Ethical divestment</h3>
-        <p>We demand that platforms stop investing music revenue in military technology and surveillance. This move is a direct action to stop funding systemic harm with our art.</p>
+        <h3>Ethical Infrastructure</h3>
+        <p>Music shouldn’t fund war. We demand platforms divest revenue from military technology and surveillance. We refuse to let our art fund the war machine.</p>
     </div>
     <div class="directive-item">
         <span class="directive-number">03.</span>
-        <h3>AI consent</h3>
-        <p>We require explicit, opt-in consent and fair pay for any use of artist likeness or creations to train AI models. We will not allow corporate algorithms to appropriate our work.</p>
+        <h3>AI Consent</h3>
+        <p>Technology should serve the artist, not replace them. We demand strict protections against generative AI training on our catalogs without permission and compensation.</p>
+    </div>
+    <div class="directive-item">
+        <span class="directive-number">04.</span>
+        <h3>Data Sovereignty</h3>
+        <p>Corporate platforms shouldn’t be gatekeepers between artists and fans. Artists and listeners deserve full transparency on all data. We demand the right to take our fanbase with us if we leave.</p>
+    </div>
+    <div class="directive-item">
+        <span class="directive-number">05.</span>
+        <h3>Platforms for People</h3>
+        <p>We need platforms built for connection, not consumption. We reject the “lean back” model of algorithmic wallpaper that promotes and profits off of ghost artists and AI slop.</p>
     </div>
 </div>
 
