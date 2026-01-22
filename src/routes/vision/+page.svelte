@@ -12,7 +12,7 @@
         <div class="directive-item">
             <span class="text-accent text-large">01.</span>
             <h2 class="text-large">Fair Pay</h2>
-            <p style="margin-top: 20px;">We demand User-Centric Payments: a system where your subscription fee goes directly to the artists you actually listen to. We need a model that rewards fan dedication, not passive volume. Spotify’s current average of $0.003 per stream is unconscionable.</p>
+            <p style="margin-top: 20px;">We demand User-Centric Payments: a system where your subscription fee goes directly to the artists you actually listen to. We need a model that rewards fan dedication, not passive volume. Spotify’s current average of $0.003 per stream is unconscionable. It would take 1,200 streams to buy a single cup of coffee.</p>
         </div>
         <div class="directive-item">
             <span class="text-accent text-large">02.</span>
