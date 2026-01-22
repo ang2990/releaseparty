@@ -22,8 +22,9 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             'Cache-Control': 'public, max-age=0'
         });
 
-        // Calculate total streams
+        // Calculate total streams and revenue
         let totalStreams = 0;
+        let totalListenerValue = 0;
 
         const attendees = data.map((row: any, index: number) => {
             // Robust extraction logic
@@ -45,6 +46,7 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             const role = getValue(['role', 'test_listener', 'type'], 'LISTENER').toUpperCase();
             const streamsStr = getValue(['streams', 'count', 'pledge'], '---');
             const subscriptionStr = getValue(['subscription', 'plan'], 'Unknown Plan');
+            const monthlyAmountStr = getValue(['monthly_amount', 'monthly amount', 'cost'], '');
 
             let formattedDisplay = streamsStr;
 
@@ -53,6 +55,15 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
                 const count = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
                 totalStreams += count;
             } else if (role === 'LISTENER') {
+                // Calculate revenue
+                let val = parseFloat(monthlyAmountStr);
+                if (isNaN(val)) {
+                    val = parseFloat(streamsStr.replace(/[^0-9.]/g, ''));
+                }
+                if (!isNaN(val)) {
+                    totalListenerValue += val;
+                }
+
                 // Display: Use subscription plan name
                 formattedDisplay = subscriptionStr !== 'Unknown Plan' ? subscriptionStr : streamsStr;
             }
@@ -69,7 +80,8 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
         // For the home page, maybe just return the first 5-8 latest entries
         return {
             attendees: attendees.reverse().slice(0, 8),
-            totalStreams
+            totalStreams,
+            totalListenerValue
         };
     } catch (err) {
         console.error('Error loading guest list for home:', err);

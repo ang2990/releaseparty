@@ -10,7 +10,9 @@
     let selectedAttendee = $state(null);
     
     // Ticker Logic - Use live total from server or fallback to 0
-    const streamCount = $derived(data.totalStreams || 0); 
+    const streamCount = $derived(data.totalStreams || 0);
+    const revenueCount = $derived(Math.floor((data.totalListenerValue || 0) * 12));
+    
     let showTooltip = $state(false);
     const progressWidth = $derived((streamCount / 50000000000) * 100);
 
@@ -34,24 +36,27 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">READY TO DITCH SPOTIFY? <span class="text-accent">JOIN US.</span></h1>
+        <h1 class="text-huge">We are leaving <span class="text-accent">Spotify</span> together. <br>Join the pact.</h1>
         <p class="hero-notice-text">
-            We aren’t leaving alone; we are building a coalition of artists and listeners to coordinate a mass exodus. When we hit our target, we cut ties with the extraction economy and move to a future that values art.
+            We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
     </div>
 </div>
 
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
-    <div class="hero-counter-box" style="border-right: none; width: 100%;">
+    <div class="hero-counter-box" style="border-right: none; width: 100%; gap: 60px; padding: 80px 20px;">
+        
+        <!-- STREAMS PLEDGED -->
         <div 
-            style="position: relative; display: inline-block;"
+            style="position: relative; display: flex; flex-direction: column; align-items: center;"
             onmouseenter={() => showTooltip = true}
             onmouseleave={() => showTooltip = false}
             role="region"
             aria-label="Live stream count"
         >
             <Ticker value={streamCount} />
+            <div class="progress-label" style="margin-top: 20px;">STREAMS TO BE REMOVED</div>
             
             <div class="tooltip" class:visible={showTooltip}>
                 <div class="tooltip-header">Source: Verified 2024 data</div>
@@ -63,68 +68,49 @@
             </div>
         </div>
 
-        <div class="progress-label">Streams pledged</div>
-        
-        <div class="progress-container">
+        <!-- REVENUE CANCELLED -->
+        <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="text-accent" style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.5rem, 8vw, 10rem); line-height: 0.9;">$</span>
+                <Ticker value={revenueCount} />
+            </div>
+            <div class="progress-label" style="margin-top: 20px;">ANNUAL REVENUE TO BE CANCELLED</div>
+        </div>
+
+        <!-- PROGRESS BAR (Global) -->
+        <div class="progress-container" style="margin-top: 40px;">
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
         </div>
     </div>
 </div>
-<!-- CALL TO ACTION & EXPLAINER (Moved here) -->
-<div class="grid-row grid-2-col">
-    <div class="grid-item">
+
+<!-- MAIN CTA BUTTON -->
+<div class="grid-row">
+    <div class="grid-item" style="border-bottom: none; align-items: center; padding: 60px 40px;">
+        <button class="btn" style="width: auto; padding: 25px 60px; font-size: 1.2rem;" onclick={() => openModal()}>
+            Make it official. [ Join the Pact ]
+        </button>
+    </div>
+</div>
+
+<!-- MANIFESTO SECTION (Combined Vision) -->
+<div class="grid-row">
+    <div class="grid-item" style="padding: 80px 40px;">
         <h2 class="text-large">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
-        <p style="margin-top: 20px;">The current streaming model is designed to extract value, not support art. We are building leverage to break the monopoly and move our culture to platforms that sustain us. We demand fair pay, ethical standards, and direct control over our future.</p>
-    </div>
-    
-    <div class="grid-item" style="justify-content: center;">
-        <h2 class="text-large" style="margin-bottom: 30px; text-transform: uppercase;">Will you join us?</h2>
-        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-            <button class="btn" onclick={() => openModal('ARTIST')}>I am an artist (Pledge streams)</button>
-            <button class="btn btn-outline" onclick={() => openModal('LISTENER')}>I am a listener (Pledge support)</button>
-        </div>
+        <p style="margin-top: 30px; font-size: 1.5rem; line-height: 1.4; max-width: 45ch;">
+            The current streaming model is designed to extract value, not support art. We demand fair pay, ethical standards, and direct control over our future.
+        </p>
+        <a href="/vision" class="nav-link" style="margin-top: 40px; display: inline-block; font-size: 1.2rem;">Read the full demands &rarr;</a>
     </div>
 </div>
 
-<!-- DIRECTIVE GRID -->
-<div class="directive-grid">
-    <div class="directive-item" style="border-bottom: none; justify-content: center;">
-        <a href="/vision" class="nav-link"><h2 class="text-huge" style="line-height: 0.8;">The<br>vision</h2></a>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">01.</span>
-        <h3>Fair Pay</h3>
-        <p>We demand User-Centric Payments: a system where your subscription fee goes directly to the artists you actually listen to. We need a model that rewards fan dedication, not passive volume. Spotify’s current average of $0.003 per stream is unconscionable. It would take 1,200 streams to buy a single cup of coffee.</p>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">02.</span>
-        <h3>Ethical Infrastructure</h3>
-        <p>Music shouldn’t fund war. We demand platforms divest revenue from military technology and surveillance. We refuse to let our art fund the war machine.</p>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">03.</span>
-        <h3>AI Consent</h3>
-        <p>Technology should serve the artist, not replace them. We demand strict protections against generative AI training on our catalogs without permission and compensation.</p>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">04.</span>
-        <h3>Data Sovereignty</h3>
-        <p>Corporate platforms shouldn’t be gatekeepers between artists and fans. Artists and listeners deserve full transparency on all data. We demand the right to take our fanbase with us if we leave.</p>
-    </div>
-    <div class="directive-item">
-        <span class="directive-number">05.</span>
-        <h3>Platforms for People</h3>
-        <p>We need platforms built for connection, not consumption. We reject the “lean back” model of algorithmic wallpaper that promotes and profits off of ghost artists and AI slop.</p>
-    </div>
-</div>
-
-<!-- GUEST LIST -->
+<!-- WHO'S JOINING (Guest List) -->
 <div class="grid-row grid-sidebar" id="guestlist">
     <div class="grid-item" style="background: var(--bg-color); display: flex; flex-direction: column; height: 100%;">
         <div class="attendee-header">
             <div>
-                <a href="/guest-list" class="nav-link"><h2 class="text-large">Guest list &rarr;</h2></a>
-                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified joining artists</p>
+                <a href="/guest-list" class="nav-link"><h2 class="text-large">Who’s Joining</h2></a>
+                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified Coalition Members</p>
             </div>
             <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">Full list -></a>
         </div>

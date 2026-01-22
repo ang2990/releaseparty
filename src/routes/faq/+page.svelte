@@ -53,6 +53,18 @@
         </div>
     </div>
 
+    <!-- Q+A ITEM: CONTRACTS / ETHICAL RIDER -->
+    <div class="grid-row">
+        <div class="grid-item">
+            <h2 class="text-large" style="margin-bottom: 20px;">My contract doesn't allow me to remove my music. What can I do?</h2>
+            <div class="qa-content">
+                <p>You are not alone. Most recording contracts were written to lock you in, granting the label perpetual control over distribution. But contracts are renegotiated every day.</p>
+                <p>We have created the <a href="/resources" class="text-accent" style="text-decoration: underline;">"Ethical Distribution Rider"</a>—a standard legal addendum you can attach to your next deal (or use in your next renegotiation). It explicitly grants you the right to issue a "Moral Objection" and withdraw your catalog from any platform that invests in warfare, violates human rights, or devalues your labor.</p>
+                <p>If every artist commits to including this rider, we change the industry standard. We move from "permission" to power. Download it, send it to your lawyer, and make it a non-negotiable term for your future.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Q+A ITEM: EXPOSURE -->
     <div class="grid-row">
         <div class="grid-item">

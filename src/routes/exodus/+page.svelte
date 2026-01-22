@@ -235,6 +235,14 @@
                     </div>
                     <p>Purchasing directly from an artist's website or Bandcamp page ensures they keep the maximum share of the profit, bypassing middleman fees.</p>
                 </div>
+
+                <div class="action-row">
+                    <div class="action-header">
+                        <span class="font-mono text-accent">[05]</span>
+                        <h3>Join UMAW</h3>
+                    </div>
+                    <p>The Union of Musicians and Allied Workers is organizing for a more just music industry. Join the collective fight for fair pay and artist rights.</p>
+                </div>
             </div>
         </div>
     </div>
