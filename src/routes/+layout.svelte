@@ -211,7 +211,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="modal-plan">Monthly Subscription</label>
+                            <label for="modal-plan">What is your current Spotify subscription?</label>
                             <select id="modal-plan" name="subscription" required style="background: transparent; border: none; border-bottom: 2px solid var(--text-color); color: var(--text-color); padding: 8px 0; font-family: var(--font-main); font-size: 1.1rem; font-weight: 700; outline: none; width: 100%; appearance: none; border-radius: 0;">
                                 <option value="Premium Individual">Premium Individual ($12.99/mo)</option>
                                 <option value="Premium Duo">Premium Duo ($18.99/mo)</option>
@@ -240,14 +240,25 @@
                     {/if}
 
                     <div class="form-group">
-                        <label for="modal-email">Email</label>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <label for="modal-email">Email</label>
+                            <div class="help-tooltip-trigger">?
+                                <div class="help-tooltip">
+                                    <strong>How we use this:</strong><br>
+                                    • We will send a one-time confirmation.<br>
+                                    • We will email you once our goal is reached with secure next steps.
+                                </div>
+                            </div>
+                        </div>
                         <input type="email" id="modal-email" name="email" placeholder="Email" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="modal-link">Link (Portfolio / social)</label>
-                        <input type="text" id="modal-link" name="link" placeholder="https://...">
-                    </div>
+                    {#if modalRole === 'ARTIST'}
+                        <div class="form-group">
+                            <label for="modal-link">Link (Portfolio / social)</label>
+                            <input type="text" id="modal-link" name="link" placeholder="https://...">
+                        </div>
+                    {/if}
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
                         {modalSubmitting ? 'Transmitting...' : 'RSVP'}

@@ -10,21 +10,40 @@
         </div>
     </div>
 
+    <!-- Q+A ITEM: WHO ARE WE? -->
+    <div class="grid-row">
+        <div class="grid-item">
+            <h2 class="text-large" style="margin-bottom: 20px;">Who are we?</h2>
+            <div class="qa-content">
+                <p>We are a collective of musicians and music lovers who realized that waiting for the billionaires to grow a conscience is a losing strategy. We are artists who refuse to be “content providers” and a coalition of listeners who are not ready to resign ourselves to feeding a machine that gives nothing back. We are designing the exit strategy and building the alternative we’ve been waiting for.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Q+A ITEM: WHY SPOTIFY? -->
-    <div class="grid-row grid-sidebar">
+    <div class="grid-row">
         <div class="grid-item">
             <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
             <div class="qa-content">
                 <p>Spotify is the architect of the current streaming paradigm. Other companies like Apple, YouTube, and Amazon don’t rely on their streaming services to support their business. Spotify is the achilles heel of the music industry. If we break their hold, we break the model.</p>
             </div>
         </div>
-        <div class="grid-item-nopad sidebar-cell sidebar-dark">
-            <div style="font-family: 'Courier New', monospace; font-weight: 700;">// TARGET_PRIMARY</div>
+    </div>
+
+    <!-- Q+A ITEM: WHY WAIT? -->
+    <div class="grid-row">
+        <div class="grid-item">
+            <h2 class="text-large" style="margin-bottom: 20px;">Why wait?</h2>
+            <div class="qa-content">
+                <p>By gathering our leverage first, we flip the power dynamic. The platforms need us. We don't need them. We prove that by moving together.</p>
+                <p>If one artist leaves Spotify today, they lose their income and the platform feels nothing. But if a mass of artists and listeners leave on the exact same day, we create a financial and cultural shockwave that cannot be ignored.</p>
+                <p>We are not "waiting"; we are building. Every stream pledged to the ticker is a vote of no confidence. It is a digital union card.</p>
+            </div>
         </div>
     </div>
 
     <!-- Q+A ITEM: WHERE ARE WE GOING? -->
-    <div class="grid-row grid-sidebar">
+    <div class="grid-row">
         <div class="grid-item">
             <h2 class="text-large" style="margin-bottom: 20px;">Where are we going?</h2>
             <div class="qa-content">
@@ -32,18 +51,10 @@
                 <p>Our "Alternatives" protocol recommends platforms like subvert.fm (for direct sales), Qobuz (for high-res acquisition), and others that adhere to our core principles. See the full <a href="/exodus" class="text-accent" style="text-decoration: underline;">Alternatives</a> page for the vetted list.</p>
             </div>
         </div>
-        <div class="grid-item-nopad sidebar-cell">
-             <div class="sidebar-list">
-                <div>[01] DIRECT_SALES</div>
-                <div>[02] COOPERATIVES</div>
-                <div>[03] P2P_PROTOCOLS</div>
-                <div>[04] ETHICAL_STREAMS</div>
-             </div>
-        </div>
     </div>
 
     <!-- Q+A ITEM: EXPOSURE -->
-    <div class="grid-row grid-sidebar">
+    <div class="grid-row">
         <div class="grid-item">
             <h2 class="text-large" style="margin-bottom: 20px;">Won’t I lose my exposure and audience if I leave?</h2>
             <div class="qa-content">
@@ -51,30 +62,10 @@
                 <p>By moving, you may lose passive algorithmic plays, but you will gain a deeper connection with active supporters who follow you to new platforms. 1,000 true fans on Bandcamp are worth more than 100,000 passive streams on Spotify. This is a shift from quantity to quality, and from dependence to sovereignty.</p>
             </div>
         </div>
-        <div class="grid-item-nopad sidebar-cell">
-             <div class="sidebar-data">
-                <div class="data-row">
-                    <span>PASSIVE_REACH</span>
-                    <span>HIGH</span>
-                </div>
-                <div class="data-row">
-                    <span>VALUE</span>
-                    <span>LOW</span>
-                </div>
-                <div class="data-row" style="margin-top: 20px;">
-                    <span>ACTIVE_REACH</span>
-                    <span>LOW</span>
-                </div>
-                <div class="data-row">
-                    <span>VALUE</span>
-                    <span>HIGH</span>
-                </div>
-             </div>
-        </div>
     </div>
 
     <!-- Q+A ITEM: STREAMS -->
-    <div class="grid-row grid-sidebar">
+    <div class="grid-row">
         <div class="grid-item" style="border-bottom: none;">
             <h2 class="text-large" style="margin-bottom: 20px;">How do I find my total streams from last year?</h2>
             <div class="qa-content">
@@ -87,18 +78,13 @@
                 <p>Estimates are acceptable for the pledge. The goal is to show collective leverage.</p>
             </div>
         </div>
-        <div class="grid-item-nopad sidebar-cell" style="border-bottom: none;">
-             <div class="sidebar-list">
-                <div>> DISTRIBUTOR_LOGS</div>
-                <div>> ROYALTY_STMTS</div>
-                <div>> SPOTIFY_4_ARTISTS</div>
-                <div>> ESTIMATES_OK</div>
-             </div>
-        </div>
     </div>
 </div>
 
 <style>
+    .qa-content {
+        max-width: 800px; /* Optimal reading width */
+    }
     .qa-content p {
         margin-bottom: 20px;
         line-height: 1.6;
@@ -107,48 +93,5 @@
     .qa-content ul li {
         margin-bottom: 10px;
         opacity: 0.9;
-    }
-
-    /* Sidebar Data Styles */
-    .sidebar-cell {
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        min-height: 250px; /* Ensure height on desktop */
-    }
-
-    .sidebar-dark {
-        background: var(--text-color);
-        color: var(--bg-color);
-    }
-
-    .sidebar-data, .sidebar-list {
-        font-family: 'Courier New', monospace;
-        font-weight: 700;
-        font-size: 0.9rem;
-        width: 100%;
-    }
-
-    .data-row {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid currentColor;
-        padding: 8px 0;
-    }
-
-    .sidebar-list div {
-        margin-bottom: 10px;
-        opacity: 0.8;
-    }
-
-    @media(max-width: 900px) {
-        .sidebar-cell {
-            padding: 30px;
-            min-height: auto; /* Let it shrink on mobile */
-            border-bottom: 2px solid var(--line-color);
-        }
     }
 </style>

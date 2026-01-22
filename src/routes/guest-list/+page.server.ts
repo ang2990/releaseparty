@@ -43,31 +43,33 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             const name = getValue(['name', 'artist', 'gemini test'], 'Unknown');
             const role = getValue(['role', 'test_listener', 'type'], 'LISTENER').toUpperCase();
             const streamsStr = getValue(['streams', 'count', 'pledge'], '---');
+            const subscriptionStr = getValue(['subscription', 'plan'], 'Unknown Plan');
             const monthlyAmountStr = getValue(['monthly_amount', 'monthly amount', 'cost'], '');
 
-            let formattedStreams = streamsStr;
+            let formattedDisplay = streamsStr;
             
             // Format logic based on role
             if (role === 'LISTENER') {
-                // Prioritize the explicit monthly_amount if available
+                // Calculation: Use monthly_amount
                 let val = parseFloat(monthlyAmountStr);
-                
-                // Fallback to parsing streams string if monthly_amount is missing
                 if (isNaN(val)) {
+                    // Fallback to parsing streams string if monthly_amount is missing
                     val = parseFloat(streamsStr.replace(/[^0-9.]/g, ''));
                 }
 
                 if (!isNaN(val)) {
                     totalListenerValue += val;
-                    formattedStreams = `$${val.toFixed(2)}/mo`;
                 }
+
+                // Display: Use subscription plan name
+                formattedDisplay = subscriptionStr !== 'Unknown Plan' ? subscriptionStr : streamsStr;
             }
 
             return {
                 id: (index + 1).toString().padStart(3, '0'),
                 name: name,
                 role: role,
-                streams: formattedStreams,
+                streams: formattedDisplay,
                 isAccent: role === 'ARTIST'
             };
         });

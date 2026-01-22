@@ -34,9 +34,9 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">READY TO DITCH SPOTIFY? <span class="text-accent">LET’S LEAVE TOGETHER.</span></h1>
+        <h1 class="text-huge">READY TO DITCH SPOTIFY? <span class="text-accent">JOIN US.</span></h1>
         <p class="hero-notice-text">
-            We are building a coalition of artists and listeners to coordinate a mass exodus. We aren’t leaving alone; we are leaving together. When we hit our target, we cut ties with the extraction economy and move to a future that values art.
+            We aren’t leaving alone; we are building a coalition of artists and listeners to coordinate a mass exodus. When we hit our target, we cut ties with the extraction economy and move to a future that values art.
         </p>
     </div>
 </div>

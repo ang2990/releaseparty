@@ -45,7 +45,7 @@
                         <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Live registry sync</p>
                         <!-- Withheld Amount Meter -->
                         <div class="financial-meter">
-                            <span class="label">Monthly withheld:</span>
+                            <span class="label">Listener Total Withheld:</span>
                             <span class="value">${listenerValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                         </div>
                     </div>

@@ -26,37 +26,28 @@
         </div>
         <div class="grid-row">
             <div class="grid-item">
-                <h2 class="text-large">Pro Musik study</h2>
-                <p style="margin-top: 20px;">The 2023 Pro Musik Study analyzes the impact of user-centric payment models. The research found that almost 20% of artists would see their streaming income double under this system. It provides data-backed evidence for why we're pushing for change.</p>
-                <a href="Payment Option Study.pdf" class="btn" style="margin-top: 20px;">Read the study &darr;</a>
-            </div>
-        </div>
-
-        <!-- NEW READING LIST SECTION -->
-        <div class="grid-row">
-            <div class="grid-item">
                 <h2 class="text-large">Reading list</h2>
                 <div class="reading-list" style="margin-top: 40px;">
-                    <div class="reading-item">
+                    <a href="https://greenlightbookstore.com/book/9781668083505" target="_blank" class="reading-item">
                         <span class="font-mono">"Mood Machine"</span>
                         <span class="text-accent">— Liz Pelly</span>
-                    </div>
-                    <div class="reading-item">
+                    </a>
+                    <a href="https://www.ucpress.edu/books/derivative-media/paper" target="_blank" class="reading-item">
                         <span class="font-mono">"Derivative Media"</span>
                         <span class="text-accent">— Andrew DeWaard</span>
-                    </div>
-                    <div class="reading-item">
+                    </a>
+                    <a href="https://paymentoptiontransparency.com/pdfs/en-US/Payment%20Option%20Study.pdf" target="_blank" class="reading-item">
                         <span class="font-mono">"Payment Option Transparency"</span>
                         <span class="text-accent">— The Pro Musik Study</span>
-                    </div>
-                    <div class="reading-item">
+                    </a>
+                    <a href="https://impalamusic.org/wp-content/uploads/2025/06/Combating-the-Emergence-of-a-Two-Tier-Industry-for-release.pdf" target="_blank" class="reading-item">
                         <span class="font-mono">"Combating the Emergence of a Two-Tier Music Streaming Market"</span>
                         <span class="text-accent">— IMPALA Report</span>
-                    </div>
-                    <div class="reading-item">
+                    </a>
+                    <a href="https://www.mediekultur.dk/article/view/121216" target="_blank" class="reading-item">
                         <span class="font-mono">"Datafication and the Push for Ubiquitous Listening"</span>
                         <span class="text-accent">— Rasmus Rex Pedersen</span>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -75,6 +66,12 @@
         border-bottom: 1px solid rgba(0,0,0,0.1);
         font-size: 1.1rem;
         font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+    .reading-item:hover {
+        opacity: 0.6;
+        border-bottom-color: var(--accent-color);
     }
     @media(max-width: 900px) {
         .reading-item {

@@ -57,7 +57,7 @@
                     <div class="card-header">
                         <div class="header-group">
                             <span class="label">Type</span>
-                            <span class="value">Community</span>
+                            <span class="value">Co-Op</span>
                         </div>
                         <div class="header-group align-right">
                             <span class="label">Status</span>

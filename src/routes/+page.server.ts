@@ -44,18 +44,24 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
             const name = getValue(['name', 'artist', 'gemini test'], 'Unknown');
             const role = getValue(['role', 'test_listener', 'type'], 'LISTENER').toUpperCase();
             const streamsStr = getValue(['streams', 'count', 'pledge'], '---');
+            const subscriptionStr = getValue(['subscription', 'plan'], 'Unknown Plan');
+
+            let formattedDisplay = streamsStr;
 
             // Add to total if artist
             if (role === 'ARTIST') {
                 const count = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
                 totalStreams += count;
+            } else if (role === 'LISTENER') {
+                // Display: Use subscription plan name
+                formattedDisplay = subscriptionStr !== 'Unknown Plan' ? subscriptionStr : streamsStr;
             }
 
             return {
                 id: (index + 1).toString().padStart(3, '0'),
                 name: name,
                 role: role,
-                streams: streamsStr,
+                streams: formattedDisplay,
                 isAccent: role === 'ARTIST'
             };
         });
