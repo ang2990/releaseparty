@@ -7,9 +7,6 @@
 	let { value = 0, size = 'large', prefix = '' } = $props();
 	const numDigits = 11; 
 
-	// We'll store the display items as an array of strings (digits or commas)
-	let displayItems = $state([]);
-
 	const formatNumber = (num) => {
 		// Pad with leading zeros first
 		const padded = num.toString().padStart(numDigits, '0');
@@ -17,18 +14,28 @@
 		return padded.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	};
 
+    // Initialize state immediately for SSR
+    const getItems = (val, pre) => {
+        const formatted = formatNumber(val);
+        const p = pre || '';
+        return [p, ...formatted.split('')];
+    };
+
+	let displayItems = $state(getItems(value, prefix));
+
 	onMount(() => {
-		// Initial random state (digits only for chaos effect)
-		const randomDigits = Array(numDigits + 3) // Approx length with commas
+		// Initial random state (digits only for chaos effect) - Client side only
+		const randomDigits = Array(numDigits + 3)
 			.fill(0)
 			.map(() => Math.floor(Math.random() * 10));
         
-        displayItems = [prefix, ...randomDigits]; // Start with prefix
+        // Temporarily show random digits for effect
+        const p = prefix || '';
+        displayItems = [p, ...randomDigits];
 
 		const timeoutId = setTimeout(() => {
-			const formatted = formatNumber(value);
-            const p = prefix || ''; 
-			displayItems = [p, ...formatted.split('')];
+            // Restore actual value
+			displayItems = getItems(value, prefix);
 		}, 100);
 
 		return () => clearTimeout(timeoutId);
@@ -36,9 +43,7 @@
 
     // Reactively update when value or prefix changes
     $effect(() => {
-        const formatted = formatNumber(value);
-        const p = prefix || '';
-        displayItems = [p, ...formatted.split('')];
+        displayItems = getItems(value, prefix);
     });
 </script>
 
