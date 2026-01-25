@@ -47,12 +47,17 @@
 </svelte:head>
 
 <!-- HERO SECTION (PUBLIC NOTICE) -->
-<div class="grid-row">
-    <div class="hero-title-box">
+<div class="grid-row grid-2-col">
+    <div class="hero-title-box" style="border-right: 2px solid var(--line-color);">
         <h1 class="text-huge">We are leaving <span class="text-accent">Spotify</span> together. <br>Join the pact.</h1>
         <p class="hero-notice-text">
             We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
+    </div>
+    <div class="grid-item" style="justify-content: center; align-items: center; background: var(--bg-color);">
+        <button class="btn" style="width: auto; padding: 30px 80px; font-size: 1.5rem;" onclick={() => openModal()}>
+            Join The Party
+        </button>
     </div>
 </div>
 
@@ -83,7 +88,7 @@
                         {tickerMode === 'STREAMS' ? 'STREAMS PLEDGED' : 'LISTENER REVENUE TO BE CANCELLED'}
                     </div>
                 </div>
-            {/key}
+            {#/key}
         </div>
 
         <!-- PROGRESS BAR (Global) -->
@@ -91,11 +96,6 @@
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
             <div class="progress-overlay-text">When we hit 50 billion streams, we leave.</div>
         </div>
-
-        <!-- JOIN BUTTON (Integrated) -->
-        <button class="btn" style="width: auto; padding: 20px 50px; font-size: 1.1rem; margin-top: 20px;" onclick={() => openModal()}>
-            Join The Party
-        </button>
     </div>
 </div>
 
