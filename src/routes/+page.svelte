@@ -27,7 +27,14 @@
     });
 
     let showTooltip = $state(false);
-    const progressWidth = $derived((streamCount / 50000000000) * 100);
+    // Dynamic Progress Logic
+    const progressWidth = $derived(
+        tickerMode === 'STREAMS' 
+            ? Math.max((streamCount / 50000000000) * 100, 1) // Min 1% for visibility
+            : Math.max((revenueCount / 50000000) * 100, 1)   // Min 1% for visibility
+    );
+
+    const progressText = $derived(
 
     // Set initial selection
     $effect(() => {
