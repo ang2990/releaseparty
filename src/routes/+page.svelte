@@ -27,18 +27,6 @@
     });
 
     let showTooltip = $state(false);
-    // Dynamic Progress Logic
-    const progressWidth = $derived(
-        tickerMode === 'STREAMS' 
-            ? Math.max((streamCount / 50000000000) * 100, 1) // Min 1% for visibility
-            : Math.max((revenueCount / 50000000) * 100, 1)   // Min 1% for visibility
-    );
-
-    const progressText = $derived(
-        tickerMode === 'STREAMS'
-            ? "When we hit 50 billion streams, we leave."
-            : "When we hit $50 million, we leave."
-    );
 
     // Set initial selection
     $effect(() => {
@@ -60,7 +48,7 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">We are leaving <span class="text-accent">Spotify</span> together. <br>Join the pact.</h1>
+        <h1 class="text-huge">WE ARE LEAVING <span class="text-accent">SPOTIFY</span> TOGETHER. <br>JOIN THE PARTY.</h1>
         <p class="hero-notice-text">
             We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
@@ -71,6 +59,23 @@
 <div class="grid-row">
     <div class="hero-counter-box" style="border-right: none; width: 100%; gap: 40px; padding: 80px 20px;">
         
+        <!-- CYCLING HEADER -->
+        <h3 class="text-large" style="text-align: center; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 0.2em; white-space: nowrap; font-size: clamp(1rem, 5vw, 3rem);">
+            <span>WHEN WE HIT</span>
+            <span style="display: grid; place-items: center; width: 15ch; position: relative; height: 1em;">
+                {#key tickerMode}
+                    <span 
+                        in:fly={{ y: 15, duration: 500, delay: 200, opacity: 0 }} 
+                        out:fly={{ y: -15, duration: 500, opacity: 0 }}
+                        style="color: var(--accent-color); position: absolute; width: 100%; text-align: center;"
+                    >
+                        {tickerMode === 'STREAMS' ? '50 BILLION STREAMS' : '50 MILLION DOLLARS'}
+                    </span>
+                {/key}
+            </span>
+            <span>WE LEAVE.</span>
+        </h3>
+
         <!-- CYCLING TICKER -->
         <div 
             style="position: relative; display: flex; flex-direction: column; align-items: center; min-height: 120px; justify-content: center;"
@@ -90,20 +95,14 @@
                         class="progress-label" 
                         style="position: absolute;"
                     >
-                        {tickerMode === 'STREAMS' ? 'STREAMS PLEDGED' : 'LISTENER REVENUE TO BE CANCELLED'}
+                        {tickerMode === 'STREAMS' ? 'Artist Streams Pledged to Be Removed' : 'Listener Dollars Pledged to be cancelled'}
                     </div>
                 {/key}
             </div>
         </div>
 
-        <!-- PROGRESS BAR (Global) -->
-        <div class="progress-container" style="margin-top: 10px;">
-            <div class="progress-bar" style="width: {progressWidth}%;"></div>
-            <div class="progress-overlay-text">When we hit 50 billion streams, we leave.</div>
-        </div>
-
         <!-- JOIN BUTTON (Integrated) -->
-        <button class="btn" style="width: auto; padding: 25px 80px; font-size: 1.5rem; margin-top: 20px;" onclick={() => openModal()}>
+        <button class="btn" style="width: auto; padding: 25px 80px; font-size: 1.5rem; margin-top: 20px; box-shadow: 10px 10px 0 var(--text-color);" onclick={() => openModal()}>
             Join The Party
         </button>
     </div>

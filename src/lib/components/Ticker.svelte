@@ -9,14 +9,13 @@
 
 	const formatNumber = (num) => {
 		// Pad with leading zeros first
-		const padded = num.toString().padStart(numDigits, '0');
-		// Add commas using regex
-		return padded.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return num.toString().padStart(numDigits, '0');
 	};
 
     const getItems = (val, pre) => {
         const formatted = formatNumber(val);
         const p = pre || '';
+        // Return prefix + digits (no commas in array)
         return [p, ...formatted.split('')];
     };
 
@@ -24,13 +23,11 @@
 	let displayItems = $state(getItems(value, prefix));
 
 	onMount(() => {
-		// Initial random state (digits only for chaos effect)
-		const randomDigits = Array(numDigits + 3) // Approx length with commas
+		const randomDigits = Array(numDigits)
 			.fill(0)
 			.map(() => Math.floor(Math.random() * 10));
         
         const p = prefix || '';
-        // Only update on client
         displayItems = [p, ...randomDigits];
 
 		const timeoutId = setTimeout(() => {
@@ -40,7 +37,6 @@
 		return () => clearTimeout(timeoutId);
 	});
 
-    // Reactively update when value or prefix changes
     $effect(() => {
         displayItems = getItems(value, prefix);
     });
@@ -48,19 +44,20 @@
 
 <div class="ticker-container" class:small={size === 'small'}>
 	{#each displayItems as item, i (i)}
-		<!-- Check if item is a number or a comma -->
-		{#if item === ','}
-			<div class="digit-wrapper separator">
-				<TickerSeparator />
-			</div>
-        {:else if i === 0}
-            <!-- First slot is the prefix, handled by TickerSymbol -->
+        <!-- 
+           Comma Logic: 
+           Indices 2, 5, 8 correspond to positions followed by a comma.
+           (Prefix, D1, D2[comma], D3, D4, D5[comma], D6, D7, D8[comma], D9, D10, D11)
+        -->
+        {@const hasComma = i === 2 || i === 5 || i === 8}
+
+        {#if i === 0}
+            <!-- First slot is the prefix -->
             <div class="digit-wrapper symbol">
                 <TickerSymbol symbol={item} />
             </div>
 		{:else}
-			<div class="digit-wrapper">
-				<!-- Force item to number for TickerDigit -->
+			<div class="digit-wrapper" class:comma-notch={hasComma}>
 				<TickerDigit digit={parseInt(item)} />
 			</div>
 		{/if}
@@ -70,7 +67,7 @@
 <style>
 	.ticker-container {
 		display: flex;
-		gap: 4px; /* Small gap between highlight blocks */
+		gap: 2px; /* Tight gap for the cutout effect */
 		font-family: var(--font-heading);
 		font-weight: 900;
 		font-size: clamp(2.5rem, 8vw, 10rem); 
@@ -81,11 +78,11 @@
 
     .ticker-container.small {
         font-size: clamp(1.2rem, 4vw, 3.5rem);
-        gap: 2px;
+        gap: 1px;
     }
 
 	.digit-wrapper {
-		/* HIGHLIGHT STYLE */
+		/* HIGHLIGHT STYLE - Spotify Green */
 		background: var(--accent-color);
 		color: #fff;
 		
@@ -96,13 +93,33 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		overflow: hidden;
-		border-radius: 2px; /* Slight rounding for the highlight block look */
+		overflow: visible; /* Allow notch to extend */
+		border-radius: 2px;
 	}
 
+    /* THE NEGATIVE SPACE COMMA (NOTCH) */
+    .digit-wrapper.comma-notch::after {
+        content: '';
+        position: absolute;
+        right: -6px; /* Adjusted for wider bulge */
+        bottom: 0.12em; /* Moved down slightly (from 0.15em) */
+        width: 10px; /* Increased width (from 6px) */
+        height: 0.12em; 
+        background-color: var(--bg-color); 
+        z-index: 10;
+        border-radius: 1px;
+    }
+
+    /* Adjust notch for small size */
+    .ticker-container.small .digit-wrapper.comma-notch::after {
+        right: -4px;
+        width: 6px; /* Increased relative width for small size */
+        height: 0.1em;
+        bottom: 0.1em;
+    }
+
     .digit-wrapper.symbol {
-        font-size: 1em; /* Ensure symbol scales with parent */
-        /* If item is empty string, background is still visible as a blank block */
+        font-size: 1em; 
     }
     
     .digit-wrapper.symbol span {
@@ -115,14 +132,5 @@
 
 	.digit-wrapper:first-child {
 		margin-left: 0;
-	}
-
-	/* Separator (Comma) Style - No highlight */
-	.digit-wrapper.separator {
-		background: transparent;
-		color: var(--accent-color);
-		width: 0.2em; /* Reduced width */
-		margin-left: 0;
-        border-radius: 0;
 	}
 </style>

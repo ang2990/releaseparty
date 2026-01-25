@@ -7,199 +7,200 @@
 	// Import global CSS here
 	import '../app.css';
 
-	    let { children, data } = $props(); // Receive data from layout.server.ts
-	        let tickerItems = $derived.by(() => {
-	            // Defensive check: Ensure data and tickerData exist
-	            const attendees = (data && data.tickerData) ? data.tickerData : [];
-	            
-	            // If no data, show a placeholder waiting message instead of slogans
-	            if (attendees.length === 0) return ["// WAITING FOR SIGNAL..."];
-	    
-	            // Filter for high-impact artists (e.g., > 100k streams) or recent listeners
-	            // For now, take the top 5 artists by stream count (if available) and 5 recent joins
-	            const highImpactArtists = attendees
-	                .filter(a => a.role === 'ARTIST' && a.streams !== '---')
-	                .sort((a, b) => parseInt(b.streams.replace(/,/g, '')) - parseInt(a.streams.replace(/,/g, '')))
-	                .slice(0, 5);
-	                
-	            // If we don't have enough data, just take what we have
-	            const displayList = highImpactArtists.length > 0 ? highImpactArtists : attendees.slice(0, 8);
-	    
-	            const attendeeStrings = displayList.map(a => {
-	                if (a.role === 'ARTIST') {
-	                    return `// ${a.name.toUpperCase()} (${a.streams} STREAMS) `;
-	                } else {
-	                    return `// NEW LISTENER: ${a.name.toUpperCase()} `;
-	                }
-	            });
-	    
-	            // Only return attendee strings (social proof)
-	            return attendeeStrings;
-	        });	
-	    // Automatically close menu on navigation
-	    afterNavigate(() => {
-	        isMenuOpen = false;
-	    });
-	
-	    let modalRole = $state(null); // Null means "Role Selection Step"
-	    let modalSubmitting = $state(false);
-	    let modalSuccess = $state(false);
-	    let isMenuOpen = $state(false);
-	
-	    const toggleMenu = () => {
-	        isMenuOpen = !isMenuOpen;
-	    };
-	
-	    const closeMenu = () => {
-	        isMenuOpen = false;
-	    };
-	
-	    const handleModalSubmit = () => {
-	        modalSubmitting = true;
-	        return async ({ result, update }) => {
-	            modalSubmitting = false;
-	            if (result.type === 'success') {
-	                modalSuccess = true;
-	            }
-	            await update();
-	        };
-	    };
-	
-	    onMount(() => {
-	        // --- MODAL LOGIC ---
-	        const modal = document.getElementById('modal');
-	        const modalTitle = document.getElementById('modal-title');
-	
-	        window.openModal = (role = null) => {
-	            modalRole = role; // If null, show selection screen
-	            modalSuccess = false;
-	            if (modal) {
-	                modal.style.display = 'flex';
-	            }
-	            if (modalTitle) {
-	                modalTitle.innerText = role ? "Join as " + role.toLowerCase() : "Join the Pact";
-	            }
-	        }
-	
-	        window.closeModal = () => {
-	            if (modal) {
-	                modal.style.display = 'none';
-	            }
-	        }
-	
-	        window.onclick = function(event) {
-	            if (event.target == modal) {
-	                closeModal();
-	            }
-	        }
-	    });
-	</script>
-	
-	<svelte:head>
-		<link rel="icon" href={favicon} />
-	</svelte:head>
-	
-	<div class="grid-container">
-	    <!-- HEADER -->
-	    <header class="grid-row">
-	        <div class="brand">
-	            {#if $page.url.pathname === '/'}
-	                Release<span class="text-accent">party</span>
-	            {:else}
-	                <a href="/">Release<span class="text-accent">party</span></a>
-	            {/if}
-	        </div>
-	
-	        <button class="hamburger-btn" class:open={isMenuOpen} onclick={toggleMenu} aria-label="Menu">
-	            <span class="hamburger-line"></span>
-	            <span class="hamburger-line"></span>
-	            <span class="hamburger-line"></span>
-	        </button>
-	
-	                <nav class:open={isMenuOpen}>
-	                    <a href="/vision" class="nav-link" onclick={closeMenu}>The Vision</a>
-	                    <a href="/exodus" class="nav-link" onclick={closeMenu}>The Pact</a>
-	                    <a href="/resources" class="nav-link" onclick={closeMenu}>Guides</a>
-	                    <a href="/faq" class="nav-link" onclick={closeMenu}>FAQ</a>
-	                    <button type="button" class="nav-link text-accent" onclick={() => { openModal(); closeMenu(); }}>[ Join the Pact ]</button>
-	                </nav>	    </header>
-	
-	        <!-- TICKER (MARQUEE) -->
-	        <div class="marquee-container grid-row">
-	            <div class="marquee-wrapper">
-	                <!-- Render multiple times for seamless loop on wide screens -->
-	                <div class="marquee-content">
-	                    {#each tickerItems as item}
-	                        <span class="marquee-item">{item}</span>
-	                    {/each}
-	                </div>
-	                <div class="marquee-content">
-	                    {#each tickerItems as item}
-	                        <span class="marquee-item">{item}</span>
-	                    {/each}
-	                </div>
-	                <div class="marquee-content">
-	                    {#each tickerItems as item}
-	                        <span class="marquee-item">{item}</span>
-	                    {/each}
-	                </div>
-	                <div class="marquee-content">
-	                    {#each tickerItems as item}
-	                        <span class="marquee-item">{item}</span>
-	                    {/each}
-	                </div>
-	            </div>
-	        </div>	
-	    {@render children()}
-	
-	        <!-- FOOTER -->
-	        <footer class="grid-row grid-sidebar footer-dark">
-	            <div class="grid-item">
-	                <h2 class="text-large">Release party</h2>
-	                <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2025. Built for the move. Music is not content.</p>
-	                <a href="mailto:releaseparty.music@gmail.com" class="nav-link-footer" style="margin-top: 20px; display: block;">releaseparty.music@gmail.com</a>
-	            </div>
-	            <div class="grid-item">	            <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
-	            <div style="display: flex; flex-direction: column; gap: 10px;">
-	                <a href="https://instagram.com/releaseparty.music" target="_blank" class="nav-link nav-link-footer">Instagram</a>
-	                <a href="https://twitter.com/releaseparty" target="_blank" class="nav-link nav-link-footer">Twitter / X</a>
-	            </div>
-	        </div>
-	    </footer>
-	
-	    <!-- MODAL -->
-	    <div class="modal-overlay" id="modal">
-	        <div class="modal-box">
-	            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-	                <h2 id="modal-title">Join the Pact</h2>
-	                <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
-	            </div>
-	            
-	            {#if modalSuccess}
-	                <div style="text-align: center; padding: 40px 0;">
-	                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
-	                    <p style="font-weight: 700;">We've added your name to the list.</p>
-	                    <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>Dismiss</button>
-	                </div>
-	            {:else if !modalRole}
-	                <!-- STEP 1: ROLE SELECTION -->
-	                <div style="display: flex; flex-direction: column; gap: 20px;">
-	                    <p style="margin-bottom: 20px;">How will you participate?</p>
-	                    <button class="btn" onclick={() => modalRole = 'ARTIST'}>I am an Artist (Pledge Streams)</button>
-	                    <button class="btn btn-outline" onclick={() => modalRole = 'LISTENER'}>I am a Listener (Pledge Support)</button>
-	                </div>
-	            {:else}
-	                <p style="margin-bottom: 30px;">Add your support to our list.</p>
-	                <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
-	                    <!-- Hidden input to pass role -->
-	                    <input type="hidden" name="role" value={modalRole}>
-	                    
-	                    <div class="form-group">
-	                        <label for="modal-name">Name / artist name</label>
-	                        <input type="text" id="modal-name" name="name" placeholder="Name" required>
-	                    </div>
-	                    
-	                    <!-- ... rest of form ... -->
+	let { children, data } = $props(); // Receive data from layout.server.ts
+    
+    let tickerItems = $derived.by(() => {
+        // Defensive check: Ensure data and tickerData exist
+        const attendees = (data && data.tickerData) ? data.tickerData : [];
+        
+        // If no data, show a placeholder waiting message instead of slogans
+        if (attendees.length === 0) return ["// WAITING FOR SIGNAL..."];
+
+        // Filter for high-impact artists (e.g., > 100k streams) or recent listeners
+        const highImpactArtists = attendees
+            .filter(a => a.role === 'ARTIST' && a.streams !== '---')
+            .sort((a, b) => parseInt(b.streams.replace(/,/g, '')) - parseInt(a.streams.replace(/,/g, '')))
+            .slice(0, 5);
+            
+        // If we don't have enough data, just take what we have
+        const displayList = highImpactArtists.length > 0 ? highImpactArtists : attendees.slice(0, 8);
+
+        const attendeeStrings = displayList.map(a => {
+            if (a.role === 'ARTIST') {
+                return `// ${a.name.toUpperCase()} (${a.streams} STREAMS) `;
+            } else {
+                return `// NEW LISTENER: ${a.name.toUpperCase()} `;
+            }
+        });
+
+        // Only return attendee strings (social proof)
+        return attendeeStrings;
+    });
+
+    // Automatically close menu on navigation
+    afterNavigate(() => {
+        isMenuOpen = false;
+    });
+
+    let modalRole = $state(null); // Null means "Role Selection Step"
+    let modalSubmitting = $state(false);
+    let modalSuccess = $state(false);
+    let isMenuOpen = $state(false);
+
+    const toggleMenu = () => {
+        isMenuOpen = !isMenuOpen;
+    };
+
+    const closeMenu = () => {
+        isMenuOpen = false;
+    };
+
+    const handleModalSubmit = () => {
+        modalSubmitting = true;
+        return async ({ result, update }) => {
+            modalSubmitting = false;
+            if (result.type === 'success') {
+                modalSuccess = true;
+            }
+            await update();
+        };
+    };
+
+    onMount(() => {
+        // --- MODAL LOGIC ---
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+
+        window.openModal = (role = null) => {
+            modalRole = role; // If null, show selection screen
+            modalSuccess = false;
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+            if (modalTitle) {
+                modalTitle.innerText = "Join the Pact";
+            }
+        }
+
+        window.closeModal = () => {
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    });
+</script>
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+</svelte:head>
+
+<div class="grid-container">
+    <!-- HEADER -->
+    <header class="grid-row">
+        <div class="brand">
+            {#if $page.url.pathname === '/'}
+                Release<span class="text-accent">party</span>
+            {:else}
+                <a href="/">Release<span class="text-accent">party</span></a>
+            {/if}
+        </div>
+
+        <button class="hamburger-btn" class:open={isMenuOpen} onclick={toggleMenu} aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav class:open={isMenuOpen}>
+            <a href="/vision" class="nav-link" onclick={closeMenu}>The Vision</a>
+            <a href="/exodus" class="nav-link" onclick={closeMenu}>The Pact</a>
+            <a href="/faq" class="nav-link" onclick={closeMenu}>FAQ</a>
+            <button type="button" class="nav-link text-accent" onclick={() => { openModal(); closeMenu(); }}>Join</button>
+        </nav>
+    </header>
+
+    <!-- TICKER (MARQUEE) -->
+    <div class="marquee-container grid-row">
+        <div class="marquee-wrapper">
+            <!-- Render multiple times for seamless loop on wide screens -->
+            <div class="marquee-content">
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
+            </div>
+            <div class="marquee-content">
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
+            </div>
+            <div class="marquee-content">
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
+            </div>
+            <div class="marquee-content">
+                {#each tickerItems as item}
+                    <span class="marquee-item">{item}</span>
+                {/each}
+            </div>
+        </div>
+    </div>
+
+    {@render children()}
+
+    <!-- FOOTER -->
+    <footer class="grid-row grid-sidebar footer-dark">
+        <div class="grid-item">
+            <h2 class="text-large">Release party</h2>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2025. Built for the move. Music is not content.</p>
+            <a href="mailto:releaseparty.music@gmail.com" class="nav-link-footer" style="margin-top: 20px; display: block;">releaseparty.music@gmail.com</a>
+        </div>
+        <div class="grid-item">
+            <h4 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em;">Connect</h4>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://instagram.com/releaseparty.music" target="_blank" class="nav-link nav-link-footer">Instagram</a>
+                <a href="https://twitter.com/releaseparty" target="_blank" class="nav-link nav-link-footer">Twitter / X</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <h2 id="modal-title">Join the Pact</h2>
+                <button style="font-size: 2rem; cursor: pointer; line-height: 0.5; background: none; border: none; color: inherit; padding: 0;" onclick={() => closeModal()}>&times;</button>
+            </div>
+            
+            {#if modalSuccess}
+                <div style="text-align: center; padding: 40px 0;">
+                    <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
+                    <p style="font-weight: 700;">We've added your name to the list.</p>
+                    <button class="btn" style="margin-top: 40px;" onclick={() => closeModal()}>Dismiss</button>
+                </div>
+            {:else if !modalRole}
+                <!-- STEP 1: ROLE SELECTION -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <p style="margin-bottom: 20px;">How will you participate?</p>
+                    <button class="btn" onclick={() => modalRole = 'ARTIST'}>I am an Artist (Pledge Streams)</button>
+                    <button class="btn btn-outline" onclick={() => modalRole = 'LISTENER'}>I am a Listener (Pledge Support)</button>
+                </div>
+            {:else}
+                <p style="margin-bottom: 30px;">Add your support to our list.</p>
+                <form method="POST" action="/join" use:enhance={handleModalSubmit} class="modal-form">
+                    <input type="hidden" name="role" value={modalRole}>
+                    
+                    <div class="form-group">
+                        <label for="modal-name">Name / artist name</label>
+                        <input type="text" id="modal-name" name="name" placeholder="Name" required>
+                    </div>
+
                     {#if modalRole === 'LISTENER'}
                         <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
                             <input type="checkbox" id="modal-anon" name="anonymous" style="width: auto; margin: 0;">
@@ -257,7 +258,7 @@
                     {/if}
 
                     <button class="btn" style="width: 100%; margin-top: 20px;" disabled={modalSubmitting}>
-                        {modalSubmitting ? 'Transmitting...' : 'RSVP'}
+                        {modalSubmitting ? 'Transmitting...' : 'Join'}
                     </button>
                 </form>
             {/if}
