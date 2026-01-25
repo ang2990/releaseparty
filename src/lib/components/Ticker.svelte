@@ -14,27 +14,26 @@
 		return padded.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	};
 
-    // Initialize state immediately for SSR
     const getItems = (val, pre) => {
         const formatted = formatNumber(val);
         const p = pre || '';
         return [p, ...formatted.split('')];
     };
 
+	// Initialize state immediately for SSR
 	let displayItems = $state(getItems(value, prefix));
 
 	onMount(() => {
-		// Initial random state (digits only for chaos effect) - Client side only
-		const randomDigits = Array(numDigits + 3)
+		// Initial random state (digits only for chaos effect)
+		const randomDigits = Array(numDigits + 3) // Approx length with commas
 			.fill(0)
 			.map(() => Math.floor(Math.random() * 10));
         
-        // Temporarily show random digits for effect
         const p = prefix || '';
+        // Only update on client
         displayItems = [p, ...randomDigits];
 
 		const timeoutId = setTimeout(() => {
-            // Restore actual value
 			displayItems = getItems(value, prefix);
 		}, 100);
 
