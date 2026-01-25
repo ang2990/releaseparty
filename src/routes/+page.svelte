@@ -47,17 +47,12 @@
 </svelte:head>
 
 <!-- HERO SECTION (PUBLIC NOTICE) -->
-<div class="grid-row grid-2-col">
-    <div class="hero-title-box" style="border-right: 2px solid var(--line-color);">
+<div class="grid-row">
+    <div class="hero-title-box">
         <h1 class="text-huge">We are leaving <span class="text-accent">Spotify</span> together. <br>Join the pact.</h1>
         <p class="hero-notice-text">
             We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
-    </div>
-    <div class="grid-item" style="justify-content: center; align-items: center; background: var(--bg-color);">
-        <button class="btn" style="width: auto; padding: 30px 80px; font-size: 1.5rem;" onclick={() => openModal()}>
-            Join The Party
-        </button>
     </div>
 </div>
 
@@ -71,24 +66,23 @@
             role="region"
             aria-label="Live stats"
         >
-            {#key tickerMode}
-                <div 
-                    in:fly={{ y: 20, duration: 600, delay: 600 }} 
-                    out:fly={{ y: -20, duration: 600 }}
-                    style="display: flex; flex-direction: column; align-items: center; position: absolute;"
-                >
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        {#if tickerMode === 'REVENUE'}
-                            <span class="text-accent" style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.5rem, 8vw, 10rem); line-height: 0.9;">$</span>
-                        {/if}
-                        <Ticker value={currentTickerValue} />
-                    </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <Ticker value={currentTickerValue} prefix={tickerMode === 'REVENUE' ? '$' : ''} />
+            </div>
 
-                    <div class="progress-label" style="margin-top: 20px;">
+            <!-- Use a wrapper to contain the label transitions without absolute positioning causing overlaps -->
+            <div style="height: 40px; position: relative; width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+                {#key tickerMode}
+                    <div 
+                        in:fly={{ y: 10, duration: 300, delay: 300 }}
+                        out:fly={{ y: -10, duration: 300 }}
+                        class="progress-label" 
+                        style="position: absolute;"
+                    >
                         {tickerMode === 'STREAMS' ? 'STREAMS PLEDGED' : 'LISTENER REVENUE TO BE CANCELLED'}
                     </div>
-                </div>
-            {/key}
+                {/key}
+            </div>
         </div>
 
         <!-- PROGRESS BAR (Global) -->
@@ -96,6 +90,11 @@
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
             <div class="progress-overlay-text">When we hit 50 billion streams, we leave.</div>
         </div>
+
+        <!-- JOIN BUTTON (Integrated) -->
+        <button class="btn" style="width: auto; padding: 25px 80px; font-size: 1.5rem; margin-top: 20px;" onclick={() => openModal()}>
+            Join The Party
+        </button>
     </div>
 </div>
 

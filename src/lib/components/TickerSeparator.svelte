@@ -13,13 +13,14 @@
 		display: flex;
 		align-items: flex-end; /* Align to bottom */
 		justify-content: center;
-		padding-bottom: 0.15em; /* Lift slightly from bottom edge */
+		padding-bottom: 0.2em; /* Lift slightly more from bottom edge */
 	}
 
 	span {
 		font-family: var(--font-heading);
 		font-weight: 900;
-		font-size: 1em;
+		font-size: 0.6em; /* Smaller size */
 		line-height: 1;
+		color: var(--accent-color); /* Match theme orange */
 	}
 </style>
