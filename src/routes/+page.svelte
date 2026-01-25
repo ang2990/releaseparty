@@ -88,7 +88,7 @@
                         {tickerMode === 'STREAMS' ? 'STREAMS PLEDGED' : 'LISTENER REVENUE TO BE CANCELLED'}
                     </div>
                 </div>
-            {#/key}
+            {/key}
         </div>
 
         <!-- PROGRESS BAR (Global) -->
