@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import TickerDigit from './TickerDigit.svelte';
 	import TickerSeparator from './TickerSeparator.svelte';
+    import TickerSymbol from './TickerSymbol.svelte';
 
 	let { value = 0, size = 'large', prefix = '' } = $props();
 	const numDigits = 11; 
@@ -26,10 +27,6 @@
 
 		const timeoutId = setTimeout(() => {
 			const formatted = formatNumber(value);
-			// Split into array of characters and prepend prefix (or placeholder)
-            // If prefix is empty, we still want a placeholder slot to keep the grid stable?
-            // "it can be a blank orange highlight for the pledged streams"
-            // So yes, always prepend a slot.
             const p = prefix || ''; 
 			displayItems = [p, ...formatted.split('')];
 		}, 100);
@@ -40,7 +37,8 @@
     // Reactively update when value or prefix changes
     $effect(() => {
         const formatted = formatNumber(value);
-        displayItems = [prefix, ...formatted.split('')];
+        const p = prefix || '';
+        displayItems = [p, ...formatted.split('')];
     });
 </script>
 
@@ -52,9 +50,9 @@
 				<TickerSeparator />
 			</div>
         {:else if i === 0}
-            <!-- First slot is the prefix (or blank) -->
+            <!-- First slot is the prefix, handled by TickerSymbol -->
             <div class="digit-wrapper symbol">
-                <span>{item}</span>
+                <TickerSymbol symbol={item} />
             </div>
 		{:else}
 			<div class="digit-wrapper">
