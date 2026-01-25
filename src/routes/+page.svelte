@@ -71,7 +71,7 @@
             </div>
 
             <!-- Use a wrapper to contain the label transitions without absolute positioning causing overlaps -->
-            <div style="height: 40px; position: relative; width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+            <div style="height: 30px; position: relative; width: 100%; display: flex; justify-content: center; margin-top: 10px;">
                 {#key tickerMode}
                     <div 
                         in:fly={{ y: 10, duration: 300, delay: 300 }}
@@ -86,7 +86,7 @@
         </div>
 
         <!-- PROGRESS BAR (Global) -->
-        <div class="progress-container">
+        <div class="progress-container" style="margin-top: 10px;">
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
             <div class="progress-overlay-text">When we hit 50 billion streams, we leave.</div>
         </div>
