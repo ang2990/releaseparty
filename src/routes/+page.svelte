@@ -35,6 +35,10 @@
     );
 
     const progressText = $derived(
+        tickerMode === 'STREAMS'
+            ? "When we hit 50 billion streams, we leave."
+            : "When we hit $50 million, we leave."
+    );
 
     // Set initial selection
     $effect(() => {
