@@ -24,7 +24,7 @@
                 <span class="stat-value">{role}</span>
             </div>
             <div class="stat-box">
-                <span class="stat-label">{role === 'LISTENER' ? 'SUBSCRIPTION' : '2025_STREAMS'}</span>
+                <span class="stat-label">{role === 'LISTENER' ? 'SUBSCRIPTION PLAN' : '2025_STREAMS'}</span>
                 <span class="stat-value text-accent">{streams}</span>
             </div>
             <div class="stat-box">

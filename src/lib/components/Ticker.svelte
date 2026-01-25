@@ -3,7 +3,7 @@
 	import TickerDigit from './TickerDigit.svelte';
 	import TickerSeparator from './TickerSeparator.svelte';
 
-	let { value = 0 } = $props();
+	let { value = 0, size = 'large' } = $props();
 	const numDigits = 11; 
 
 	// We'll store the display items as an array of strings (digits or commas)
@@ -32,7 +32,7 @@
 	});
 </script>
 
-<div class="ticker-container">
+<div class="ticker-container" class:small={size === 'small'}>
 	{#each displayItems as item, i (i)}
 		<!-- Check if item is a number or a comma -->
 		{#if item === ','}
@@ -60,8 +60,13 @@
 		font-variant-numeric: tabular-nums;
 	}
 
+    .ticker-container.small {
+        font-size: clamp(1.2rem, 4vw, 3.5rem);
+    }
+
 	.digit-wrapper {
-		border: 3px solid var(--line-color);
+		/* Remove borders completely */
+		border: none;
 		width: 0.75em; 
 		height: 1.1em;
 		padding: 0;
@@ -70,9 +75,14 @@
 		justify-content: center;
 		position: relative;
 		overflow: hidden;
-		background: var(--bg-color);
-		margin-left: -3px; /* Prevent double borders between digit boxes */
+		background: transparent; /* Remove background if any */
+		margin-left: 0;
 	}
+
+    .ticker-container.small .digit-wrapper {
+        border: none;
+        margin-left: 0;
+    }
 
 	.digit-wrapper:first-child {
 		margin-left: 0;
@@ -80,13 +90,14 @@
 
 	/* Separator (Comma) Style */
 	.digit-wrapper.separator {
-		border-top: none;
-		border-bottom: none;
-		/* Keep side borders to maintain the grid vertical lines */
-		border-left: 3px solid var(--line-color);
-		border-right: 3px solid var(--line-color);
+		border: none;
 		width: 0.35em;
 		background: transparent;
-		margin-left: -3px;
+		margin-left: 0;
 	}
+
+    .ticker-container.small .digit-wrapper.separator {
+        border: none;
+        margin-left: 0;
+    }
 </style>

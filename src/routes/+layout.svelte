@@ -124,23 +124,32 @@
 	                    <button type="button" class="nav-link text-accent" onclick={() => { openModal(); closeMenu(); }}>[ Join the Pact ]</button>
 	                </nav>	    </header>
 	
-	    <!-- TICKER (MARQUEE) -->
-	    <div class="marquee-container grid-row">
-	        <div class="marquee-wrapper">
-	            <!-- Render twice for seamless loop -->
-	            <div class="marquee-content">
-	                {#each tickerItems as item}
-	                    <span class="marquee-item">{item}</span>
-	                {/each}
+	        <!-- TICKER (MARQUEE) -->
+	        <div class="marquee-container grid-row">
+	            <div class="marquee-wrapper">
+	                <!-- Render multiple times for seamless loop on wide screens -->
+	                <div class="marquee-content">
+	                    {#each tickerItems as item}
+	                        <span class="marquee-item">{item}</span>
+	                    {/each}
+	                </div>
+	                <div class="marquee-content">
+	                    {#each tickerItems as item}
+	                        <span class="marquee-item">{item}</span>
+	                    {/each}
+	                </div>
+	                <div class="marquee-content">
+	                    {#each tickerItems as item}
+	                        <span class="marquee-item">{item}</span>
+	                    {/each}
+	                </div>
+	                <div class="marquee-content">
+	                    {#each tickerItems as item}
+	                        <span class="marquee-item">{item}</span>
+	                    {/each}
+	                </div>
 	            </div>
-	            <div class="marquee-content">
-	                {#each tickerItems as item}
-	                    <span class="marquee-item">{item}</span>
-	                {/each}
-	            </div>
-	        </div>
-	    </div>
-	
+	        </div>	
 	    {@render children()}
 	
 	        <!-- FOOTER -->

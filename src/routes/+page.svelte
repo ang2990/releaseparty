@@ -1,18 +1,31 @@
 <script>
     import { onMount } from 'svelte';
+    import { fly } from 'svelte/transition';
     import AttendeeRow from '$lib/components/AttendeeRow.svelte';
     import AttendeeCard from '$lib/components/AttendeeCard.svelte';
-    import Ticker from '$lib/components/Ticker.svelte'; // Import the new Ticker
+    import Ticker from '$lib/components/Ticker.svelte'; 
 
     let { data } = $props();
     let attendees = $derived(data.attendees || []);
 
     let selectedAttendee = $state(null);
     
-    // Ticker Logic - Use live total from server or fallback to 0
+    // Ticker Logic
     const streamCount = $derived(data.totalStreams || 0);
     const revenueCount = $derived(Math.floor((data.totalListenerValue || 0) * 12));
     
+    // Cycle between 'STREAMS' and 'REVENUE'
+    let tickerMode = $state('STREAMS'); 
+    let currentTickerValue = $derived(tickerMode === 'STREAMS' ? streamCount : revenueCount);
+    
+    // Auto-cycle every 8 seconds
+    onMount(() => {
+        const interval = setInterval(() => {
+            tickerMode = tickerMode === 'STREAMS' ? 'REVENUE' : 'STREAMS';
+        }, 8000);
+        return () => clearInterval(interval);
+    });
+
     let showTooltip = $state(false);
     const progressWidth = $derived((streamCount / 50000000000) * 100);
 
@@ -45,62 +58,82 @@
 
 <!-- LIVE TICKER SECTION -->
 <div class="grid-row">
-    <div class="hero-counter-box" style="border-right: none; width: 100%; gap: 60px; padding: 80px 20px;">
+    <div class="hero-counter-box" style="border-right: none; width: 100%; gap: 40px; padding: 80px 20px;">
         
-        <!-- STREAMS PLEDGED -->
+        <!-- CYCLING TICKER -->
         <div 
-            style="position: relative; display: flex; flex-direction: column; align-items: center;"
-            onmouseenter={() => showTooltip = true}
-            onmouseleave={() => showTooltip = false}
+            style="position: relative; display: flex; flex-direction: column; align-items: center; min-height: 120px; justify-content: center;"
             role="region"
-            aria-label="Live stream count"
+            aria-label="Live stats"
         >
-            <Ticker value={streamCount} />
-            <div class="progress-label" style="margin-top: 20px;">STREAMS TO BE REMOVED</div>
-            
-            <div class="tooltip" class:visible={showTooltip}>
-                <div class="tooltip-header">Source: Verified 2024 data</div>
-                <p>
-                    This number represents the real-time collective count of streams pledged by artists joining the move.
-                    <br><br>
-                    <span class="text-accent" style="font-weight: 900;">Goal: 50,000,000,000</span>
-                </p>
-            </div>
-        </div>
+            {#key tickerMode}
+                <div 
+                    in:fly={{ y: 20, duration: 600, delay: 600 }} 
+                    out:fly={{ y: -20, duration: 600 }}
+                    style="display: flex; flex-direction: column; align-items: center; position: absolute;"
+                >
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        {#if tickerMode === 'REVENUE'}
+                            <span class="text-accent" style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.5rem, 8vw, 10rem); line-height: 0.9;">$</span>
+                        {/if}
+                        <Ticker value={currentTickerValue} />
+                    </div>
 
-        <!-- REVENUE CANCELLED -->
-        <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="text-accent" style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.5rem, 8vw, 10rem); line-height: 0.9;">$</span>
-                <Ticker value={revenueCount} />
-            </div>
-            <div class="progress-label" style="margin-top: 20px;">ANNUAL REVENUE TO BE CANCELLED</div>
+                    <div class="progress-label" style="margin-top: 20px;">
+                        {tickerMode === 'STREAMS' ? 'STREAMS PLEDGED' : 'LISTENER REVENUE TO BE CANCELLED'}
+                    </div>
+                </div>
+            {/key}
         </div>
 
         <!-- PROGRESS BAR (Global) -->
-        <div class="progress-container" style="margin-top: 40px;">
+        <div class="progress-container">
             <div class="progress-bar" style="width: {progressWidth}%;"></div>
+            <div class="progress-overlay-text">When we hit 50 billion streams, we leave.</div>
         </div>
-    </div>
-</div>
 
-<!-- MAIN CTA BUTTON -->
-<div class="grid-row">
-    <div class="grid-item" style="border-bottom: none; align-items: center; padding: 60px 40px;">
-        <button class="btn" style="width: auto; padding: 25px 60px; font-size: 1.2rem;" onclick={() => openModal()}>
-            Make it official. [ Join the Pact ]
+        <!-- JOIN BUTTON (Integrated) -->
+        <button class="btn" style="width: auto; padding: 20px 50px; font-size: 1.1rem; margin-top: 20px;" onclick={() => openModal()}>
+            Join The Party
         </button>
     </div>
 </div>
 
 <!-- MANIFESTO SECTION (Combined Vision) -->
-<div class="grid-row">
-    <div class="grid-item" style="padding: 80px 40px;">
-        <h2 class="text-large">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
-        <p style="margin-top: 30px; font-size: 1.5rem; line-height: 1.4; max-width: 45ch;">
+<div class="grid-row grid-2-col">
+    <!-- LEFT: HEADER & INTRO -->
+    <div class="grid-item" style="padding: 80px 40px; border-bottom: none;">
+        <h2 class="text-large" style="position: sticky; top: 40px;">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
+        <p style="margin-top: 30px; font-size: 1.5rem; line-height: 1.4; max-width: 40ch;">
             The current streaming model is designed to extract value, not support art. We demand fair pay, ethical standards, and direct control over our future.
         </p>
         <a href="/vision" class="nav-link" style="margin-top: 40px; display: inline-block; font-size: 1.2rem;">Read the full demands &rarr;</a>
+    </div>
+
+    <!-- RIGHT: VISION POINTS -->
+    <div class="grid-item" style="border-bottom: none; background: var(--text-color); color: var(--bg-color);">
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+            <div>
+                <h3 class="text-accent" style="margin-bottom: 10px;">01. FAIR PAY</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">User-centric payments that reward fan dedication, not passive volume.</p>
+            </div>
+            <div>
+                <h3 class="text-accent" style="margin-bottom: 10px;">02. ETHICAL INFRASTRUCTURE</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">Divestment from military technology and surveillance.</p>
+            </div>
+            <div>
+                <h3 class="text-accent" style="margin-bottom: 10px;">03. AI CONSENT</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">Strict protections against unauthorized training on our catalogs.</p>
+            </div>
+            <div>
+                <h3 class="text-accent" style="margin-bottom: 10px;">04. DATA SOVEREIGNTY</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">Full transparency and the right to take our fanbase with us.</p>
+            </div>
+            <div>
+                <h3 class="text-accent" style="margin-bottom: 10px;">05. PLATFORMS FOR PEOPLE</h3>
+                <p style="font-size: 1rem; opacity: 0.9;">Built for connection, not consumption and algorithmic wallpaper.</p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -109,7 +142,7 @@
     <div class="grid-item" style="background: var(--bg-color); display: flex; flex-direction: column; height: 100%;">
         <div class="attendee-header">
             <div>
-                <a href="/guest-list" class="nav-link"><h2 class="text-large">Who’s Joining</h2></a>
+                <a href="/guest-list" class="nav-link"><h2 class="text-large">Guest List</h2></a>
                 <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified Coalition Members</p>
             </div>
             <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">Full list -></a>
