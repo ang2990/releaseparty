@@ -106,5 +106,7 @@
     }
 
     input[type="text"].guest-search-input {
+        /* Intentionally empty or add styles if needed */
+    }
 
 </style>
