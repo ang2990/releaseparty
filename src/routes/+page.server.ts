@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
         return { attendees: [], totalStreams: 0, totalListenerValue: 0 };
     }
 
-    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=1000&view=viwZwgmbZkeoHjbWG`;
+    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=1000`;
     let response;
 
     try {
@@ -42,6 +42,10 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 
         const data = await response.json();
         const records = data.records || [];
+
+        if (records.length > 0) {
+            console.log('DEBUG: First record fields:', JSON.stringify(records[0].fields, null, 2));
+        }
 
         // Implement cache
         setHeaders({

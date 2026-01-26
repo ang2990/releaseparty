@@ -7,7 +7,7 @@ export const load: LayoutServerLoad = async ({ platform }) => {
         return { tickerData: [] };
     }
 
-    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=100&view=viwZwgmbZkeoHjbWG`;
+    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=100`;
     let response;
 
     try {

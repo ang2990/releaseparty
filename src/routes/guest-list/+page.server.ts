@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
         return { attendees: [], totalListenerValue: 0 };
     }
 
-    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=1000&view=viwZwgmbZkeoHjbWG`;
+    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=1000`;
     let response;
 
     try {
