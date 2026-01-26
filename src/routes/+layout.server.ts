@@ -64,9 +64,9 @@ export const load: LayoutServerLoad = async ({ platform }) => {
                 return null;
             };
 
-            const name = getF(['Name', 'name', 'Artist Name']) || 'Unknown';
-            const role = (getF(['Role', 'role', 'Type']) || 'LISTENER').toString().toUpperCase();
-            const streams = (getF(['Streams', 'streams', 'Count', 'Pledge']) || '---').toString();
+            const name = getF(['Name', 'name', 'Artist Name', 'Name / artist name', 'Artist']) || 'Unknown';
+            const role = (getF(['Role', 'role', 'Type', 'Participation Type']) || 'LISTENER').toString().toUpperCase();
+            const streams = (getF(['Streams', 'streams', 'Count', 'Pledge', '2025 total streams (estimate)']) || '---').toString();
 
             return { name, role, streams };
         });

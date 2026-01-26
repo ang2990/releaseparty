@@ -63,9 +63,22 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
                 return null;
             };
 
-            const name = getF(['Name', 'name', 'Artist Name']) || 'Unknown';
-            const role = (getF(['Role', 'role', 'Type']) || 'LISTENER').toString().toUpperCase();
-            const streamsStr = (getF(['Streams', 'streams', 'Count', 'Pledge']) || '---').toString();
+            const name = getF(['Name', 'name', 'Artist Name', 'Name / artist name', 'Artist']) || 'Unknown';
+            const role = (getF(['Role', 'role', 'Type', 'Participation Type']) || 'LISTENER').toString().toUpperCase();
+            
+            // Handle streams: Airtable might return a number or a string
+            const rawStreams = getF(['Streams', 'streams', 'Count', 'Pledge', '2025 total streams (estimate)']);
+            let streamsCount = 0;
+            let streamsStr = '---';
+
+            if (typeof rawStreams === 'number') {
+                streamsCount = rawStreams;
+                streamsStr = rawStreams.toLocaleString();
+            } else if (rawStreams) {
+                streamsStr = rawStreams.toString();
+                streamsCount = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
+            }
+
             const subscriptionStr = (getF(['Subscription', 'subscription', 'Plan', 'Subscription Plan']) || 'Unknown Plan').toString();
             const monthlyAmountVal = parseFloat(getF(['Monthly Amount', 'monthly_amount', 'Amount', 'Cost']) || 0);
 
@@ -73,8 +86,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 
             // Add to total if artist
             if (role === 'ARTIST') {
-                const count = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
-                totalStreams += count;
+                totalStreams += streamsCount;
             } else if (role === 'LISTENER') {
                 // Calculate revenue
                 if (!isNaN(monthlyAmountVal)) {

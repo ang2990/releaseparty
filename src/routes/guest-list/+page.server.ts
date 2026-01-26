@@ -61,9 +61,19 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
                 return null;
             };
 
-            const name = getF(['Name', 'name', 'Artist Name']) || 'Unknown';
-            const role = (getF(['Role', 'role', 'Type']) || 'LISTENER').toString().toUpperCase();
-            const streamsStr = (getF(['Streams', 'streams', 'Count', 'Pledge']) || '---').toString();
+            const name = getF(['Name', 'name', 'Artist Name', 'Name / artist name', 'Artist']) || 'Unknown';
+            const role = (getF(['Role', 'role', 'Type', 'Participation Type']) || 'LISTENER').toString().toUpperCase();
+            
+            // Handle streams: Airtable might return a number or a string
+            const rawStreams = getF(['Streams', 'streams', 'Count', 'Pledge', '2025 total streams (estimate)']);
+            let streamsStr = '---';
+
+            if (typeof rawStreams === 'number') {
+                streamsStr = rawStreams.toLocaleString();
+            } else if (rawStreams) {
+                streamsStr = rawStreams.toString();
+            }
+
             const subscriptionStr = (getF(['Subscription', 'subscription', 'Plan', 'Subscription Plan']) || 'Unknown Plan').toString();
             const monthlyAmountVal = parseFloat(getF(['Monthly Amount', 'monthly_amount', 'Amount', 'Cost']) || 0);
 
