@@ -56,7 +56,7 @@ export const load: LayoutServerLoad = async ({ platform }) => {
         const attendees = records.map((record: any) => {
             const f = record.fields;
             
-            // Robust field mapping
+            // Robust field mapping helper
             const getF = (keys: string[]) => {
                 for (const k of keys) {
                     if (f[k] !== undefined) return f[k];
@@ -64,9 +64,12 @@ export const load: LayoutServerLoad = async ({ platform }) => {
                 return null;
             };
 
-            const name = getF(['Name', 'name', 'Artist Name', 'Name / artist name', 'Artist']) || 'Unknown';
-            const role = (getF(['Role', 'role', 'Type', 'Participation Type']) || 'LISTENER').toString().toUpperCase();
-            const streams = (getF(['Streams', 'streams', 'Count', 'Pledge', '2025 total streams (estimate)']) || '---').toString();
+            // Airtable returns some fields as arrays (Select/Link fields)
+            const unpack = (val: any) => Array.isArray(val) ? val[0] : val;
+
+            const name = getF(['NAME', 'Name', 'name', 'Artist Name']) || 'Unknown';
+            const role = (unpack(getF(['ROLE', 'Role', 'role', 'Type'])) || 'LISTENER').toString().toUpperCase();
+            const streams = (getF(['STREAMS', 'Streams', 'streams', 'Count']) || '---').toString();
 
             return { name, role, streams };
         });

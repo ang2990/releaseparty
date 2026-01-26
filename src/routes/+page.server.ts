@@ -59,7 +59,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
         const attendees = records.map((record: any, index: number) => {
             const f = record.fields;
             
-            // Robust field mapping
+            // Robust field mapping helper
             const getF = (keys: string[]) => {
                 for (const k of keys) {
                     if (f[k] !== undefined) return f[k];
@@ -67,11 +67,14 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
                 return null;
             };
 
-            const name = getF(['Name', 'name', 'Artist Name', 'Name / artist name', 'Artist']) || 'Unknown';
-            const role = (getF(['Role', 'role', 'Type', 'Participation Type']) || 'LISTENER').toString().toUpperCase();
+            // Airtable returns some fields as arrays (Select/Link fields)
+            const unpack = (val: any) => Array.isArray(val) ? val[0] : val;
+
+            const name = getF(['NAME', 'Name', 'name', 'Artist Name']) || 'Unknown';
+            const role = (unpack(getF(['ROLE', 'Role', 'role', 'Type'])) || 'LISTENER').toString().toUpperCase();
             
-            // Handle streams: Airtable might return a number or a string
-            const rawStreams = getF(['Streams', 'streams', 'Count', 'Pledge', '2025 total streams (estimate)']);
+            // Handle streams
+            const rawStreams = getF(['STREAMS', 'Streams', 'streams', 'Count']);
             let streamsCount = 0;
             let streamsStr = '---';
 
@@ -83,8 +86,9 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
                 streamsCount = parseInt(streamsStr.replace(/[^0-9]/g, '')) || 0;
             }
 
-            const subscriptionStr = (getF(['Subscription', 'subscription', 'Plan', 'Subscription Plan']) || 'Unknown Plan').toString();
-            const monthlyAmountVal = parseFloat(getF(['Monthly Amount', 'monthly_amount', 'Amount', 'Cost']) || 0);
+            const subscriptionRaw = getF(['SUBSCRIPTION', 'Subscription', 'subscription', 'Plan']);
+            const subscriptionStr = (unpack(subscriptionRaw) || 'Unknown Plan').toString();
+            const monthlyAmountVal = parseFloat(getF(['MONTHLY AMOUNT', 'Monthly Amount', 'monthly_amount', 'Amount']) || 0);
 
             let formattedDisplay = streamsStr;
 
