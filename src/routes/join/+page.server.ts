@@ -7,7 +7,7 @@ import type { Actions } from './$types';
 // 3. Paste code to handle doPost(e) -> sheet.appendRow(...).
 // 4. Deploy > New Deployment > Type: Web App > Who has access: Anyone.
 // 5. Copy URL here.
-const GOOGLE_SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAO-MusSsH3uBM56KgRXRXvQIYlIHJ9kM9LEUnIDADyHvo88PP5f8jeOZX4RuF81YxPw/exec';
+const GOOGLE_SHEET_ENDPOINT = 'https://hooks.zapier.com/hooks/catch/26158398/uqzg29v/';
 
 export const actions = {
     default: async ({ request }) => {

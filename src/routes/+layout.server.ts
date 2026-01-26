@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAO-MusSsH3uBM56KgRXRXvQIYlIHJ9kM9LEUnIDADyHvo88PP5f8jeOZX4RuF81YxPw/exec';
+const ENDPOINT = 'https://hooks.zapier.com/hooks/catch/26158398/uqzg29v/';
 
 export const load: LayoutServerLoad = async () => {
     try {
