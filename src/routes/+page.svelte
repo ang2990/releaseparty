@@ -116,13 +116,13 @@
         
         <div style="font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 20px;">
             <p>
-                We know the reasons to leave: the $0.003 payout per stream, the ICE ads, the “Discovery Mode” payola schemes, the billion dollar military AI investments, the prioritization of “ghost artists,” and the secretive label deals.
+                We know the reasons to leave: the $0.003 payout per stream, the ICE ads, the “Discovery Mode” payola schemes, the billion-dollar military AI investments, the prioritization of “ghost artists,” and the secretive label deals.
             </p>
             <p>
-                Artists fear losing their hard-won audience, and listeners fear losing the convenience of the world’s largest library. But long as we act as individuals we are powerless.
+                Artists fear losing their hard-won audience, and listeners fear losing the convenience of the world’s largest library. If we trickle out, nothing changes. If we act as one giant bloc, we create a paradigm shift.
             </p>
             <p>
-                <strong>This is a collective jailbreak.</strong> If we trickle out, nothing changes. But if we act as one giant bloc, we create a paradigm shift. No one gets left behind, and no one risks obscurity. When we move, we move together to a system that actually values the art we create and listen to.
+                <strong>This is a collective jailbreak.</strong> No one gets left behind and no one risks obscurity. When we move, we move together to a system that actually values the art we create and listen to.
             </p>
         </div>
 
