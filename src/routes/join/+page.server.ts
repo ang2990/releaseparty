@@ -1,23 +1,53 @@
 import type { Actions } from './$types';
 
-// TODO: Replace this with your deployed Google Apps Script Web App URL
-// Tutorial: 
-// 1. Create a Google Sheet.
-// 2. Extensions > Apps Script.
-// 3. Paste code to handle doPost(e) -> sheet.appendRow(...).
-// 4. Deploy > New Deployment > Type: Web App > Who has access: Anyone.
-// 5. Copy URL here.
 const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/26158398/uqzg29v/';
 
 export const actions = {
     default: async ({ request }) => {
-        // ... (data extraction) ...
+        const data = await request.formData();
+        let name = data.get('name');
+        const email = data.get('email');
+        const link = data.get('link');
+        const role = data.get('role');
+        const streams = data.get('streams');
+        const subscription = data.get('subscription');
+        const anonymous = data.get('anonymous');
+
+        if (anonymous && role === 'LISTENER') {
+            name = 'Anonymous Listener';
+        }
+
+        // Calculate monthly amount based on subscription
+        let monthlyAmount = 0;
+        if (role === 'LISTENER' && subscription) {
+            const prices: Record<string, number> = {
+                'Premium Individual': 12.99,
+                'Premium Duo': 18.99,
+                'Premium Family': 21.99,
+                'Premium Student': 6.99,
+                'Free': 0
+            };
+            monthlyAmount = prices[subscription.toString()] || 0;
+        }
+
+        const timestamp = new Date().toISOString();
+        // Generate a unique ID for this submission to help filter duplicates
+        const submission_id = crypto.randomUUID();
+
+        // payload for Zapier
+        const payload = {
+            submission_id,
+            timestamp,
+            role,
+            name,
+            email,
+            link,
+            streams,
+            subscription,
+            monthly_amount: monthlyAmount
+        };
 
         try {
-            if (ZAPIER_WEBHOOK_URL.includes('REPLACE_ME')) {
-                // ...
-            }
-
             const response = await fetch(ZAPIER_WEBHOOK_URL, {
                 method: 'POST',
                 headers: {
@@ -25,4 +55,17 @@ export const actions = {
                 },
                 body: JSON.stringify(payload)
             });
-            // ...
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Zapier Webhook Error:', response.status, response.statusText, errorText);
+                return { success: false, error: 'Failed to record entry. Status: ' + response.status };
+            }
+
+            return { success: true };
+        } catch (err) {
+            console.error('Submission Error:', err);
+            return { success: false, error: 'Connection failed.' };
+        }
+    }
+} satisfies Actions;

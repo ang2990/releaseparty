@@ -1,10 +1,48 @@
 import type { LayoutServerLoad } from './$types';
+import { AIRTABLE_API_KEY, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from '$env/static/private';
 
-const ENDPOINT = 'https://hooks.zapier.com/hooks/catch/26158398/uqzg29v/';
+export const load: LayoutServerLoad = async ({ platform }) => {
+    if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
+        console.error('Airtable configuration missing');
+        return { tickerData: [] };
+    }
 
-export const load: LayoutServerLoad = async () => {
+    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=100&view=viwZwgmbZkeoHjbWG`;
+    let response;
+
     try {
-        const response = await fetch(ENDPOINT);
+        // Try to get from Cloudflare Cache first
+        if (platform && platform.caches) {
+            const cache = platform.caches.default;
+            const cacheKey = new Request(url); // Cache key must be a Request object
+            const cachedResponse = await cache.match(cacheKey);
+            
+            if (cachedResponse) {
+                response = cachedResponse;
+            }
+        }
+
+        // If not in cache, fetch from Airtable
+        if (!response) {
+            response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${AIRTABLE_API_KEY}`
+                }
+            });
+
+            // Cache the successful response for 60 seconds
+            if (response.ok && platform && platform.caches) {
+                const cache = platform.caches.default;
+                const cacheKey = new Request(url);
+                // We must clone the response before reading it, but here we can just clone for the cache put
+                // Re-construct response to add Cache-Control header for Cloudflare to respect
+                const responseToCache = new Response(response.clone().body, response);
+                responseToCache.headers.set('Cache-Control', 's-maxage=60');
+                
+                // Use waitUntil to not block the response
+                platform.context.waitUntil(cache.put(cacheKey, responseToCache));
+            }
+        }
         
         if (!response.ok) {
             console.error(`Failed to fetch ticker data: ${response.statusText}`);
@@ -12,50 +50,36 @@ export const load: LayoutServerLoad = async () => {
         }
 
         const data = await response.json();
+        const records = data.records || [];
 
-        if (!Array.isArray(data)) {
-            console.error('Ticker data is not an array:', data);
-            return { tickerData: [] };
-        }
-
-        // robust extraction logic
-        const attendees = data.map((row: any) => {
-            const getValue = (possibleKeys: string[], defaultValue: string) => {
-                for (const key of possibleKeys) {
-                    if (row[key] !== undefined && row[key] !== null && row[key] !== "") {
-                        return row[key].toString();
-                    }
+        // Map Airtable records
+        const attendees = records.map((record: any) => {
+            const f = record.fields;
+            
+            // Robust field mapping
+            const getF = (keys: string[]) => {
+                for (const k of keys) {
+                    if (f[k] !== undefined) return f[k];
                 }
-                const lowerKeys = Object.keys(row).map(k => k.toLowerCase());
-                for (const search of possibleKeys) {
-                    const foundKey = Object.keys(row).find(k => k.toLowerCase().includes(search.toLowerCase()));
-                    if (foundKey && row[foundKey]) return row[foundKey].toString();
-                }
-                return defaultValue;
+                return null;
             };
 
-            const name = getValue(['name', 'artist', 'gemini test'], 'Unknown');
-            const role = getValue(['role', 'test_listener', 'type'], 'LISTENER');
-            const streams = getValue(['streams', 'count', 'pledge'], '---');
+            const name = getF(['Name', 'name', 'Artist Name']) || 'Unknown';
+            const role = (getF(['Role', 'role', 'Type']) || 'LISTENER').toString().toUpperCase();
+            const streams = (getF(['Streams', 'streams', 'Count', 'Pledge']) || '---').toString();
 
             return { name, role, streams };
         });
 
         // Return the latest 20 entries for the ticker
         return {
-            tickerData: attendees.reverse().slice(0, 20)
+            tickerData: attendees.slice(0, 20)
         };
 
     } catch (err) {
         console.error('Error loading ticker data:', err);
-        // Fallback to static data on error to keep the site looking alive
         return {
-            tickerData: [
-                { name: "RAY BULL", role: "ARTIST", streams: "12,450,000" },
-                { name: "DIIV", role: "ARTIST", streams: "45,200,000" },
-                { name: "MITSKI", role: "ARTIST", streams: "150,000,000" },
-                { name: "BIG THIEF", role: "ARTIST", streams: "85,000,000" }
-            ]
+            tickerData: []
         };
     }
 };
