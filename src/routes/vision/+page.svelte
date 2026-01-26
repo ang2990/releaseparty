@@ -42,3 +42,13 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Prevent mid-word breaks in headers */
+    .directive-item h2 {
+        word-break: keep-all; /* CJK rule, but often helps */
+        overflow-wrap: normal; /* Default wrapping */
+        hyphens: none; /* No auto-hyphens */
+        word-wrap: normal; /* Legacy */
+    }
+</style>
