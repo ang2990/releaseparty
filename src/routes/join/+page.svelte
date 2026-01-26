@@ -45,9 +45,23 @@
         <!-- RIGHT: INTAKE FORM -->
         <div class="grid-item" style="background: var(--text-color); color: var(--bg-color);">
             {#if success}
-                <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
                     <h2 class="text-large text-accent" style="margin-bottom: 20px;">Confirmed</h2>
                     <p>You've joined the move. We'll be in touch with secure next steps.</p>
+
+                    {#if selectedRole === 'ARTIST'}
+                        <div style="margin-top: 40px; border: 1px solid var(--bg-color); padding: 25px; width: 100%;">
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Are you also a listener? Join the list to pledge your support as a fan too.</p>
+                            <button 
+                                class="btn" 
+                                style="width: 100%; background: var(--bg-color); color: var(--text-color);" 
+                                onclick={() => { selectedRole = 'LISTENER'; success = false; }}
+                            >
+                                Sign up as a Listener
+                            </button>
+                        </div>
+                    {/if}
+                    
                     <button class="btn btn-outline" style="margin-top: 40px; border-color: var(--bg-color); color: var(--bg-color);" onclick={() => success = false}>Add another name</button>
                 </div>
             {:else}

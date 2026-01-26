@@ -4,7 +4,6 @@
 
     let { data } = $props();
     let attendees = $derived(data.attendees || []);
-    let listenerValue = $derived(data.totalListenerValue || 0);
 
     let selectedAttendee = $state(null);
     let searchQuery = $state("");
@@ -43,11 +42,6 @@
                     <div>
                         <h2 class="text-large">Attendees</h2>
                         <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Live registry sync</p>
-                        <!-- Withheld Amount Meter -->
-                        <div class="financial-meter">
-                            <span class="label">Listener Total Withheld:</span>
-                            <span class="value">${listenerValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-                        </div>
                     </div>
                     <!-- Filter Controls -->
                     <div class="filter-controls">
@@ -111,27 +105,6 @@
         opacity: 1;
     }
 
-    .financial-meter {
-        margin-top: 15px;
-        font-family: 'Courier New', monospace;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        background: var(--text-color);
-        color: var(--bg-color);
-        padding: 5px 10px;
-        width: fit-content;
-    }
+    input[type="text"].guest-search-input {
 
-    .financial-meter .label {
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        opacity: 0.8;
-    }
-
-    .financial-meter .value {
-        font-size: 1.1rem;
-        font-weight: 900;
-    }
 </style>

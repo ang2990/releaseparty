@@ -112,11 +112,21 @@
 <div class="grid-row grid-2-col">
     <!-- LEFT: HEADER & INTRO -->
     <div class="grid-item" style="padding: 80px 40px; border-bottom: none;">
-        <h2 class="text-large" style="position: sticky; top: 40px;">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
-        <p style="margin-top: 30px; font-size: 1.5rem; line-height: 1.4; max-width: 40ch;">
-            The current streaming model is designed to extract value, not support art. We demand fair pay, ethical standards, and direct control over our future.
-        </p>
-        <a href="/vision" class="nav-link" style="margin-top: 40px; display: inline-block; font-size: 1.2rem;">Read the full demands &rarr;</a>
+        <h2 class="text-large" style="position: sticky; top: 40px; margin-bottom: 30px;">MUSIC IS NOT A <span class="text-accent">UTILITY.</span></h2>
+        
+        <div style="font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 20px;">
+            <p>
+                We know the reasons to leave: the $0.003 payout per stream, the ICE ads, the “Discovery Mode” payola schemes, the billion dollar military AI investments, the prioritization of “ghost artists,” and the secretive label deals.
+            </p>
+            <p>
+                Artists fear losing their hard-won audience, and listeners fear losing the convenience of the world’s largest library. But long as we act as individuals we are powerless.
+            </p>
+            <p>
+                <strong>This is a collective jailbreak.</strong> If we trickle out, nothing changes. But if we act as one giant bloc, we create a paradigm shift. No one gets left behind, and no one risks obscurity. When we move, we move together to a system that actually values the art we create and listen to.
+            </p>
+        </div>
+
+        <a href="/vision" class="nav-link" style="margin-top: 40px; display: inline-block; font-size: 1.2rem;">Read the full vision &rarr;</a>
     </div>
 
     <!-- RIGHT: VISION POINTS -->
@@ -152,9 +162,9 @@
         <div class="attendee-header">
             <div>
                 <a href="/guest-list" class="nav-link"><h2 class="text-large">Guest List</h2></a>
-                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Verified Coalition Members</p>
+                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Top 20 Artists & Recent Listeners</p>
             </div>
-            <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">Full list -></a>
+            <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">view full list -></a>
         </div>
         
         <div class="attendee-list">

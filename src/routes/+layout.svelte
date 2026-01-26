@@ -119,7 +119,7 @@
 
         <nav class:open={isMenuOpen}>
             <a href="/vision" class="nav-link" onclick={closeMenu}>The Vision</a>
-            <a href="/exodus" class="nav-link" onclick={closeMenu}>The Pact</a>
+            <a href="/exodus" class="nav-link" onclick={closeMenu}>Alternatives</a>
             <a href="/faq" class="nav-link" onclick={closeMenu}>FAQ</a>
             <button type="button" class="nav-link text-accent" onclick={() => { openModal(); closeMenu(); }}>Join</button>
         </nav>

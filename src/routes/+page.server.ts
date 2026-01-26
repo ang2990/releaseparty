@@ -110,14 +110,27 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
                 name: name,
                 role: role,
                 streams: formattedDisplay,
+                streamsCount: streamsCount,
                 isAccent: role === 'ARTIST'
             };
         });
 
-        // For the home page, maybe just return the first 5-8 latest entries
-        // Since Airtable returns them in specific order, we might need to reverse or sort
+        // Split into Artists and Listeners
+        const artists = attendees
+            .filter(a => a.role === 'ARTIST')
+            .sort((a, b) => (b.streamsCount || 0) - (a.streamsCount || 0))
+            .slice(0, 20);
+        
+        const listeners = attendees
+            .filter(a => a.role === 'LISTENER')
+            .sort(() => 0.5 - Math.random()) // Random shuffle
+            .slice(0, 10);
+
+        // Combine for the home page preview
+        const previewAttendees = [...artists, ...listeners];
+
         return {
-            attendees: attendees.reverse().slice(0, 8),
+            attendees: previewAttendees,
             totalStreams,
             totalListenerValue
         };
