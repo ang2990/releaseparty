@@ -60,9 +60,9 @@
     <div class="hero-counter-box" style="border-right: none; width: 100%; gap: 40px; padding: 80px 20px;">
         
         <!-- CYCLING HEADER -->
-        <h3 class="text-large" style="text-align: center; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 0.2em; white-space: nowrap; font-size: clamp(1rem, 5vw, 3rem);">
+        <h3 class="text-large ticker-header">
             <span>WHEN WE HIT</span>
-            <span style="display: grid; place-items: center; width: 15ch; position: relative; height: 1em;">
+            <span class="ticker-highlight">
                 {#key tickerMode}
                     <span 
                         in:fly={{ y: 15, duration: 500, delay: 200, opacity: 0 }} 
@@ -102,7 +102,7 @@
         </div>
 
         <!-- JOIN BUTTON (Integrated) -->
-        <button class="btn" style="width: auto; padding: 25px 80px; font-size: 1.5rem; margin-top: 20px; box-shadow: 10px 10px 0 var(--text-color);" onclick={() => openModal()}>
+        <button class="btn btn-join-hero" onclick={() => openModal()}>
             Join The Party
         </button>
     </div>
@@ -195,3 +195,56 @@
         <h2 class="text-huge" style="color: var(--accent-color);">?</h2>
     </div>
 </div>
+
+<style>
+    /* Responsive Header for Ticker */
+    .ticker-header {
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2em;
+        white-space: nowrap;
+        font-size: clamp(1rem, 5vw, 3rem);
+    }
+
+    .ticker-highlight {
+        display: grid;
+        place-items: center;
+        width: 15ch;
+        position: relative;
+        height: 1em;
+    }
+
+    /* Responsive Join Button */
+    .btn-join-hero {
+        width: auto;
+        padding: 25px 80px;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        box-shadow: 10px 10px 0 var(--text-color);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 900px) {
+        .ticker-header {
+            white-space: normal; /* Allow wrapping on small screens */
+            flex-direction: column;
+            gap: 10px;
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            line-height: 1.2;
+        }
+
+        .ticker-highlight {
+            width: 100%; /* Take full width on wrap */
+        }
+
+        .btn-join-hero {
+            width: 100%;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            box-shadow: 5px 5px 0 var(--text-color);
+        }
+    }
+</style>
