@@ -245,13 +245,15 @@
     }
 
     /* Mobile adjustments */
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
         .ticker-header {
             white-space: normal; /* Allow wrapping on small screens */
             flex-direction: column;
             gap: 10px;
             font-size: clamp(1.5rem, 6vw, 3rem);
             line-height: 1.2;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .ticker-highlight {
