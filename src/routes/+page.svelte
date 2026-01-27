@@ -191,21 +191,24 @@
 </div>
 
 <!-- Q+A PREVIEW SECTION -->
-<div class="grid-row grid-2-col" style="border-bottom: 2px solid var(--line-color);">
-    <div class="grid-item" style="border-bottom: none;">
-        <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
-        <p>Spotify doesn’t exist without our music. We are targeting them because they are the face of algorithmic exploitation and systemic harm in music. If we break their hold, we break the model.</p>
-    </div>
-    <div class="grid-item" style="border-bottom: none;">
-        <h2 class="text-large" style="margin-bottom: 20px;">Why wait?</h2>
-        <p>By gathering our leverage first, we flip the power dynamic. The platforms need us. We don't need them. We prove that by moving together.</p>
-    </div>
-</div>
-
-<!-- FAQ LINK -->
 <div class="grid-row">
-    <div class="grid-item" style="border-bottom: none; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
-        <a href="/faq" class="btn btn-outline" style="width: auto; padding: 20px 60px; font-size: 1.2rem;">Read full FAQ &rarr;</a>
+    <div class="qa-wrapper">
+        <!-- Questions Grid -->
+        <div class="qa-grid">
+            <div class="grid-item" style="border-right: 2px solid var(--line-color); border-bottom: none;">
+                <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
+                <p>Spotify doesn’t exist without our music. We are targeting them because they are the face of algorithmic exploitation and systemic harm in music. If we break their hold, we break the model.</p>
+            </div>
+            <div class="grid-item" style="border-bottom: none; border-right: none;">
+                <h2 class="text-large" style="margin-bottom: 20px;">Why wait?</h2>
+                <p>By gathering our leverage first, we flip the power dynamic. The platforms need us. We don't need them. We prove that by moving together.</p>
+            </div>
+        </div>
+        
+        <!-- Footer / Button -->
+        <div class="qa-footer">
+            <a href="/faq" class="btn btn-outline" style="width: auto; padding: 20px 60px; font-size: 1.2rem;">Read full FAQ &rarr;</a>
+        </div>
     </div>
 </div>
 
@@ -256,8 +259,40 @@
         text-decoration-color: var(--accent-color);
     }
 
+    /* FAQ Section Styles */
+    .qa-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .qa-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .qa-footer {
+        border-top: 2px solid var(--line-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
     /* Mobile adjustments */
     @media (max-width: 1100px) {
+        .qa-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        /* On mobile, the first item in qa-grid needs a bottom border and no right border */
+        .qa-grid .grid-item:first-child {
+            border-right: none !important;
+            border-bottom: 2px solid var(--line-color) !important;
+        }
+
+        .ticker-header {
         .ticker-header {
             white-space: normal; /* Allow wrapping on small screens */
             flex-direction: column;
