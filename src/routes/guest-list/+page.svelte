@@ -30,17 +30,17 @@
 </script>
 
 <svelte:head>
-    <title>Attendees | Release party</title>
+    <title>Guest List | Release party</title>
 </svelte:head>
 
 <div class="grid-container">
     <div class="grid-row grid-sidebar" id="guestlist">
-        <!-- LEFT: THE ATTENDEES LIST -->
+        <!-- LEFT: THE GUEST LIST -->
         <div class="grid-item" style="background: var(--bg-color);">
             <div class="attendee-header" style="flex-direction: column; align-items: flex-start; gap: 20px;">
                 <div style="width: 100%; display: flex; justify-content: space-between; align-items: flex-end;">
                     <div>
-                        <h2 class="text-large">Attendees</h2>
+                        <h2 class="text-large">Guest List</h2>
                         <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Live registry sync</p>
                     </div>
                     <!-- Filter Controls -->
