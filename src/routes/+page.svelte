@@ -116,7 +116,13 @@
         
         <div style="font-size: 1.1rem; line-height: 1.6; display: flex; flex-direction: column; gap: 20px;">
             <p>
-                We know the reasons to leave: the $0.003 payout per stream, the ICE ads, the “Discovery Mode” payola schemes, the billion-dollar military AI investments, the prioritization of “ghost artists,” and the secretive label deals.
+                We know the reasons to leave: 
+                <a href="https://freeyourmusic.com/blog/how-much-does-spotify-pay-per-stream" target="_blank" class="inline-link">the $0.003 payout per stream</a>, 
+                <a href="https://www.rollingstone.com/music/music-news/ice-ads-all-over-streaming-services-spotify-hbo-pandora-1235447970/" target="_blank" class="inline-link">the ICE ads</a>, 
+                <a href="https://pitchfork.com/news/spotify-facing-house-judiciary-committee-probe-over-discovery-mode/" target="_blank" class="inline-link">the “Discovery Mode” payola schemes</a>, 
+                <a href="https://www.musicbusinessworldwide.com/spotify-ceo-daniel-ek-leads-690m-funding-round-for-ai-drone-manufacturer-helsing/" target="_blank" class="inline-link">the billion-dollar military AI investments</a>, 
+                <a href="https://harpers.org/archive/2025/01/the-ghosts-in-the-machine-liz-pelly-spotify-musicians/" target="_blank" class="inline-link">the prioritization of “ghost artists,”</a> and 
+                <a href="https://www.reuters.com/legal/litigation/lawsuit-claims-umg-cut-artists-royalties-under-secret-spotify-deal-2023-01-04/#:~:text=Black%20Sheep's%20attorneys%20and%20representatives,:23-cv-00015." target="_blank" class="inline-link">the secretive label deals.</a>
             </p>
             <p>
                 Artists fear losing their hard-won audience, and listeners fear losing the convenience of the world’s largest library. If we trickle out, nothing changes. If we act as one giant bloc, we create a paradigm shift.
@@ -224,6 +230,18 @@
         font-size: 1.5rem;
         margin-top: 20px;
         box-shadow: 10px 10px 0 var(--text-color);
+    }
+
+    .inline-link {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+        transition: color 0.2s, text-decoration-color 0.2s;
+    }
+
+    .inline-link:hover {
+        color: var(--accent-color);
+        text-decoration-color: var(--accent-color);
     }
 
     /* Mobile adjustments */
