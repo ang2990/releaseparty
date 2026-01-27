@@ -169,7 +169,6 @@
         <div class="attendee-header">
             <div>
                 <a href="/guest-list" class="nav-link"><h2 class="text-large">Guest List</h2></a>
-                <p class="font-mono" style="font-size: 0.8rem; margin-top: 5px;">// Top 20 Artists & Recent Listeners</p>
             </div>
             <a href="/guest-list" class="font-mono" style="text-decoration: underline; font-weight: 700;">view full list -></a>
         </div>
