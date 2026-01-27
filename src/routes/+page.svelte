@@ -293,7 +293,6 @@
         }
 
         .ticker-header {
-        .ticker-header {
             white-space: normal; /* Allow wrapping on small screens */
             flex-direction: column;
             gap: 0; /* Remove gap to use line-height for equal spacing */
