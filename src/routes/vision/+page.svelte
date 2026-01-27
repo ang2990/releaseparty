@@ -2,10 +2,6 @@
     <title>The vision | Release party</title>
 </svelte:head>
 
-<svelte:head>
-    <title>The vision | Release party</title>
-</svelte:head>
-
 <div class="grid-container" style="border-top: none;">
     <!-- HEADER -->
     <div class="grid-row">
