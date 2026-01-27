@@ -348,7 +348,7 @@
     /* Resource Grid Styles */
     .resource-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         border-bottom: 2px solid var(--line-color);
         border-top: 2px solid var(--line-color); 
     }
