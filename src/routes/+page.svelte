@@ -48,7 +48,7 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">LET'S LEAVE <span class="text-accent">SPOTIFY</span> TOGETHER. <br>JOIN THE PARTY.</h1>
+        <h1 class="text-huge">WE'RE LEAVING <span class="text-accent">SPOTIFY</span> TOGETHER. <br>JOIN THE PARTY.</h1>
         <p class="hero-notice-text">
             We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
@@ -268,8 +268,9 @@
         }
 
         .btn-join-hero {
-            width: 100%;
-            padding: 20px 0;
+            width: auto;
+            min-width: 280px;
+            padding: 20px 40px;
             font-size: 1.2rem;
             box-shadow: 5px 5px 0 var(--text-color);
         }
