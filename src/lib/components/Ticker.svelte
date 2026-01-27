@@ -70,7 +70,7 @@
 		gap: 2px; /* Tight gap for the cutout effect */
 		font-family: var(--font-heading);
 		font-weight: 900;
-		font-size: clamp(2.5rem, 8vw, 10rem); 
+		font-size: clamp(1.2rem, 8vw, 10rem); 
 		line-height: 0.9;
 		letter-spacing: -0.05em;
 		font-variant-numeric: tabular-nums;
