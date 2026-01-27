@@ -67,7 +67,8 @@
                     <span 
                         in:fly={{ y: 15, duration: 500, delay: 200, opacity: 0 }} 
                         out:fly={{ y: -15, duration: 500, opacity: 0 }}
-                        style="color: var(--accent-color); position: absolute; width: 100%; text-align: center;"
+                        class="ticker-item-transition"
+                        style="color: var(--accent-color);"
                     >
                         {tickerMode === 'STREAMS' ? '50 BILLION STREAMS' : '50 MILLION DOLLARS'}
                     </span>
@@ -220,7 +221,12 @@
         place-items: center;
         width: 15ch;
         position: relative;
-        height: 1em;
+    }
+
+    .ticker-item-transition {
+        grid-area: 1 / 1;
+        width: 100%;
+        text-align: center;
     }
 
     /* Responsive Join Button */
@@ -249,15 +255,16 @@
         .ticker-header {
             white-space: normal; /* Allow wrapping on small screens */
             flex-direction: column;
-            gap: 10px;
+            gap: 0; /* Remove gap to use line-height for equal spacing */
             font-size: clamp(1.5rem, 6vw, 3rem);
-            line-height: 1.2;
+            line-height: 1.1;
             padding-left: 20px;
             padding-right: 20px;
         }
 
         .ticker-highlight {
             width: 100%; /* Take full width on wrap */
+            margin: 0.2em 0; /* Consistent spacing */
         }
 
         .btn-join-hero {
