@@ -48,7 +48,7 @@
 <!-- HERO SECTION (PUBLIC NOTICE) -->
 <div class="grid-row">
     <div class="hero-title-box">
-        <h1 class="text-huge">WE ARE LEAVING <span class="text-accent">SPOTIFY</span> TOGETHER. <br>JOIN THE PARTY.</h1>
+        <h1 class="text-huge">LET'S LEAVE <span class="text-accent">SPOTIFY</span> TOGETHER. <br>JOIN THE PARTY.</h1>
         <p class="hero-notice-text">
             We’re organizing a mass exodus of artists and listeners they can’t ignore.
         </p>
