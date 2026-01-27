@@ -191,20 +191,20 @@
 </div>
 
 <!-- Q+A PREVIEW SECTION -->
-<div class="grid-row grid-2-col">
+<div class="grid-row grid-2-col" style="border-bottom: 2px solid var(--line-color);">
     <div class="grid-item" style="border-bottom: none;">
         <h2 class="text-large" style="margin-bottom: 20px;">Why Spotify?</h2>
         <p>Spotify doesn’t exist without our music. We are targeting them because they are the face of algorithmic exploitation and systemic harm in music. If we break their hold, we break the model.</p>
     </div>
     <div class="grid-item" style="border-bottom: none;">
         <h2 class="text-large" style="margin-bottom: 20px;">Why wait?</h2>
-        <p>Every day we wait reinforces the status quo. We are acting now because the technology is ready, the artists are united, and the listeners deserve better. Momentum is our only leverage.</p>
+        <p>By gathering our leverage first, we flip the power dynamic. The platforms need us. We don't need them. We prove that by moving together.</p>
     </div>
 </div>
 
 <!-- FAQ LINK -->
 <div class="grid-row">
-    <div class="grid-item" style="border-bottom: none; display: flex; align-items: center; justify-content: center; padding: 60px 20px;">
+    <div class="grid-item" style="border-bottom: none; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
         <a href="/faq" class="btn btn-outline" style="width: auto; padding: 20px 60px; font-size: 1.2rem;">Read full FAQ &rarr;</a>
     </div>
 </div>
