@@ -121,7 +121,7 @@
                 <a href="https://freeyourmusic.com/blog/how-much-does-spotify-pay-per-stream" target="_blank" class="inline-link">the $0.003 payout per stream</a>, 
                 <a href="https://www.rollingstone.com/music/music-news/ice-ads-all-over-streaming-services-spotify-hbo-pandora-1235447970/" target="_blank" class="inline-link">the ICE ads</a>, 
                 <a href="https://pitchfork.com/news/spotify-facing-house-judiciary-committee-probe-over-discovery-mode/" target="_blank" class="inline-link">the “Discovery Mode” payola schemes</a>, 
-                <a href="https://www.musicbusinessworldwide.com/spotify-ceo-daniel-ek-leads-690m-funding-round-for-ai-drone-manufacturer-helsing/" target="_blank" class="inline-link">the billion-dollar military AI investments</a>, 
+                <a href="https://www.musicbusinessworldwide.com/spotify-ceo-daniel-ek-leads-690m-funding-round-for-ai-drone-manufacturer-helsing/" target="_blank" class="inline-link">investments in dystopian AI weaponry</a>, 
                 <a href="https://harpers.org/archive/2025/01/the-ghosts-in-the-machine-liz-pelly-spotify-musicians/" target="_blank" class="inline-link">the prioritization of “ghost artists,”</a> and 
                 <a href="https://www.reuters.com/legal/litigation/lawsuit-claims-umg-cut-artists-royalties-under-secret-spotify-deal-2023-01-04/#:~:text=Black%20Sheep's%20attorneys%20and%20representatives,:23-cv-00015." target="_blank" class="inline-link">the secretive label deals.</a>
             </p>
